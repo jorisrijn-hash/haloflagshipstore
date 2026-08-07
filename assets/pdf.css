@@ -70,6 +70,11 @@
   color:var(--pdf-ink);
   --mx:0; --my:0;
 }
+.phero::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:12rem; z-index:2;
+  pointer-events:none;
+  background:linear-gradient(to bottom, rgba(251,251,252,0) 0%, rgba(251,251,252,.72) 58%, #FBFBFC 100%);
+}
 .phero-grid{
   position:relative; z-index:3;
   display:grid; grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);
@@ -214,11 +219,28 @@
 .step b{ font-size:.8125rem; font-weight:700; letter-spacing:-0.004em; }
 .step p{ font-family:var(--serif); font-size:.875rem; line-height:1.5; color:var(--pdf-mut); max-width:15rem; }
 
-/* --- dark templates band ------------------------------------------------ */
+/* --- full-bleed dark run ------------------------------------------------
+   One continuous dark field spanning the viewport, holding both the
+   templates block and the analytics block with no light gap between them.
+   The two ends fade into the light sections rather than butting against
+   them, matching the soft transition used at the foot of the hero. */
+.darkrun{
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg,#161B23 0%, #101620 42%, #0B0F15 100%);
+  color:#F5F6F8;
+  padding-block:clamp(4.5rem,10vh,7rem);
+  display:grid; gap:clamp(3.5rem,8vh,6rem);
+}
+.darkrun::before,.darkrun::after{
+  content:""; position:absolute; left:0; right:0; height:9rem; z-index:1; pointer-events:none;
+}
+.darkrun::before{ top:0;    background:linear-gradient(to bottom, #FBFBFC 0%, rgba(251,251,252,.62) 34%, transparent 100%); }
+.darkrun::after { bottom:0; background:linear-gradient(to top,    #F4F4F6 0%, rgba(244,244,246,.62) 34%, transparent 100%); }
+.darkrun > *{ position:relative; z-index:2; }
+
 .pdark{
-  position:relative; overflow:hidden; border-radius:var(--r-band);
-  background:linear-gradient(158deg,#151A22 0%, #0C1016 100%);
-  color:#F5F6F8; padding:clamp(2.5rem,5vw,4rem);
+  position:relative; overflow:hidden;
+  color:#F5F6F8;
 }
 .pdark-grid{ display:grid; grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr); gap:clamp(2rem,4vw,3rem); align-items:center; }
 @media (max-width:64rem){ .pdark-grid{ grid-template-columns:1fr; } }
@@ -262,7 +284,7 @@
 .mcard-foot span{ display:block; font-size:.5625rem; opacity:.6; }
 
 /* ========================================================= 3/4 · ANALYTICS */
-.pdark--wide{ padding:clamp(1.5rem,2.6vw,2.25rem); }
+.pdark--wide{ padding:0; }
 .analytics{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(1.5rem,3vw,2.5rem); align-items:center; }
 @media (max-width:64rem){ .analytics{ grid-template-columns:1fr; } }
 .analytics-copy{ text-align:right; padding-right:clamp(0rem,2vw,1.5rem); }
@@ -340,6 +362,15 @@
 }
 .fitem b{ display:block; font-size:.9375rem; font-weight:700; letter-spacing:-0.008em; }
 .fitem p{ font-size:.9375rem; line-height:1.62; color:var(--pdf-mut); margin-top:.3rem; }
+.fitem .detail{ font-size:.8125rem; line-height:1.6; color:#7A8089; margin-top:.5rem; }
+.fitem-meta{ display:flex; flex-wrap:wrap; gap:.375rem; margin-top:.75rem; }
+.fitem-meta li{
+  display:inline-flex; align-items:center; gap:.3rem;
+  padding:.22rem .5rem; border-radius:6px;
+  background:#F4F5F7; border:1px solid #E7E8EC;
+  font-size:.6875rem; font-weight:500; color:#5B6069; letter-spacing:-0.002em;
+}
+.fitem-meta svg{ width:10px; height:10px; color:#8E939B; }
 
 .fstage{
   position:relative; border:1px solid var(--pdf-line); border-radius:var(--r-card);

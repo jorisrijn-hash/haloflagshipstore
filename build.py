@@ -266,14 +266,14 @@ def nav_html(active, dark=False):
 
 def foot_html(headline, sub):
     out = ['<footer class="pfoot">',
+           '<div class="wrap pfoot-cta">',
            '<div class="pfoot-glow" aria-hidden="true"></div>',
            '<div class="pfoot-halo" aria-hidden="true">'
-           '<svg viewBox="0 0 470 200" preserveAspectRatio="none">'
-           '<ellipse class="ph-wide" cx="235" cy="100" rx="222" ry="88"/>'
-           '<ellipse class="ph-mid"  cx="235" cy="100" rx="222" ry="88"/>'
-           '<ellipse class="ph-core" cx="235" cy="100" rx="222" ry="88"/>'
+           '<svg viewBox="0 0 510 100" preserveAspectRatio="none">'
+           '<ellipse class="ph-wide" cx="255" cy="50" rx="248" ry="44"/>'
+           '<ellipse class="ph-mid"  cx="255" cy="50" rx="248" ry="44"/>'
+           '<ellipse class="ph-core" cx="255" cy="50" rx="248" ry="44"/>'
            '</svg></div>',
-           '<div class="wrap pfoot-cta">',
            '<h2 data-rise>%s</h2>' % headline,
            '<p data-rise style="--rise-delay:80ms">%s</p>' % sub,
            '<div class="row" data-rise style="--rise-delay:150ms">'

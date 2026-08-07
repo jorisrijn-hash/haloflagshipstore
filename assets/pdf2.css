@@ -139,7 +139,7 @@
   background:linear-gradient(180deg,#0B0E13 0%, #0D1117 40%, #090B10 100%);
 }
 .pfoot-cta{
-  position:relative; z-index:2; text-align:center;
+  position:relative; z-index:2; text-align:center; isolation:isolate;
   display:grid; justify-items:center; gap:1.25rem;
   padding-block:clamp(5rem,13vh,9rem) clamp(4rem,10vh,7rem);
 }
@@ -154,20 +154,26 @@
 
 /* the ring lies flat, like light on a table, and the buttons sit inside it */
 .pfoot-halo{
-  position:absolute; left:50%; top:52%; translate:-50% -50%;
-  width:min(58rem,88vw); aspect-ratio:2.35/1; pointer-events:none; z-index:1;
+  /* anchored to the CTA row, not the footer, and much flatter: a shallow
+     arc of light lying on the surface rather than a ring standing in it. */
+  position:absolute; left:50%; bottom:5.5rem; translate:-50% 0;
+  width:min(56rem,92vw); aspect-ratio:5.1/1; pointer-events:none; z-index:-1;
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+  mask-image:linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
 }
 .pfoot-halo svg{ width:100%; height:100%; overflow:visible; }
 .pfoot-halo ellipse{ fill:none; }
-.ph-wide{ stroke:#E9B876; stroke-width:2.6; filter:blur(15px); opacity:.85; animation:breathe 8s var(--ease-soft) infinite; }
-.ph-mid { stroke:#F7DDB4; stroke-width:1.1; filter:blur(4px); }
-.ph-core{ stroke:#FFF8EC; stroke-width:.4; }
+.ph-wide{ stroke:#E9B876; stroke-width:1.9; filter:blur(15px); opacity:.85; animation:breathe 8s var(--ease-soft) infinite; }
+.ph-mid { stroke:#F7DDB4; stroke-width:.8; filter:blur(4px); }
+.ph-core{ stroke:#FFF8EC; stroke-width:.3; }
 .pfoot-glow{
-  position:absolute; left:50%; top:52%; translate:-50% -50%;
-  width:min(72rem,104vw); aspect-ratio:2/1; pointer-events:none; z-index:0;
-  background:radial-gradient(ellipse 46% 46% at 50% 50%, rgba(240,206,152,.16), rgba(200,160,110,.05) 46%, transparent 72%);
-  filter:blur(16px);
+  position:absolute; left:50%; bottom:2.5rem; translate:-50% 0;
+  width:min(70rem,104vw); aspect-ratio:4/1; pointer-events:none; z-index:-2;
+  background:radial-gradient(ellipse 44% 52% at 50% 62%, rgba(240,206,152,.20), rgba(200,160,110,.06) 48%, transparent 74%);
+  filter:blur(18px);
 }
+
+.pfoot .wrap{ max-width:92rem; }
 
 .pfoot-main{
   position:relative; z-index:2;
