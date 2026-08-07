@@ -32,6 +32,12 @@ PAGE_META = {
                   "Free under ten people. Per-user pricing after that, with a full feature comparison and no seat commitment.", "pricing"),
     "download":  ("Download",
                   "Get Halo Desktop for macOS and Windows. Sign in with your workspace address and start the first card.", "resources"),
+    "about":     ("About",
+                  "Why Halo exists, the principles it is built on, and what it deliberately will not become.", "company"),
+    "customers": ("Customers",
+                  "Teams using Halo, what changed for them, and the numbers behind it.", "company"),
+    "contact":   ("Contact",
+                  "Sales, support and general enquiries. All of them reach someone who works on Halo.", "company"),
     "login":     ("Sign in",
                   "Sign in to your Halo workspace, or create an account.", ""),
     "security":  ("Security",
@@ -364,6 +370,7 @@ SHELL = """<!DOCTYPE html>
 <link rel="stylesheet" href="assets/pdf.css">
 <link rel="stylesheet" href="assets/pdf2.css">
 <link rel="stylesheet" href="assets/pdf3.css">
+<link rel="stylesheet" href="assets/pdf4.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>

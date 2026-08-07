@@ -1,0 +1,156 @@
+/* ===========================================================================
+   HALO · company pages — about, customers, contact
+   Reuses the PDF layer wherever it fits; only genuinely new patterns live here.
+   =========================================================================== */
+
+/* Interior hero: same light, shorter, single column. */
+.phero--page{
+  min-height:auto;
+  padding-block:calc(var(--nav-h) + clamp(3rem,8vh,5.5rem)) clamp(3.5rem,8vh,5.5rem);
+}
+.phero--page .phero-in{ position:relative; z-index:3; max-width:44rem; }
+.phero--page h1{
+  font-family:var(--serif); font-weight:400; font-optical-sizing:auto;
+  font-size:clamp(2.4rem,4.7vw,4.1rem); line-height:1.03; letter-spacing:-0.028em;
+  margin-top:1.25rem;
+}
+.phero--page h1 em{ font-style:italic; font-weight:380; }
+.phero--page .psub{ margin-top:1.25rem; max-width:34rem; font-size:1.0625rem; }
+.phero--page .phero-cta{ margin-top:2rem; }
+
+/* ================================================================= ABOUT == */
+/* A statement set as one long editorial paragraph with the key clause lifted
+   out. Nothing decorative: the emphasis marks the sentence that matters. */
+.creed{
+  font-family:var(--serif); font-weight:340; font-optical-sizing:auto;
+  font-size:clamp(1.5rem,2.5vw,2.15rem); line-height:1.32; letter-spacing:-0.018em;
+  max-width:44rem; text-wrap:pretty;
+}
+.creed em{ font-style:italic; }
+.creed .lift{ color:var(--pdf-ink); }
+.creed .rest{ color:#8A9098; }
+
+.twoup{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem); }
+@media (max-width:56rem){ .twoup{ grid-template-columns:1fr; } }
+.statement{ display:grid; gap:.75rem; align-content:start; }
+.statement h3{ font-size:.6875rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--pdf-blue); }
+.statement p{ font-family:var(--serif); font-size:1.25rem; line-height:1.42; letter-spacing:-0.014em; }
+
+/* Design principles: eight words, so they are set as words, not as cards. */
+.principles{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--pdf-line); border:1px solid var(--pdf-line); border-radius:var(--r-card); overflow:hidden; }
+@media (max-width:64rem){ .principles{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.principle{ background:#fff; padding:1.5rem 1.375rem; display:grid; gap:.4rem; align-content:start; transition:background 320ms var(--ease); }
+.principle:hover{ background:#FBFBFC; }
+.principle b{ font-family:var(--serif); font-size:1.375rem; font-weight:400; letter-spacing:-0.016em; }
+.principle p{ font-size:.8125rem; line-height:1.55; color:var(--pdf-mut); }
+
+/* The "not building" list, on dark. */
+.nots{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(1.5rem,4vw,3.5rem); }
+@media (max-width:52rem){ .nots{ grid-template-columns:1fr; } }
+.nots li{
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:.875rem; align-items:baseline;
+  padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.08);
+  font-family:var(--serif); font-size:1.25rem; font-weight:340; letter-spacing:-0.014em;
+}
+.nots li svg{ width:13px; height:13px; color:#6F7783; translate:0 1px; }
+
+/* Roadmap of future products, as a plain dated column. */
+.horizon{ display:grid; gap:0; border-top:1px solid var(--pdf-line); max-width:46rem; }
+.horizon li{ display:grid; grid-template-columns:minmax(0,10rem) minmax(0,1fr); gap:1.5rem;
+             padding:1.125rem 0; border-bottom:1px solid var(--pdf-line); align-items:baseline; }
+@media (max-width:44rem){ .horizon li{ grid-template-columns:1fr; gap:.35rem; } }
+.horizon b{ font-size:.9375rem; font-weight:600; }
+.horizon p{ font-size:.9375rem; line-height:1.6; color:var(--pdf-mut); }
+
+/* ============================================================= CUSTOMERS == */
+.logowall{ display:grid; gap:1.5rem; }
+.logowall > p{ font-size:.6875rem; letter-spacing:.14em; text-transform:uppercase; color:#8E939B; font-weight:500; }
+
+.cases{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; }
+@media (max-width:68rem){ .cases{ grid-template-columns:1fr; } }
+.case{
+  display:flex; flex-direction:column;
+  background:#fff; border:1px solid var(--pdf-line); border-radius:var(--r-card);
+  overflow:hidden; box-shadow:var(--shadow-card);
+  transition:translate 400ms var(--ease), box-shadow 400ms var(--ease);
+}
+.case:hover{ translate:0 -3px; box-shadow:var(--shadow-lift); }
+.case-top{ height:9rem; position:relative; overflow:hidden; background:var(--face); display:grid; place-items:center; }
+.case-top .mark{
+  width:3rem; height:3rem; border-radius:12px; background:rgba(255,255,255,.9);
+  display:grid; place-items:center; font-weight:600; font-size:1rem; color:var(--pdf-ink);
+  box-shadow:0 6px 18px -10px rgba(18,21,26,.5);
+}
+.case-body{ padding:1.375rem 1.5rem 1.5rem; display:flex; flex-direction:column; gap:.75rem; flex:1; }
+.case-body .who{ font-size:.6875rem; letter-spacing:.11em; text-transform:uppercase; color:var(--pdf-dim); font-weight:600; }
+.case-body h3{ font-family:var(--serif); font-size:1.375rem; font-weight:400; letter-spacing:-0.016em; line-height:1.2; }
+.case-body p{ font-size:.875rem; line-height:1.6; color:var(--pdf-mut); }
+.case-nums{ display:flex; gap:1.5rem; margin-top:auto; padding-top:1rem; border-top:1px solid var(--pdf-line); }
+.case-nums div{ display:grid; gap:.15rem; }
+.case-nums b{ font-size:1.125rem; font-weight:500; letter-spacing:-0.016em; font-variant-numeric:tabular-nums; }
+.case-nums span{ font-size:.6875rem; color:var(--pdf-dim); }
+
+.voices{ columns:3; column-gap:1.25rem; }
+@media (max-width:68rem){ .voices{ columns:2; } }
+@media (max-width:44rem){ .voices{ columns:1; } }
+.voice{
+  break-inside:avoid; margin:0 0 1.25rem;
+  background:#fff; border:1px solid var(--pdf-line); border-radius:var(--r-card);
+  padding:1.375rem 1.5rem; box-shadow:var(--shadow-card);
+  display:grid; gap:1rem;
+}
+.voice blockquote{ margin:0; font-family:var(--serif); font-size:1.0625rem; line-height:1.48; letter-spacing:-0.01em; }
+.voice figcaption{ display:flex; align-items:center; gap:.625rem; font-size:.75rem; }
+.voice .av{ width:30px; height:30px; border-radius:999px; background:#12151A; color:#fff;
+            display:grid; place-items:center; font-size:.625rem; font-weight:600; flex:none; }
+.voice figcaption b{ display:block; font-weight:600; }
+.voice figcaption span{ color:var(--pdf-dim); }
+
+/* Stats on a light ground — the dark .stat lives in pdf2.css. */
+.stats--light .stat b{ color:var(--pdf-ink); font-family:var(--serif); font-size:2.25rem; font-weight:400; letter-spacing:-0.025em; }
+.stats--light .stat b svg{ display:none; }
+.stats--light .stat span{ color:var(--pdf-mut); font-size:.8125rem; }
+
+/* =============================================================== CONTACT == */
+.routes{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; }
+@media (max-width:64rem){ .routes{ grid-template-columns:1fr; } }
+.route{
+  display:flex; flex-direction:column; gap:.75rem;
+  background:#fff; border:1px solid var(--pdf-line); border-radius:var(--r-card);
+  padding:1.5rem 1.5rem 1.375rem; box-shadow:var(--shadow-card);
+  transition:translate 380ms var(--ease), box-shadow 380ms var(--ease), border-color 380ms var(--ease);
+}
+.route:hover{ translate:0 -3px; box-shadow:var(--shadow-lift); border-color:#D8DAE0; }
+.route h3{ font-size:1.0625rem; font-weight:700; letter-spacing:-0.01em; }
+.route p{ font-size:.875rem; line-height:1.6; color:var(--pdf-mut); }
+.route .when{ font-size:.75rem; color:var(--pdf-dim); margin-top:auto; padding-top:1rem; border-top:1px solid var(--pdf-line); }
+.route .link-go{ display:inline-flex; align-items:center; gap:.4rem; font-size:.875rem; font-weight:500; color:var(--pdf-ink); }
+.route .link-go .arw{ transition:translate 280ms var(--ease); }
+.route:hover .link-go .arw{ translate:3px 0; }
+
+.cform{
+  background:#fff; border:1px solid var(--pdf-line); border-radius:var(--r-card);
+  padding:clamp(1.5rem,3vw,2.25rem); box-shadow:var(--shadow-card);
+  display:grid; gap:1.125rem;
+}
+.cform .row2{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.125rem; }
+@media (max-width:44rem){ .cform .row2{ grid-template-columns:1fr; } }
+.cfld{ display:grid; gap:.5rem; }
+.cfld label{ font-size:.8125rem; font-weight:500; color:var(--pdf-ink); }
+.cfld input,.cfld select,.cfld textarea{
+  width:100%; padding:.75rem .875rem; border-radius:10px;
+  border:1px solid var(--pdf-line); background:#FCFCFD; color:var(--pdf-ink); font-size:.875rem;
+  transition:border-color 260ms var(--ease), background 260ms var(--ease);
+}
+.cfld textarea{ min-height:8rem; resize:vertical; line-height:1.55; }
+.cfld input::placeholder,.cfld textarea::placeholder{ color:#9BA1A9; }
+.cfld :is(input,select,textarea):focus{ outline:none; border-color:#B4B9C1; background:#fff; }
+.cfld :is(input,select,textarea):focus-visible{ outline:2px solid var(--glow-ink); outline-offset:2px; }
+.cform .fine{ font-size:.75rem; line-height:1.55; color:var(--pdf-dim); }
+.cform .pbtn{ justify-self:start; }
+.formnote{
+  display:flex; gap:.5rem; align-items:flex-start;
+  font-size:.75rem; line-height:1.5; color:var(--pdf-dim);
+  background:#F6F6F8; border:1px solid var(--pdf-line); border-radius:10px; padding:.75rem .875rem;
+}
+.formnote svg{ width:13px; height:13px; margin-top:.15rem; flex:none; }

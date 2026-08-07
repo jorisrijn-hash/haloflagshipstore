@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Halo · Halo AI</title>
-<meta name="description" content="AI helps you say it. It never says it for you. Wording, tone and translation inside the composer.">
+<title>Halo · About</title>
+<meta name="description" content="Why Halo exists, the principles it is built on, and what it deliberately will not become.">
 <meta name="theme-color" content="#0A0C10">
 <meta name="color-scheme" content="dark light">
-<link rel="canonical" href="https://halo.app/ai.html">
+<link rel="canonical" href="https://halo.app/about.html">
 
 <link rel="icon" href="brand/favicon.ico" sizes="any">
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
@@ -16,8 +16,8 @@
 <link rel="manifest" href="brand/site.webmanifest">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Halo · Halo AI">
-<meta property="og:description" content="AI helps you say it. It never says it for you. Wording, tone and translation inside the composer.">
+<meta property="og:title" content="Halo · About">
+<meta property="og:description" content="Why Halo exists, the principles it is built on, and what it deliberately will not become.">
 <meta property="og:image" content="https://halo.app/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://halo.app/brand/twitter-image.png">
@@ -53,7 +53,7 @@
 <header class="nav nav--light" id="nav"><div class="wrap nav-in">
 <a class="brand" href="index.html" aria-label="Halo, home"><svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a>
 <ul class="nav-links">
-<li><button class="nav-item" type="button" data-mega aria-expanded="false" aria-current="page">Product<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+<li><button class="nav-item" type="button" data-mega aria-expanded="false">Product<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
 <div class="mega mega--cards" style="--cols:3">
 <div><h4>Core</h4>
 <a href="product.html"><b>Product overview</b><span>Everything Halo does, in order</span></a>
@@ -101,7 +101,7 @@
 <div class="mega-foot"><span>Guides, answers and everything we have shipped.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
 <li><a class="nav-item" href="pricing.html">Pricing</a></li>
-<li><button class="nav-item" type="button" data-mega aria-expanded="false">Company<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+<li><button class="nav-item" type="button" data-mega aria-expanded="false" aria-current="page">Company<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
 <div class="mega mega--cards" style="--cols:2">
 <div><h4>Halo</h4>
 <a href="about.html"><b>About</b><span>Why we built this</span></a>
@@ -139,111 +139,115 @@
 
 <nav class="linebar" data-linebar></nav>
 <main id="main">
-<section class="hero hero--page hero--light">
-  <div class="light-stage" aria-hidden="true" style="--lx:80%;--ly:44%;--rsize:min(40vh,30vw);--unused:.9">
-    <div class="light-bloom"></div>
-    <div class="light-ring">
+<section class="phero phero--page" id="top">
+  <div class="pstage" aria-hidden="true">
+    <div class="pbloom" style="--lx:82%;--ly:34%"></div>
+    <div class="pring" style="--lx:82%;--ly:34%;--rsize:min(30vw,34rem)">
       <svg viewBox="0 0 100 100">
-        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
-        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
-        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
+        <circle class="pr-wide" cx="50" cy="50" r="37"/>
+        <circle class="pr-mid"  cx="50" cy="50" r="37"/>
+        <circle class="pr-core" cx="50" cy="50" r="37"/>
       </svg>
     </div>
-    <div class="light-floor"></div>
-    <div class="light-scrim"></div>
+    <div class="pscrim"></div>
   </div>
-  <div class="wrap hero-copy">
-    <p class="eyebrow" data-rise>Halo AI</p>
-    <h1 class="display d1" data-rise style="--rise-delay:60ms">It helps you say it.<br>It never says it <em>for you</em>.</h1>
-    <p class="lede" data-rise style="--rise-delay:140ms">
-      The hardest part of appreciation is not deciding to give it. It is finding words
-      that do not sound like a greeting card. That is the only job we gave the model.
+
+  <div class="wrap phero-in">
+    <span class="chip--soft" data-rise>About</span>
+    <h1 data-rise style="--rise-delay:70ms">We are building one<br>thing, <em>properly</em>.</h1>
+    <p class="psub" data-rise style="--rise-delay:130ms">
+      Halo is not an HR suite with a recognition module bolted on. It is a single
+      object done well: a card that says what someone actually did, and stays.
     </p>
   </div>
 </section>
 
-<section class="band band--dark grain" id="tone" data-tone="dark" data-label="Tone">
-  <div class="wrap split">
-    <div>
-      <h2 class="display d2" data-rise>Your meaning.<br>Four <em>registers</em>.</h2>
-      <p class="lede" data-rise style="--rise-delay:80ms">
-        Write the honest version first, however clumsy. Then move it until it sounds like
-        you. Nothing here invents a sentiment you did not have.
-      </p>
-      <ul class="feat">
-        <li data-rise><span class="dot" aria-hidden="true"></span><div><b>Improve the wording</b><p>Same facts, less throat-clearing.</p></div></li>
-        <li data-rise style="--rise-delay:60ms"><span class="dot" aria-hidden="true"></span><div><b>Match the tone</b><p>Warmer, shorter, more formal. Your workspace can define its own house register.</p></div></li>
-        <li data-rise style="--rise-delay:120ms"><span class="dot" aria-hidden="true"></span><div><b>Cross the language gap</b><p>Write in your language, send in theirs, keep the intent intact.</p></div></li>
-        <li data-rise style="--rise-delay:180ms"><span class="dot" aria-hidden="true"></span><div><b>Suggest a design</b><p>Reads the moment and proposes a template. One click to ignore it.</p></div></li>
-      </ul>
-    </div>
+<!-- ============================================================== ORIGIN === -->
+<section class="pband" id="origin" data-label="Why">
+  <div class="wrap">
+    <p class="creed" data-rise>
+      <span class="lift">Most recognition does not survive the week.</span>
+      <span class="rest">Not because people do not care, but because appreciation has
+      nowhere to live. A message scrolls away. A shout-out ends when the meeting does.
+      An annual review arrives eleven months after the thing it describes. The feeling
+      was real; the record was never made.</span>
+    </p>
 
-    <div class="panel spot" data-rise style="--rise-delay:120ms">
-      <p class="tone-out" id="toneOut">You stayed late to walk me through the migration script. I would still be stuck on it. Thank you.</p>
-      <div class="tone-ctl" role="group" aria-label="Tone" style="margin-top:1.5rem">
-        <button class="tone-btn" type="button" aria-pressed="true">As written</button>
-        <button class="tone-btn" type="button" aria-pressed="false">Warmer</button>
-        <button class="tone-btn" type="button" aria-pressed="false">Shorter</button>
-        <button class="tone-btn" type="button" aria-pressed="false">More formal</button>
-        <button class="tone-btn" type="button" aria-pressed="false">In Dutch</button>
+    <div class="twoup" style="margin-top:clamp(3.5rem,8vh,5.5rem)">
+      <div class="statement" data-rise>
+        <h3>Mission</h3>
+        <p>Help every company create a culture where appreciation is effortless,
+           frequent and meaningful.</p>
       </div>
-      <p class="tone-foot" style="margin-top:1.5rem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 4v5c0 4.4-3.4 8.3-8 9-4.6-.7-8-4.6-8-9V7z"/></svg>
-        Recognition is private by default. The sender decides who else sees it.
-      </p>
+      <div class="statement" data-rise style="--rise-delay:90ms">
+        <h3>Vision</h3>
+        <p>The most thoughtfully designed place where people feel seen, appreciated
+           and connected at work. Not the biggest HR suite. The best one room in it.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="band band--paper" id="limits" data-label="Limits">
+<!-- ========================================================== PRINCIPLES === -->
+<section class="pband pband--tint" style="padding-top:0" id="principles" data-label="Principles">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="display d2" data-rise>What it will <em>not</em> do.</h2>
-      <p class="lede copy" data-rise style="--rise-delay:80ms">
-        Most of the design work on Halo AI went into the refusals. Automated appreciation
-        is worse than none: the moment a card might have been generated, every card is
-        suspect, including the sincere ones.
-      </p>
+    <div class="phead">
+      <p class="peyebrow" data-rise>Design principles</p>
+      <h2 data-rise style="--rise-delay:70ms">Eight words we<br>argue with every week.</h2>
     </div>
-    <ul class="feat" style="margin-top:0">
-      <li data-rise><span class="dot" aria-hidden="true"></span><div><b>No autonomous sending</b><p>Nothing leaves without a person pressing send. There is no scheduler, no "recognise on my behalf".</p></div></li>
-      <li data-rise style="--rise-delay:60ms"><span class="dot" aria-hidden="true"></span><div><b>No invented substance</b><p>AI rewrites what you gave it. It will not decide what someone did well and write that up for you.</p></div></li>
-      <li data-rise style="--rise-delay:120ms"><span class="dot" aria-hidden="true"></span><div><b>No participation nudges</b><p>Halo will never tell you that you are behind on appreciation this month.</p></div></li>
-      <li data-rise style="--rise-delay:180ms"><span class="dot" aria-hidden="true"></span><div><b>No AI badge on the card</b><p>Because there is nothing to disclose: the words on a sent card were chosen by a person.</p></div></li>
+
+    <div class="principles" data-rise>
+      <div class="principle"><b>Calm</b><p>Nothing on screen competes for attention with the message.</p></div>
+      <div class="principle"><b>Elegant</b><p>Restraint first. If a flourish has to be justified, it goes.</p></div>
+      <div class="principle"><b>Premium</b><p>It should feel like something, not like a form.</p></div>
+      <div class="principle"><b>Human</b><p>A person wrote it. That is the only thing that makes it worth anything.</p></div>
+      <div class="principle"><b>Minimal</b><p>Six fields on a card. Every one of them earns its place.</p></div>
+      <div class="principle"><b>Editorial</b><p>Type does the work. Large, spacious, and set with intent.</p></div>
+      <div class="principle"><b>Intentional</b><p>No feature exists because a competitor has it.</p></div>
+      <div class="principle"><b>Timeless</b><p>A card sent today should still read well in five years.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ NOT THIS === -->
+<section class="darkrun" id="scope" data-tone="dark" data-label="Scope">
+  <div class="wrap pdark" data-rise>
+    <div style="max-width:44rem">
+      <h2>What we are<br>deliberately <em>not</em> building.</h2>
+      <p>Every one of these is a real product someone needs. None of them makes
+         appreciation feel more meaningful, so none of them belongs in Halo.</p>
+    </div>
+
+    <ul class="nots" style="margin-top:clamp(2rem,5vh,3rem)">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Payroll</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Time tracking</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Performance reviews</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Engagement surveys</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Compliance workflows</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Participation quotas</li>
     </ul>
   </div>
 </section>
 
-<section class="band band--dark grain" id="roadmap" data-tone="dark" data-label="Roadmap">
-  <div class="stage" aria-hidden="true" style="--lx:50%;--ly:24%;--rsize:min(34vh,26vw);--lint:.5">
-    <div class="stage-bloom"></div>
-    <div class="stage-scrim stage-scrim--mid"></div>
-  </div>
-  <div class="wrap wrap--narrow" style="position:relative;z-index:2">
-    <div class="sec-head">
-      <h2 class="display d2" data-rise>Where it goes next.</h2>
-      <p class="lede" data-rise style="--rise-delay:80ms">
-        Direction, not a shipping schedule. Anything here can change, and some of it should.
+<!-- ============================================================ HORIZON === -->
+<section class="pband" id="horizon" data-label="Horizon">
+  <div class="wrap">
+    <div class="phead" style="justify-items:start;text-align:left;margin-inline:0">
+      <p class="peyebrow" data-rise>Long term</p>
+      <h2 data-rise style="--rise-delay:70ms">Where this goes.</h2>
+      <p data-rise style="--rise-delay:120ms">
+        Direction, not a shipping schedule. The core promise never changes: help people
+        feel seen, appreciated and remembered at work.
       </p>
     </div>
-    <div class="bento">
-      <div class="panel spot wide" data-rise>
-        <h3>Recognition blind spots</h3>
-        <p>Surfacing the people who have received nothing this quarter, to whoever is in a position to notice. A prompt to a human, never a card.</p>
-      </div>
-      <div class="panel spot narrow" data-rise style="--rise-delay:60ms">
-        <h3>Layout generation</h3>
-        <p>Card designs composed for a specific message rather than picked from a grid.</p>
-      </div>
-      <div class="panel spot narrow" data-rise style="--rise-delay:120ms">
-        <h3>Wider translation</h3>
-        <p>Idiom-aware, so a Dutch card does not arrive sounding blunt in English.</p>
-      </div>
-      <div class="panel spot wide" data-rise style="--rise-delay:180ms">
-        <h3>Workspace voice</h3>
-        <p>Learning how your company actually writes, from the cards it has already sent, so suggestions stop sounding like a product.</p>
-      </div>
-    </div>
+
+    <ul class="horizon" data-rise>
+      <li><b>Halo Celebrate</b><p>Milestones handled end to end, still written by a person.</p></li>
+      <li><b>Halo Marketplace</b><p>Designers publishing card collections into workspaces.</p></li>
+      <li><b>Halo Insights</b><p>Recognition blind spots surfaced to whoever can act on them.</p></li>
+      <li><b>Halo Mobile and Desktop</b><p>The card composer wherever the moment happens.</p></li>
+      <li><b>Halo API</b><p>So a card can be triggered by the systems your work already lives in.</p></li>
+    </ul>
   </div>
 </section>
 </main>
@@ -252,8 +256,8 @@
 <div class="wrap pfoot-cta">
 <div class="pfoot-glow" aria-hidden="true"></div>
 <div class="pfoot-halo" aria-hidden="true"><svg viewBox="0 0 510 100" preserveAspectRatio="none"><ellipse class="ph-wide" cx="255" cy="50" rx="248" ry="44"/><ellipse class="ph-mid"  cx="255" cy="50" rx="248" ry="44"/><ellipse class="ph-core" cx="255" cy="50" rx="248" ry="44"/></svg></div>
-<h2 data-rise>Say it in your own words.</h2>
-<p data-rise style="--rise-delay:80ms">Halo just makes sure you find them. Free for the first ten people.</p>
+<h2 data-rise>Start with one card.</h2>
+<p data-rise style="--rise-delay:80ms">The first ten people are free, permanently, and you can stop any time.</p>
 <div class="row" data-rise style="--rise-delay:150ms"><a class="pbtn pbtn--paper pbtn--pill" href="pricing.html">Get Halo free</a><a class="pbtn pbtn--onDark pbtn--pill" href="cards.html">Book a demo</a></div>
 <small data-rise style="--rise-delay:210ms">No credit card required</small>
 </div>
