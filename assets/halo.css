@@ -1,0 +1,591 @@
+/* ===========================================================================
+   HALO · shared design system
+   v2 — extracted from the v1 single-page build, unchanged in identity.
+   Load order: tokens → reset → primitives → chrome → components → utilities
+   =========================================================================== */
+
+/* ---------------------------------------------------------------- TOKENS -- */
+:root{
+  /* Neutrals sit at hue 262 with near-zero chroma. The page is cool and
+     recessive; the only warmth anywhere is the light itself. */
+  --void:        oklch(0.115 0.008 262);
+  --ink:         oklch(0.155 0.009 262);
+  --ink-raised:  oklch(0.205 0.010 262);
+  --ink-line:    oklch(0.275 0.010 262);
+  --on-ink:      oklch(0.975 0.003 262);
+  --on-ink-mut:  oklch(0.735 0.010 262);
+  --on-ink-dim:  oklch(0.610 0.010 262);
+
+  --paper:        oklch(0.972 0.003 262);
+  --paper-raised: oklch(0.995 0.002 262);
+  --paper-line:   oklch(0.905 0.004 262);
+  --on-paper:     oklch(0.205 0.012 262);
+  --on-paper-mut: oklch(0.470 0.011 262);
+
+  /* The light. Never a surface fill — only emitted light, hairlines, cards. */
+  --glow:      oklch(0.860 0.095 82);
+  --glow-core: oklch(0.955 0.055 88);
+  --glow-deep: oklch(0.700 0.125 66);
+  --glow-ink:  oklch(0.480 0.110 62);
+
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  --sans:  "Instrument Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Exponential ease-out only. No bounce, no elastic, anywhere. */
+  --ease:      cubic-bezier(0.16, 1, 0.30, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --d-micro:  120ms;
+  --d-base:   260ms;
+  --d-enter:  520ms;
+  --d-reveal: 1000ms;
+
+  --gut: clamp(1.25rem, 4.5vw, 4.5rem);
+  --nav-h: 4.5rem;
+
+  --z-rail: 10;
+  --z-sticky: 20;
+  --z-nav: 40;
+  --z-menu: 50;
+  --z-loader: 60;
+}
+
+/* ----------------------------------------------------------------- RESET -- */
+*,*::before,*::after{ box-sizing:border-box; }
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--nav-h) + 1rem);
+}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--on-ink);
+  font-family:var(--sans);
+  font-size:clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height:1.6;
+  font-feature-settings:"kern" 1;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  /* clip, not hidden: hidden turns body into a scroll container and breaks
+     every position:sticky descendant in Chrome and Safari. */
+  overflow-x:clip;
+}
+img,svg,video{ display:block; max-width:100%; }
+button,input,textarea,select{ font:inherit; color:inherit; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3,h4,p{ margin:0; }
+ul,ol{ margin:0; padding:0; list-style:none; }
+:focus-visible{ outline:2px solid var(--glow); outline-offset:3px; border-radius:2px; }
+::selection{ background:var(--glow); color:var(--void); }
+
+.skip{
+  position:fixed; top:0; left:0; z-index:calc(var(--z-loader) + 1);
+  padding:.75rem 1.25rem; background:var(--glow); color:var(--void);
+  font-weight:600; transform:translateY(-110%);
+}
+.skip:focus{ transform:none; }
+.vh{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ------------------------------------------------------------ PRIMITIVES -- */
+.wrap{ width:100%; max-width:78rem; margin-inline:auto; padding-inline:var(--gut); }
+.wrap--narrow{ max-width:56rem; }
+.wrap--wide{ max-width:88rem; }
+
+.display{
+  font-family:var(--serif);
+  font-weight:340;
+  font-optical-sizing:auto;
+  letter-spacing:-0.021em;
+  line-height:1.03;
+  text-wrap:balance;
+}
+.display em{ font-style:italic; font-weight:320; }
+.d1{ font-size:clamp(2.6rem, 6.2vw, 5.5rem); }
+.d2{ font-size:clamp(2.1rem, 4.6vw, 3.85rem); }
+.d3{ font-size:clamp(1.6rem, 2.8vw, 2.35rem); letter-spacing:-0.015em; }
+.d4{ font-size:clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem); letter-spacing:-0.012em; }
+
+.lede{
+  font-size:clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem);
+  line-height:1.62; max-width:36ch; color:var(--on-ink-mut); text-wrap:pretty;
+}
+.copy{ max-width:66ch; text-wrap:pretty; }
+.small{ font-size:.875rem; line-height:1.55; }
+
+section{ position:relative; }
+.band{ padding-block:clamp(6rem, 13vh + 4rem, 11rem); }
+.band--tight{ padding-block:clamp(4.5rem, 9vh + 3rem, 8rem); }
+.band--dark{ background:var(--ink); color:var(--on-ink); }
+.band--void{ background:var(--void); color:var(--on-ink); }
+.band--paper{ background:var(--paper); color:var(--on-paper); }
+.band--paper .lede{ color:var(--on-paper-mut); }
+
+.sec-head{ display:grid; gap:1.5rem; margin-bottom:clamp(3rem, 7vh, 5rem); max-width:44rem; }
+.sec-head--mid{ justify-items:center; text-align:center; margin-inline:auto; }
+
+.rule{ height:1px; background:var(--ink-line); border:0; }
+.band--paper .rule{ background:var(--paper-line); }
+
+/* Buttons ----------------------------------------------------------------- */
+.btn{
+  --btn-bg:var(--on-ink); --btn-fg:var(--void); --btn-line:transparent;
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.8125rem 1.375rem; border:1px solid var(--btn-line);
+  border-radius:999px; background:var(--btn-bg); color:var(--btn-fg);
+  font-size:.9375rem; font-weight:500; letter-spacing:-0.008em;
+  cursor:pointer; position:relative; isolation:isolate;
+  transition:background var(--d-base) var(--ease), color var(--d-base) var(--ease),
+             border-color var(--d-base) var(--ease), box-shadow var(--d-base) var(--ease),
+             translate 420ms var(--ease);
+}
+.btn:hover{ box-shadow:0 0 0 4px color-mix(in oklab, var(--glow) 16%, transparent); }
+.btn--ghost{ --btn-bg:transparent; --btn-fg:currentColor;
+  --btn-line:color-mix(in oklab, currentColor 22%, transparent); }
+.btn--ghost:hover{ --btn-line:color-mix(in oklab, currentColor 45%, transparent); box-shadow:none; }
+.btn--onlight{ --btn-bg:var(--on-paper); --btn-fg:var(--paper-raised); }
+.btn--lit{
+  --btn-bg:var(--glow); --btn-fg:var(--void);
+  box-shadow:0 8px 30px -8px color-mix(in oklab, var(--glow) 55%, transparent);
+}
+.btn--lit:hover{
+  box-shadow:0 0 0 5px color-mix(in oklab, var(--glow) 20%, transparent),
+             0 10px 34px -8px color-mix(in oklab, var(--glow) 65%, transparent);
+}
+.btn .arw{ transition:transform var(--d-base) var(--ease); }
+.btn:hover .arw{ transform:translateX(3px); }
+.btn:active{ translate:0 1px; }
+
+.link-quiet{
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-size:.9375rem; font-weight:500;
+  border-bottom:1px solid color-mix(in oklab, currentColor 28%, transparent);
+  padding-bottom:2px; transition:border-color var(--d-base) var(--ease);
+}
+.link-quiet:hover{ border-color:currentColor; }
+
+/* -------------------------------------------------------------- REVEALS -- */
+.js [data-rise]{
+  opacity:0; translate:0 18px;
+  transition:opacity var(--d-reveal) var(--ease), translate var(--d-reveal) var(--ease);
+  transition-delay:var(--rise-delay, 0ms);
+}
+.js [data-rise].in{ opacity:1; translate:none; }
+.js [data-mask]{
+  clip-path:inset(0 0 102% 0);
+  transition:clip-path 1200ms var(--ease);
+  transition-delay:var(--rise-delay, 0ms);
+}
+.js [data-mask].in{ clip-path:inset(0 0 -2% 0); }
+
+/* ================================================== PAGE TRANSITIONS ===== */
+/* Cross-document view transitions. Chrome 126+/Safari 18+ get the real thing;
+   everything else navigates instantly, which is a correct degradation. */
+@view-transition{ navigation:auto; }
+
+::view-transition-old(root){
+  animation:vt-out 260ms var(--ease-soft) both;
+}
+::view-transition-new(root){
+  animation:vt-in 420ms var(--ease) both;
+}
+@keyframes vt-out{
+  to{ opacity:0; filter:blur(6px); scale:0.995; }
+}
+@keyframes vt-in{
+  from{ opacity:0; filter:blur(10px); scale:1.006; }
+}
+
+/* Shared elements that must not blink between pages. */
+.brand{ view-transition-name:halo-brand; }
+.stage-ring{ view-transition-name:halo-light; }
+::view-transition-group(halo-brand),
+::view-transition-group(halo-light){ animation-duration:520ms; animation-timing-function:var(--ease); }
+
+/* JS fallback for engines without cross-document transitions. */
+body{ transition:opacity 150ms var(--ease-soft), filter 150ms var(--ease-soft); }
+.leaving{ opacity:0; filter:blur(5px); }
+
+/* ============================================================== LOADER === */
+#loader{
+  position:fixed; inset:0; z-index:var(--z-loader);
+  display:grid; place-items:center; background:var(--ink);
+  transition:opacity 900ms var(--ease), visibility 900ms;
+}
+#loader[hidden]{ display:none; }
+.no-js #loader{ display:none; }
+#loader.done{ opacity:0; visibility:hidden; pointer-events:none; }
+.loader-in{ display:grid; place-items:center; gap:2.25rem; }
+.loader-ring{ width:76px; height:76px; }
+.loader-ring circle{
+  fill:none; stroke:var(--glow); stroke-width:5; stroke-linecap:round;
+  stroke-dasharray:var(--c) var(--c); stroke-dashoffset:var(--c);
+  animation:draw 2200ms var(--ease) forwards;
+  filter:drop-shadow(0 0 10px color-mix(in oklab, var(--glow) 60%, transparent));
+}
+@keyframes draw{ to{ stroke-dashoffset:calc(var(--c) * 0.128); } }
+.loader-msg{
+  font-size:.8125rem; color:var(--on-ink-dim); letter-spacing:.02em;
+  min-height:1.2em; transition:opacity 300ms var(--ease);
+}
+
+/* ================================================================= NAV === */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:var(--z-nav);
+  border-bottom:1px solid transparent;
+  transition:background var(--d-enter) var(--ease), border-color var(--d-enter) var(--ease);
+}
+.nav.stuck,
+.nav.menu-open{
+  background:color-mix(in oklab, var(--ink) 74%, transparent);
+  backdrop-filter:saturate(1.4) blur(18px);
+  -webkit-backdrop-filter:saturate(1.4) blur(18px);
+  border-bottom-color:color-mix(in oklab, var(--on-ink) 8%, transparent);
+}
+.nav-in{ display:flex; align-items:center; gap:1.5rem; height:var(--nav-h); }
+
+.brand{ display:flex; align-items:center; gap:.625rem; font-weight:500; letter-spacing:-0.01em; font-size:1.0625rem; }
+.brand svg{ width:22px; height:22px; overflow:visible; }
+.brand .ring{
+  fill:none; stroke:currentColor; stroke-width:9; stroke-linecap:round;
+  stroke-dasharray:183.6 26.9; transform:rotate(113deg); transform-origin:50% 50%;
+  transition:filter var(--d-base) var(--ease);
+}
+.brand:hover .ring{ filter:drop-shadow(0 0 6px color-mix(in oklab, var(--glow) 85%, transparent)); }
+
+.nav-links{ display:flex; align-items:center; gap:.125rem; margin-inline:auto; }
+.nav-links > li{ position:relative; }
+.nav-item{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.5rem .75rem; font-size:.9375rem; font-weight:450;
+  color:var(--on-ink-mut); background:none; border:0; border-radius:7px; cursor:pointer;
+  transition:color var(--d-micro) var(--ease), background var(--d-micro) var(--ease);
+}
+.nav-item:hover,
+.nav-item[aria-expanded="true"]{ color:var(--on-ink); background:color-mix(in oklab, var(--on-ink) 6%, transparent); }
+.nav-item[aria-current="page"]{ color:var(--on-ink); }
+.nav-item .caret{ width:9px; height:9px; opacity:.6; transition:transform var(--d-base) var(--ease); }
+.nav-item[aria-expanded="true"] .caret{ transform:rotate(180deg); }
+
+/* Mega menu --------------------------------------------------------------- */
+.mega{
+  position:absolute; top:calc(100% + .625rem); left:50%; translate:-50% 0;
+  width:max-content; max-width:min(62rem, calc(100vw - 2 * var(--gut)));
+  background:color-mix(in oklab, var(--ink-raised) 96%, transparent);
+  backdrop-filter:blur(24px) saturate(1.3);
+  -webkit-backdrop-filter:blur(24px) saturate(1.3);
+  border:1px solid var(--ink-line); border-radius:16px;
+  box-shadow:0 30px 80px -30px color-mix(in oklab, var(--void) 90%, transparent);
+  padding:1.25rem; display:grid; gap:1.5rem;
+  grid-template-columns:repeat(var(--cols, 2), minmax(13rem, 1fr));
+  opacity:0; visibility:hidden; translate:-50% -6px; pointer-events:none;
+  transition:opacity var(--d-base) var(--ease), translate var(--d-base) var(--ease), visibility var(--d-base);
+}
+.nav-item[aria-expanded="true"] + .mega{ opacity:1; visibility:visible; translate:-50% 0; pointer-events:auto; }
+.mega h4{
+  font-size:.6875rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--on-ink-dim); font-weight:600; margin-bottom:.5rem; padding-inline:.625rem;
+}
+.mega a{
+  display:grid; gap:.15rem; padding:.5625rem .625rem; border-radius:9px;
+  transition:background var(--d-micro) var(--ease);
+}
+.mega a:hover{ background:color-mix(in oklab, var(--on-ink) 6%, transparent); }
+.mega b{ font-size:.9375rem; font-weight:500; }
+.mega span{ font-size:.8125rem; color:var(--on-ink-dim); line-height:1.4; }
+.mega [aria-disabled="true"]{ pointer-events:none; opacity:.45; }
+.mega [aria-disabled="true"] b::after{
+  content:"soon"; margin-left:.5rem; font-size:.625rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--glow); vertical-align:1px;
+}
+
+.nav-act{ display:flex; align-items:center; gap:.75rem; }
+.nav-act .login{ font-size:.9375rem; color:var(--on-ink-mut); padding:.5rem; }
+.nav-act .login:hover{ color:var(--on-ink); }
+.nav-toggle{ display:none; background:none; border:0; padding:.5rem; cursor:pointer; }
+.nav-toggle span{ display:block; width:20px; height:1.5px; background:currentColor;
+  transition:transform var(--d-base) var(--ease); }
+.nav-toggle span + span{ margin-top:5px; }
+.nav-toggle[aria-expanded="true"] span:first-child{ transform:translateY(3.25px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:last-child{ transform:translateY(-3.25px) rotate(-45deg); }
+
+/* Mobile sheet ------------------------------------------------------------ */
+.sheet{
+  position:fixed; inset:var(--nav-h) 0 0 0; z-index:var(--z-menu);
+  background:var(--ink); padding:var(--gut) var(--gut) 4rem;
+  overflow-y:auto; overscroll-behavior:contain;
+  opacity:0; visibility:hidden;
+  transition:opacity var(--d-enter) var(--ease), visibility var(--d-enter);
+}
+.sheet.open{ opacity:1; visibility:visible; }
+.sheet h4{
+  font-size:.6875rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--on-ink-dim); font-weight:600; margin:2rem 0 .5rem;
+}
+.sheet h4:first-child{ margin-top:0; }
+.sheet a{
+  display:block; padding:.875rem 0; font-family:var(--serif);
+  font-size:1.5rem; font-weight:340; letter-spacing:-0.015em;
+  border-bottom:1px solid var(--ink-line);
+  opacity:0; translate:0 12px;
+  transition:opacity 420ms var(--ease), translate 420ms var(--ease);
+}
+.sheet.open a{ opacity:1; translate:none; transition-delay:calc(var(--i, 0) * 28ms + 60ms); }
+.sheet a[aria-disabled="true"]{ pointer-events:none; opacity:.4; }
+.sheet a.btn{
+  font-family:var(--sans); font-size:.9375rem; border-bottom:0;
+  padding:.8125rem 1.375rem; margin-top:2rem; width:max-content;
+}
+
+@media (max-width:64rem){
+  .nav-links{ display:none; }
+  .nav-act .login{ display:none; }
+  .nav-toggle{ display:block; }
+  .nav-in{ justify-content:space-between; }
+  .nav-act{ margin-left:auto; }
+}
+@media (min-width:64.0625rem){ .sheet{ display:none; } }
+
+/* ================================================== THE LIGHT (STAGE) ==== */
+/* Every dark hero is lit by the same source. Only its position, size and
+   intensity change per page, so the site reads as one continuous space. */
+.stage{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.stage-bloom{
+  position:absolute;
+  left:calc(var(--lx, 68%) + var(--mx, 0) * 14px);
+  top:calc(var(--ly, 46%) + var(--my, 0) * 10px);
+  width:var(--lsize, min(150vh, 130vw)); aspect-ratio:1; translate:-50% -50%;
+  background:radial-gradient(circle at 50% 50%,
+    color-mix(in oklab, var(--glow) calc(var(--lint, 1) * 26%), transparent) 0%,
+    color-mix(in oklab, var(--glow) calc(var(--lint, 1) * 11%), transparent) 22%,
+    color-mix(in oklab, var(--glow-deep) calc(var(--lint, 1) * 5%), transparent) 40%,
+    transparent 66%);
+  filter:blur(12px);
+  transition:left 900ms var(--ease-soft), top 900ms var(--ease-soft);
+}
+.stage-ring{
+  position:absolute; left:var(--lx, 68%); top:var(--ly, 46%); translate:-50% -50%;
+  width:var(--rsize, min(58vh, 46vw)); aspect-ratio:1; min-width:270px;
+  transform:translate3d(calc(var(--mx, 0) * 10px), calc(var(--my, 0) * 8px), 0);
+  transition:transform 900ms var(--ease-soft);
+}
+.stage-ring svg{ width:100%; height:100%; overflow:visible; }
+.ring-path{
+  fill:none; stroke-linecap:round; stroke-dasharray:183.6 26.9;
+  transform:rotate(113deg); transform-origin:50% 50%;
+}
+.ring-halo{ stroke:var(--glow); stroke-width:7; filter:blur(14px); opacity:.85; }
+.ring-mid{ stroke:var(--glow); stroke-width:3.2; filter:blur(3px); }
+.ring-core{ stroke:var(--glow-core); stroke-width:1.15; }
+
+.stage-floor{
+  position:absolute; left:var(--lx, 68%); bottom:-6%; translate:-50% 0;
+  width:min(120vh, 105vw); height:44vh;
+  background:radial-gradient(ellipse 50% 42% at 50% 0%,
+    color-mix(in oklab, var(--glow) 16%, transparent),
+    color-mix(in oklab, var(--glow-deep) 5%, transparent) 45%, transparent 72%);
+  filter:blur(18px);
+}
+.stage-horizon{
+  position:absolute; left:0; right:0; bottom:22%; height:1px;
+  background:linear-gradient(90deg, transparent,
+    color-mix(in oklab, var(--glow) 22%, transparent) 45%,
+    color-mix(in oklab, var(--glow) 30%, transparent) 68%, transparent);
+}
+.stage-scrim{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(100deg, var(--ink) 6%, color-mix(in oklab, var(--ink) 82%, transparent) 34%, transparent 62%),
+    linear-gradient(to top, var(--ink) 1%, transparent 26%);
+}
+.stage-scrim--mid{
+  background:radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, var(--ink) 92%);
+}
+
+/* Film grain. Not decoration: 40rem-wide radial gradients band badly on
+   8-bit displays, and a 3% noise layer is the standard fix. */
+.grain::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:2;
+  opacity:.035; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Progressive blur under the fixed nav — the Apple "content dissolves into
+   the chrome" cue, done with a mask instead of a stack of blurred layers. */
+.fade-top{
+  position:fixed; inset:0 0 auto 0; height:calc(var(--nav-h) + 2rem);
+  z-index:calc(var(--z-nav) - 1); pointer-events:none;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  -webkit-mask-image:linear-gradient(to bottom, #000 30%, transparent);
+  mask-image:linear-gradient(to bottom, #000 30%, transparent);
+}
+
+/* ============================================================ THE CARD === */
+.card{
+  position:relative; display:block; width:19rem; max-width:82vw;
+  background:linear-gradient(168deg,
+    color-mix(in oklab, var(--paper-raised) 97%, var(--glow)) 0%, var(--paper-raised) 58%);
+  color:var(--on-paper); border-radius:14px;
+  padding:1.125rem 1.25rem 1rem;
+  box-shadow:
+    0 1px 1px color-mix(in oklab, var(--void) 30%, transparent),
+    0 18px 40px -16px color-mix(in oklab, var(--void) 82%, transparent),
+    0 40px 90px -40px color-mix(in oklab, var(--void) 90%, transparent);
+}
+.card::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(150deg, color-mix(in oklab, var(--glow-core) 55%, transparent), transparent 42%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite:exclude; padding:1px;
+}
+.card-face{
+  height:6.5rem; margin:-1.125rem -1.25rem 1.125rem; border-radius:14px 14px 0 0;
+  background:var(--face, linear-gradient(160deg,#F3E3C6,#D9B07A 60%,#8E6338));
+  transition:background 600ms var(--ease-soft);
+}
+.card-kicker{
+  display:flex; align-items:center; gap:.4rem;
+  font-size:.6875rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--glow-ink); margin-bottom:.625rem;
+}
+.card-kicker svg{ width:12px; height:12px; }
+.card-msg{ font-size:.9375rem; line-height:1.5; letter-spacing:-0.005em; }
+.card-foot{ display:flex; align-items:center; gap:.5rem; margin-top:1rem; }
+.avatar{
+  width:26px; height:26px; border-radius:999px; flex:none; display:grid; place-items:center;
+  background:var(--on-paper); color:var(--paper-raised);
+  font-size:.625rem; font-weight:600; letter-spacing:.02em;
+}
+.card-who{ display:block; font-size:.75rem; line-height:1.25; }
+.card-who b{ font-weight:500; display:block; }
+.card-who span{ color:var(--on-paper-mut); }
+.card-sig{ display:flex; align-items:center; margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--paper-line); }
+.card-sig .stack{ display:flex; }
+.card-sig .avatar{ margin-left:-7px; box-shadow:0 0 0 2px var(--paper-raised); }
+.card-sig .avatar:first-child{ margin-left:0; }
+.card-sig span{ font-size:.75rem; color:var(--on-paper-mut); margin-left:.625rem; }
+.card--lg{ width:min(25rem, 100%); padding:1.75rem 1.75rem 1.5rem; border-radius:18px; }
+.card--lg .card-msg{ font-size:1.0625rem; line-height:1.55; }
+.card--lg .card-kicker{ font-size:.75rem; }
+.card--lg .card-face{ height:8rem; margin:-1.75rem -1.75rem 1.5rem; border-radius:18px 18px 0 0; }
+
+/* ================================================= SHARED COMPONENTS ===== */
+
+/* Spotlight surface: a warm pool of light follows the pointer across the
+   element. Halo's whole thesis is that appreciation is light landing on
+   someone, so this is the one hover effect that means something. */
+.spot{ position:relative; isolation:isolate; overflow:hidden; }
+.spot::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:-1;
+  opacity:0; transition:opacity 420ms var(--ease);
+  background:radial-gradient(18rem 18rem at var(--sx, 50%) var(--sy, 50%),
+    color-mix(in oklab, var(--glow) 13%, transparent), transparent 70%);
+}
+.spot:hover::after,
+.spot:focus-within::after{ opacity:1; }
+.band--paper .spot::after{
+  background:radial-gradient(18rem 18rem at var(--sx, 50%) var(--sy, 50%),
+    color-mix(in oklab, var(--glow) 22%, transparent), transparent 70%);
+}
+
+/* Panel: the neutral container used across every page. */
+.panel{
+  border:1px solid var(--ink-line); border-radius:16px; background:var(--ink-raised);
+  padding:clamp(1.25rem, 2.4vw, 1.75rem);
+}
+.band--paper .panel{ border-color:var(--paper-line); background:var(--paper-raised); }
+
+/* Editorial split: text one side, object the other. Alternates per instance. */
+.split{
+  display:grid; gap:clamp(2.5rem, 6vw, 5rem);
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1.05fr); align-items:center;
+}
+.split--flip > :first-child{ order:2; }
+@media (max-width:60rem){
+  .split{ grid-template-columns:1fr; }
+  .split--flip > :first-child{ order:0; }
+}
+
+/* Dotted feature list — used on every product page for consistency. */
+.feat{ display:grid; margin-top:2.5rem; }
+.feat li{
+  display:grid; grid-template-columns:auto 1fr; gap:1rem;
+  padding:1.125rem 0; border-top:1px solid var(--ink-line);
+}
+.feat li:last-child{ border-bottom:1px solid var(--ink-line); }
+.band--paper .feat li{ border-color:var(--paper-line); }
+.feat b{ font-weight:500; }
+.feat p{ color:var(--on-ink-mut); font-size:.9375rem; margin-top:.15rem; }
+.band--paper .feat p{ color:var(--on-paper-mut); }
+.feat .dot{
+  width:7px; height:7px; border-radius:999px; margin-top:.55rem;
+  background:color-mix(in oklab, var(--glow) 70%, transparent);
+  box-shadow:0 0 12px color-mix(in oklab, var(--glow) 70%, transparent);
+}
+
+/* Marquee — one continuous strip, duplicated once, translated by 50%. */
+.marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee ul{ display:flex; width:max-content; gap:3rem; animation:slide var(--speed, 42s) linear infinite; }
+.marquee:hover ul{ animation-play-state:paused; }
+.marquee li{ display:flex; align-items:center; gap:.625rem; font-size:.9375rem; color:var(--on-ink-mut); white-space:nowrap; }
+.marquee svg{ width:17px; height:17px; flex:none; opacity:.9; }
+@keyframes slide{ to{ transform:translateX(-50%); } }
+
+/* Footer ------------------------------------------------------------------ */
+.foot{ background:var(--void); border-top:1px solid var(--ink-line); padding-block:4rem 2.5rem; color:var(--on-ink); }
+.foot-grid{ display:grid; gap:2.5rem; grid-template-columns:minmax(0, 1.4fr) repeat(4, minmax(0, 1fr)); }
+@media (max-width:64rem){ .foot-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+.foot h4{ font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--on-ink-dim); margin-bottom:1rem; font-weight:600; }
+.foot li a{ display:block; padding:.3125rem 0; font-size:.875rem; color:var(--on-ink-mut); transition:color var(--d-micro) var(--ease); }
+.foot li a:hover{ color:var(--on-ink); }
+.foot li a[aria-disabled="true"]{ pointer-events:none; opacity:.45; }
+.foot-brand p{ font-size:.875rem; color:var(--on-ink-mut); max-width:26ch; margin-top:1rem; }
+.foot-base{
+  margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--ink-line);
+  display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between;
+  font-size:.8125rem; color:var(--on-ink-dim);
+}
+
+/* Closing CTA — the same arc of light closes every page. */
+.close{
+  position:relative; overflow:hidden; text-align:center;
+  min-height:42rem; display:grid; align-content:center;
+  padding-block:clamp(6rem, 14vh, 9rem); background:var(--void);
+}
+.close-glow{
+  position:absolute; left:50%; bottom:-14rem; translate:-50% 0;
+  width:min(84rem, 124vw); aspect-ratio:2/1; pointer-events:none;
+  background:radial-gradient(ellipse 50% 60% at 50% 100%,
+    color-mix(in oklab, var(--glow) 24%, transparent),
+    color-mix(in oklab, var(--glow-deep) 8%, transparent) 42%, transparent 72%);
+  filter:blur(16px);
+}
+.close-light{
+  position:absolute; left:50%; bottom:-30rem; translate:-50% 0;
+  width:min(60rem, 112vw); aspect-ratio:1; pointer-events:none;
+}
+.close-light svg{ width:100%; height:100%; overflow:visible; }
+.close-in{ position:relative; z-index:1; display:grid; gap:1.75rem; justify-items:center; }
+.close-cta{ display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
+.close small{ font-size:.8125rem; color:var(--on-ink-dim); }
+.close .lede{ text-align:center; max-width:34ch; }
+
+/* ============================================================ MOTION OFF = */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:1ms !important; animation-iteration-count:1 !important;
+    transition-duration:1ms !important; scroll-behavior:auto !important;
+  }
+  .js [data-rise]{ opacity:1; translate:none; }
+  .js [data-mask]{ clip-path:none; }
+  .stage-bloom,.stage-ring{ transition:none; }
+  .marquee ul{ animation:none; }
+  .sheet a{ opacity:1; translate:none; }
+  @view-transition{ navigation:none; }
+}

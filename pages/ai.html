@@ -1,0 +1,108 @@
+<!--close: Say it in your own words. | Halo just makes sure you find them. Free for the first ten people. -->
+
+<section class="hero hero--page grain">
+  <div class="stage" aria-hidden="true" style="--lx:80%;--ly:44%;--rsize:min(40vh,30vw);--lint:.9">
+    <div class="stage-bloom"></div>
+    <div class="stage-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="ring-path ring-halo" cx="50" cy="50" r="33.5"/>
+        <circle class="ring-path ring-mid"  cx="50" cy="50" r="33.5"/>
+        <circle class="ring-path ring-core" cx="50" cy="50" r="33.5"/>
+      </svg>
+    </div>
+    <div class="stage-scrim"></div>
+  </div>
+  <div class="wrap hero-copy">
+    <p class="eyebrow" data-rise>Halo AI</p>
+    <h1 class="display d1" data-rise style="--rise-delay:60ms">It helps you say it.<br>It never says it <em>for you</em>.</h1>
+    <p class="lede" data-rise style="--rise-delay:140ms">
+      The hardest part of appreciation is not deciding to give it. It is finding words
+      that do not sound like a greeting card. That is the only job we gave the model.
+    </p>
+  </div>
+</section>
+
+<section class="band band--dark grain" id="tone">
+  <div class="wrap split">
+    <div>
+      <h2 class="display d2" data-rise>Your meaning.<br>Four <em>registers</em>.</h2>
+      <p class="lede" data-rise style="--rise-delay:80ms">
+        Write the honest version first, however clumsy. Then move it until it sounds like
+        you. Nothing here invents a sentiment you did not have.
+      </p>
+      <ul class="feat">
+        <li data-rise><span class="dot" aria-hidden="true"></span><div><b>Improve the wording</b><p>Same facts, less throat-clearing.</p></div></li>
+        <li data-rise style="--rise-delay:60ms"><span class="dot" aria-hidden="true"></span><div><b>Match the tone</b><p>Warmer, shorter, more formal. Your workspace can define its own house register.</p></div></li>
+        <li data-rise style="--rise-delay:120ms"><span class="dot" aria-hidden="true"></span><div><b>Cross the language gap</b><p>Write in your language, send in theirs, keep the intent intact.</p></div></li>
+        <li data-rise style="--rise-delay:180ms"><span class="dot" aria-hidden="true"></span><div><b>Suggest a design</b><p>Reads the moment and proposes a template. One click to ignore it.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="panel spot" data-rise style="--rise-delay:120ms">
+      <p class="tone-out" id="toneOut">You stayed late to walk me through the migration script. I would still be stuck on it. Thank you.</p>
+      <div class="tone-ctl" role="group" aria-label="Tone" style="margin-top:1.5rem">
+        <button class="tone-btn" type="button" aria-pressed="true">As written</button>
+        <button class="tone-btn" type="button" aria-pressed="false">Warmer</button>
+        <button class="tone-btn" type="button" aria-pressed="false">Shorter</button>
+        <button class="tone-btn" type="button" aria-pressed="false">More formal</button>
+        <button class="tone-btn" type="button" aria-pressed="false">In Dutch</button>
+      </div>
+      <p class="tone-foot" style="margin-top:1.5rem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 4v5c0 4.4-3.4 8.3-8 9-4.6-.7-8-4.6-8-9V7z"/></svg>
+        Recognition is private by default. The sender decides who else sees it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--paper" id="limits">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display d2" data-rise>What it will <em>not</em> do.</h2>
+      <p class="lede copy" data-rise style="--rise-delay:80ms">
+        Most of the design work on Halo AI went into the refusals. Automated appreciation
+        is worse than none: the moment a card might have been generated, every card is
+        suspect, including the sincere ones.
+      </p>
+    </div>
+    <ul class="feat" style="margin-top:0">
+      <li data-rise><span class="dot" aria-hidden="true"></span><div><b>No autonomous sending</b><p>Nothing leaves without a person pressing send. There is no scheduler, no "recognise on my behalf".</p></div></li>
+      <li data-rise style="--rise-delay:60ms"><span class="dot" aria-hidden="true"></span><div><b>No invented substance</b><p>AI rewrites what you gave it. It will not decide what someone did well and write that up for you.</p></div></li>
+      <li data-rise style="--rise-delay:120ms"><span class="dot" aria-hidden="true"></span><div><b>No participation nudges</b><p>Halo will never tell you that you are behind on appreciation this month.</p></div></li>
+      <li data-rise style="--rise-delay:180ms"><span class="dot" aria-hidden="true"></span><div><b>No AI badge on the card</b><p>Because there is nothing to disclose: the words on a sent card were chosen by a person.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band band--dark grain" id="roadmap">
+  <div class="stage" aria-hidden="true" style="--lx:50%;--ly:24%;--rsize:min(34vh,26vw);--lint:.5">
+    <div class="stage-bloom"></div>
+    <div class="stage-scrim stage-scrim--mid"></div>
+  </div>
+  <div class="wrap wrap--narrow" style="position:relative;z-index:2">
+    <div class="sec-head">
+      <h2 class="display d2" data-rise>Where it goes next.</h2>
+      <p class="lede" data-rise style="--rise-delay:80ms">
+        Direction, not a shipping schedule. Anything here can change, and some of it should.
+      </p>
+    </div>
+    <div class="bento">
+      <div class="panel spot wide" data-rise>
+        <h3>Recognition blind spots</h3>
+        <p>Surfacing the people who have received nothing this quarter, to whoever is in a position to notice. A prompt to a human, never a card.</p>
+      </div>
+      <div class="panel spot narrow" data-rise style="--rise-delay:60ms">
+        <h3>Layout generation</h3>
+        <p>Card designs composed for a specific message rather than picked from a grid.</p>
+      </div>
+      <div class="panel spot narrow" data-rise style="--rise-delay:120ms">
+        <h3>Wider translation</h3>
+        <p>Idiom-aware, so a Dutch card does not arrive sounding blunt in English.</p>
+      </div>
+      <div class="panel spot wide" data-rise style="--rise-delay:180ms">
+        <h3>Workspace voice</h3>
+        <p>Learning how your company actually writes, from the cards it has already sent, so suggestions stop sounding like a product.</p>
+      </div>
+    </div>
+  </div>
+</section>
