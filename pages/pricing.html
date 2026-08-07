@@ -1,9 +1,17 @@
 <!--noclose-->
 
-<section class="hero hero--page grain" style="padding-bottom:clamp(3rem,7vh,4.5rem)">
-  <div class="stage" aria-hidden="true" style="--lx:50%;--ly:26%;--rsize:min(40vh,32vw);--lint:.55">
-    <div class="stage-bloom"></div>
-    <div class="stage-scrim stage-scrim--mid"></div>
+<section class="hero hero--page hero--light" style="padding-bottom:clamp(3rem,7vh,4.5rem)">
+  <div class="light-stage" aria-hidden="true" style="--lx:50%;--ly:26%;--rsize:min(40vh,32vw);--unused:.55">
+    <div class="light-bloom"></div>
+    <div class="light-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
+        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
+      </svg>
+    </div>
+    <div class="light-floor"></div>
+    <div class="light-scrim"></div>
   </div>
   <div class="wrap" style="position:relative;z-index:2">
     <div class="sec-head sec-head--mid">
@@ -45,7 +53,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Workspace branding</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Premium templates</li>
         </ul>
-        <a class="btn btn--onlight" href="#" data-magnet>Start free trial</a>
+        <a class="btn btn--onlight btn--spec" href="#">Start free trial</a>
       </article>
 
       <article class="tier panel spot" data-rise style="--rise-delay:140ms">
@@ -79,7 +87,7 @@
 </section>
 
 <!-- ========================================================= COMPARISON === -->
-<section class="band band--paper band--tight" id="compare" style="padding-top:0">
+<section class="band band--paper band--tight" id="compare" data-label="Compare" style="padding-top:0">
   <div class="wrap">
     <div class="cmp-scroll" data-rise>
       <table class="cmp">
@@ -114,7 +122,7 @@
 </section>
 
 <!-- ============================================================ ADD-ONS === -->
-<section class="band band--dark grain" id="addons">
+<section class="band band--dark grain" id="addons" data-label="Add-ons">
   <div class="stage" aria-hidden="true" style="--lx:78%;--ly:40%;--rsize:min(36vh,28vw);--lint:.6">
     <div class="stage-bloom"></div>
     <div class="stage-scrim stage-scrim--mid"></div>
@@ -153,7 +161,7 @@
 </section>
 
 <!-- ================================================================ FAQ === -->
-<section class="band band--paper" id="faq">
+<section class="band band--paper" id="faq" data-label="Questions">
   <div class="wrap">
     <div class="sec-head"><h2 class="display d2" data-rise>Questions</h2></div>
     <div class="faq" data-rise>
@@ -180,7 +188,7 @@
     <h2 class="display d1" data-rise>Start with ten people.</h2>
     <p class="lede" data-rise>No card details, no trial clock, no seat commitment.</p>
     <div class="close-cta" data-rise>
-      <a class="btn btn--lit" href="#" data-magnet>Get Halo free</a>
+      <a class="btn btn--lit btn--spec" href="#">Get Halo free</a>
       <a class="btn btn--ghost" href="cards.html">See a card <span class="arw">&rarr;</span></a>
     </div>
     <small data-rise>Free forever under ten people</small>

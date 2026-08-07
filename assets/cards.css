@@ -1,0 +1,247 @@
+/* ===========================================================================
+   HALO · card system v2
+   Portrait format, per the supplied design sheet. Four finishes per moment.
+   Structure is identical across every finish; only the surface changes.
+   =========================================================================== */
+
+.hcard{
+  --pad: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  --hc-fg:      oklch(0.205 0.012 262);
+  --hc-mut:     oklch(0.470 0.011 262);
+  --hc-line:    oklch(0.885 0.004 262);
+  --hc-accent:  oklch(0.700 0.140 62);
+  --hc-surface: linear-gradient(168deg, #FDFCFA 0%, #F4F2EE 100%);
+
+  position:relative; display:flex; flex-direction:column;
+  width:100%; aspect-ratio:41/64; overflow:hidden;
+  padding:var(--pad);
+  border-radius:14px;
+  background:var(--hc-surface);
+  color:var(--hc-fg);
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--void) 10%, transparent),
+    0 14px 34px -18px color-mix(in oklab, var(--void) 40%, transparent),
+    0 40px 80px -50px color-mix(in oklab, var(--void) 55%, transparent);
+  text-align:left;
+}
+
+/* header ---------------------------------------------------------------- */
+.hcard-top{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.hcard-brand{ display:flex; align-items:center; gap:.4rem; font-size:.8125rem; font-weight:500; letter-spacing:-0.01em; }
+.hcard-brand svg{ width:14px; height:14px; overflow:visible; }
+.hcard-brand .ring{
+  fill:none; stroke:currentColor; stroke-width:9; stroke-linecap:round;
+  stroke-dasharray:183.6 26.9; transform:rotate(113deg); transform-origin:50% 50%;
+}
+.hcard-mark{ width:15px; height:15px; color:var(--hc-accent); flex:none; }
+
+/* body ------------------------------------------------------------------ */
+.hcard-kicker{
+  margin-top:auto; padding-top:1.5rem;
+  font-size:.625rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--hc-mut);
+}
+.hcard--moment .hcard-kicker{ color:var(--hc-accent); }
+.hcard-title{
+  font-family:var(--serif); font-weight:360; font-optical-sizing:auto;
+  font-size:clamp(1.25rem, 1.05rem + 0.85vw, 1.6rem);
+  line-height:1.14; letter-spacing:-0.018em; margin-top:.45rem; text-wrap:balance;
+}
+.hcard-rule{ height:1px; border:0; background:var(--hc-line); margin:.875rem 0; }
+.hcard-body{
+  font-size:.8125rem; line-height:1.5; color:var(--hc-mut);
+  text-wrap:pretty; margin-bottom:auto;
+}
+
+/* footer ---------------------------------------------------------------- */
+.hcard-foot{ display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; padding-top:1.25rem; }
+.hcard-from{ display:flex; align-items:center; gap:.5rem; min-width:0; }
+.hcard-from .avatar{
+  width:24px; height:24px; flex:none; border-radius:999px; display:grid; place-items:center;
+  background:color-mix(in oklab, var(--hc-fg) 88%, transparent);
+  color:var(--paper-raised); font-size:.5625rem; font-weight:600;
+}
+.hcard-from b{ display:block; font-size:.75rem; font-weight:500; }
+.hcard-from span{ display:block; font-size:.6875rem; color:var(--hc-mut); }
+
+/* The seal is the one ornamental element, and it earns its place: it is the
+   physical stamp that marks the card as issued rather than drafted. */
+.hcard-seal{ width:3.25rem; height:3.25rem; flex:none; color:var(--hc-accent); opacity:.85; }
+.hcard-seal svg{ width:100%; height:100%; animation:seal 44s linear infinite; }
+.hcard-seal text{ font-size:8.4px; font-weight:600; letter-spacing:.22em; fill:currentColor; }
+@keyframes seal{ to{ transform:rotate(360deg); } }
+
+/* ------------------------------------------------------------- finishes -- */
+
+/* 02 · Bold modern */
+.hcard--bold{
+  --hc-fg:      oklch(0.975 0.003 262);
+  --hc-mut:     oklch(0.700 0.010 262);
+  --hc-line:    oklch(0.300 0.010 262);
+  --hc-accent:  oklch(0.720 0.150 45);
+  --hc-surface: linear-gradient(168deg, #171C25 0%, #0D1116 100%);
+}
+.hcard--bold .hcard-from .avatar{ color:oklch(0.155 0.009 262); }
+
+/* 03 · Refined texture — an embossed shape catching a raking light */
+.hcard--texture{
+  --hc-surface: linear-gradient(168deg, #F1F0ED 0%, #E7E6E2 100%);
+  --hc-accent:  oklch(0.400 0.020 262);
+}
+.hcard--texture::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(60% 46% at 78% 26%, rgba(255,255,255,.95), transparent 62%),
+    radial-gradient(46% 40% at 22% 74%, rgba(0,0,0,.055), transparent 66%),
+    conic-gradient(from 210deg at 66% 40%, rgba(0,0,0,.05), rgba(255,255,255,.7) 22%, rgba(0,0,0,.045) 46%, transparent 62%);
+  mix-blend-mode:soft-light; opacity:.9;
+}
+
+/* 04 · Gradient warm */
+.hcard--gradient{
+  --hc-line:    rgba(60,50,70,.14);
+  --hc-accent:  oklch(0.640 0.160 42);
+  --hc-surface: linear-gradient(150deg, #D9D8EC 0%, #E6DEE9 42%, #F7E1CE 78%, #FAD9C2 100%);
+}
+
+/* Birthday 03 · Confetti */
+.hcard--confetti{ --hc-accent: oklch(0.620 0.190 22); }
+.hcard--confetti::before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.9;
+  background-image:
+    linear-gradient(35deg, #E4B7C4 0 100%), linear-gradient(-20deg, #B9CBE8 0 100%),
+    linear-gradient(70deg, #E8D5A8 0 100%), linear-gradient(-55deg, #B6D6C2 0 100%),
+    linear-gradient(15deg, #D9BCE4 0 100%), linear-gradient(-40deg, #E9C0A6 0 100%),
+    linear-gradient(60deg, #BBD3E6 0 100%), linear-gradient(-10deg, #E5C2CE 0 100%),
+    linear-gradient(45deg, #D3C6E8 0 100%);
+  background-repeat:no-repeat;
+  background-size:7px 3px, 6px 3px, 8px 3px, 5px 3px, 7px 3px, 6px 3px, 8px 3px, 5px 3px, 7px 3px;
+  background-position:14% 9%, 78% 6%, 41% 15%, 90% 22%, 8% 28%, 62% 11%, 27% 5%, 84% 34%, 52% 24%;
+}
+
+/* Birthday 04 · Minimal balloon */
+.hcard--balloon{ --hc-accent: oklch(0.620 0.190 22); }
+.hcard--balloon::before{
+  content:""; position:absolute; right:16%; top:11%; width:34%; aspect-ratio:5/6;
+  border-radius:50% 50% 46% 46%; pointer-events:none;
+  background:
+    radial-gradient(38% 32% at 34% 26%, rgba(255,255,255,.98), transparent 62%),
+    linear-gradient(155deg, #F6EDE2 0%, #E4D3C2 55%, #CDB8A4 100%);
+  box-shadow:0 16px 26px -18px rgba(60,44,30,.5);
+}
+.hcard--balloon::after{
+  content:""; position:absolute; right:32.4%; top:calc(11% + 40%); width:1px; height:16%;
+  background:linear-gradient(rgba(120,100,84,.5), transparent); pointer-events:none;
+}
+
+/* Interactive card — used inside the carousel and the wall */
+.hcard-btn{
+  border:0; padding:0; background:none; cursor:pointer; display:block; width:100%;
+  transition:translate 520ms var(--ease), box-shadow 520ms var(--ease);
+}
+.hcard-btn:hover{ translate:0 -5px; }
+.hcard-label{
+  display:flex; gap:.625rem; margin-top:.875rem;
+  font-size:.6875rem; letter-spacing:.11em; text-transform:uppercase; color:var(--on-paper-mut);
+}
+.hcard-label i{ font-style:normal; font-variant-numeric:tabular-nums; opacity:.6; }
+.band--dark .hcard-label,.band--void .hcard-label{ color:var(--on-ink-dim); }
+
+@media (prefers-reduced-motion: reduce){ .hcard-seal svg{ animation:none; } }
+
+/* ===========================================================================
+   LIGHT HERO
+   The reference inverts v1: the room is bright, and the halo is the warm
+   light source inside it rather than the only light in the dark.
+   =========================================================================== */
+.hero--light{
+  background:
+    radial-gradient(120% 90% at 76% 40%, #FAF8F5 0%, #F2F2F3 46%, #E9EAEC 100%);
+  color:var(--on-paper);
+}
+.hero--light .lede{ color:var(--on-paper-mut); }
+.hero--light .eyebrow{ color:var(--glow-ink); }
+.hero--light .scroll-cue{ color:var(--on-paper-mut); }
+.hero--light .scroll-cue i{ background:linear-gradient(var(--on-paper-mut), transparent); }
+.hero--light .scroll-cue i::after{ background:var(--glow-deep); }
+
+/* The ring is unbroken here. The gap belongs to the logo mark, not to the
+   light itself, and on a bright ground a broken ring reads as an error. */
+.light-stage{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.light-ring{
+  position:absolute; left:var(--lx, 71%); top:var(--ly, 44%); translate:-50% -50%;
+  width:var(--rsize, min(62vh, 44vw)); aspect-ratio:1; min-width:19rem;
+  transform:translate3d(calc(var(--mx, 0) * 9px), calc(var(--my, 0) * 7px), 0);
+  transition:transform 900ms var(--ease-soft);
+}
+.light-ring svg{ width:100%; height:100%; overflow:visible; }
+.light-ring circle{ fill:none; }
+.lr-wide{ stroke:#F2C98E; stroke-width:6;   filter:blur(17px); opacity:.9; }
+.lr-mid { stroke:#F8DCAE; stroke-width:2.6; filter:blur(5px); }
+.lr-core{ stroke:#FFF6E4; stroke-width:1.05; filter:blur(.4px); }
+
+.light-bloom{
+  position:absolute;
+  left:calc(var(--lx, 71%) + var(--mx, 0) * 12px);
+  top:calc(var(--ly, 44%) + var(--my, 0) * 9px);
+  width:min(128vh, 108vw); aspect-ratio:1; translate:-50% -50%;
+  background:radial-gradient(circle at 50% 50%,
+    rgba(255,232,190,.62) 0%, rgba(250,214,160,.30) 24%,
+    rgba(240,198,150,.11) 44%, transparent 68%);
+  filter:blur(16px);
+  transition:left 900ms var(--ease-soft), top 900ms var(--ease-soft);
+}
+/* Soft floor shadow so the stack has something to sit on. */
+.light-floor{
+  position:absolute; left:var(--lx, 71%); bottom:6%; translate:-50% 0;
+  width:min(80vh, 62vw); height:22vh;
+  background:radial-gradient(ellipse 50% 50% at 50% 100%, rgba(90,80,70,.13), transparent 70%);
+  filter:blur(20px);
+}
+/* Keeps the headline side clean where the bloom would otherwise wash it out. */
+.light-scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(96deg,
+    color-mix(in oklab, #F7F6F4 92%, transparent) 4%,
+    color-mix(in oklab, #F7F6F4 55%, transparent) 30%, transparent 56%);
+}
+
+/* Frosted stack in front of the ring, exactly as in the reference. */
+.hero-stack{ position:relative; display:grid; place-items:center; min-height:clamp(22rem, 52vh, 32rem); }
+.hero-stack .hs{
+  position:absolute; width:min(19.5rem, 74vw);
+  transform:translate3d(calc(var(--mx, 0) * var(--depth, 1) * 16px), calc(var(--my, 0) * var(--depth, 1) * 12px), 0) rotate(var(--tilt, 0deg));
+  transition:transform 1100ms var(--ease-soft);
+}
+.hero-stack .hs-1{ --depth:1;   --tilt:0deg;    z-index:3; }
+.hero-stack .hs-2{ --depth:.62; --tilt:4.5deg;  z-index:2; translate:1.75rem -1rem; opacity:.9; }
+.hero-stack .hs-3{ --depth:.34; --tilt:8.5deg;  z-index:1; translate:3.25rem -2rem; opacity:.62; }
+
+/* Glass finish, only here: the cards are lit from behind by the ring. */
+.hcard--glass{
+  --hc-line: rgba(40,40,50,.12);
+  --hc-surface:
+    linear-gradient(168deg, rgba(255,255,255,.86) 0%, rgba(248,247,246,.72) 100%);
+  backdrop-filter:blur(14px) saturate(1.2);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:
+    0 1px 1px rgba(60,50,40,.06),
+    0 20px 44px -22px rgba(60,50,40,.32),
+    0 60px 110px -60px rgba(60,50,40,.42);
+}
+
+.hero--light .trustline > p{ color:var(--on-paper-mut); }
+.hero--light .marquee li{ color:var(--on-paper-mut); }
+.hero--light .marquee{
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+@media (max-width:64rem){
+  .hero--light .light-ring{ --lx:74%; --ly:30%; --rsize:min(44vh, 84vw); }
+  .hero--light .light-bloom{ --lx:74%; --ly:30%; }
+  .light-scrim{ background:linear-gradient(to top, #F5F4F2 14%, color-mix(in oklab, #F5F4F2 50%, transparent) 52%, transparent 84%); }
+  .hero-stack{ min-height:24rem; margin-top:1rem; }
+  .hero-stack .hs-3{ display:none; }
+}

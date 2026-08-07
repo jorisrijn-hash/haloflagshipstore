@@ -159,3 +159,68 @@ The rule applied throughout: an effect ships if removing it would make something
 harder to understand or less true to the product. Everything above that failed
 the test failed it for the same reason — it would have been impressive and meant
 nothing.
+
+---
+
+# v3 — new card system and five more components
+
+## Card system
+
+The card was rebuilt to the supplied design sheet. Portrait, `41/64`, with a
+fixed six-part structure — brand row, moment mark, kicker, serif title, rule,
+body, sender, seal — and six interchangeable finishes:
+
+| Finish | Class | Notes |
+|---|---|---|
+| 01 Minimal elegant | `.hcard--minimal` | The default. Warm off-white. |
+| 02 Bold modern | `.hcard--bold` | Near-black, warm mark. |
+| 03 Refined texture | `.hcard--texture` | Embossed shape under a raking light, `soft-light` blend. |
+| 04 Gradient warm | `.hcard--gradient` | Lavender into peach. |
+| Confetti | `.hcard--confetti` | Birthday. Nine gradient chips, no images. |
+| Balloon | `.hcard--balloon` | Birthday. Pearlescent, CSS only. |
+| Glass | `.hcard--glass` | Hero only — the ring lights it from behind. |
+
+Cards are written as a build token rather than by hand, because there are 34 of
+them and hand-maintaining that markup would guarantee drift:
+
+```
+{{card minimal|appreciation|Great work, Alex.|Body copy.|Jamie Wilson|3 Aug 2024|01. Minimal elegant}}
+     finish   moment        title             body       from          date       label (optional)
+```
+
+Moments are `appreciation`, `birthday`, `milestone`, `welcome`. The moment picks
+the corner mark and the circular seal text. Seals get unique gradient and path
+IDs automatically, so a page can carry as many as it likes.
+
+## Hero
+
+Inverted to the light register per the reference: a bright room with the halo as
+a warm source inside it, rather than the only light in the dark. The hero ring is
+unbroken — the gap belongs to the logo mark, and on a bright ground a broken ring
+reads as a rendering error. The nav follows into `.nav--light`, and the logo mark
+picks up the iridescent gradient from the reference.
+
+Interior sections keep the dark register, so the light/dark rhythm survives.
+
+## The five requested components
+
+| Requested | Where it went | Adaptation |
+|---|---|---|
+| **Specular Button** | 33 primary CTAs, plus the card-nav footer | React Bits renders this with an OGL shader. Here it is two CSS layers: a pointer-tracked specular pool and a rim highlight that brightens on the edge nearest the cursor. Same read, no WebGL. It replaced `data-magnet` on those buttons — two physical affordances on one control reads as fidgety. |
+| **Card Nav** | Both mega menus, every page | Panel columns became cards with their own surface and hover lift, plus a footer row with a line of context and a CTA. This also fixed a real v2 problem: the mega menu was three undifferentiated lists of links. |
+| **Carousel** | `cards.html`, the finishes section | Real scroll-snap overflow rather than transform maths, so trackpad, touch, arrow keys and the buttons all work and the visual position can never drift from the scroll position. JS only mirrors state into the dots and disables the arrows at the ends. |
+| **Drift Wall** | `templates.html`, full-bleed under the hero | Six columns of cards on a tilted plane, each drifting at its own golden-ratio-staggered speed, with pointer parallax and a radial veil. The drift is a CSS animation per column so it stays off the main thread; only the parallax touches JS. Columns are duplicated once in JS so the `-50%` loop seams invisibly. Pauses on hover. |
+| **Line Sidebar** | Every page with three or more sections | Built at runtime from the page's own `section[id][data-label]`, so it can never drift out of sync with the content. Scroll-spy drives the active state; React Bits' pointer-proximity shift is kept as the hover feel on top of it, with the same smoothstep falloff. Removes itself below three sections and below 86rem. |
+
+Add a section to the sidebar by giving it an id and a label:
+
+```html
+<section class="band band--paper" id="roles" data-label="Roles">
+```
+
+## Still open
+
+The "trusted by modern teams" row in the reference names Linear, Notion, Vercel,
+Loom and Ramp. Those are not customers, so the slot ships with the integrations
+instead. Swap the list in `pages/index.html` once there are real logos and real
+permission.

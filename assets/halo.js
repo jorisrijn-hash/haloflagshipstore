@@ -399,6 +399,180 @@
     });
   })();
 
+  /* --------------------------------------------------- specular button --
+     Tracks the pointer so the highlight sits under it. One delegated
+     listener; the two gradient layers are CSS. */
+  (function () {
+    if (reduced.matches || !fine.matches) return;
+    var q = [], queued = false;
+    document.addEventListener('pointermove', function (e) {
+      var el = e.target.closest('.btn--spec');
+      if (!el) return;
+      q.push([el, e.clientX, e.clientY]);
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        q.forEach(function (p) {
+          var r = p[0].getBoundingClientRect();
+          p[0].style.setProperty('--sx', ((p[1] - r.left) / r.width * 100).toFixed(1) + '%');
+          p[0].style.setProperty('--sy', ((p[2] - r.top) / r.height * 100).toFixed(1) + '%');
+        });
+        q = []; queued = false;
+      });
+    }, { passive: true });
+  })();
+
+  /* ------------------------------------------------------------ carousel --
+     Real overflow scrolling, so trackpad, touch and keyboard already work.
+     JS only mirrors the scroll position into the dots and the arrows. */
+  $$('[data-carousel]').forEach(function (root) {
+    var track = $('.carousel-track', root);
+    var prev  = $('[data-car-prev]', root);
+    var next  = $('[data-car-next]', root);
+    var dots  = $('.carousel-dots', root);
+    if (!track) return;
+    var items = $$(':scope > *', track);
+    if (!items.length) return;
+
+    if (dots) {
+      items.forEach(function (_, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Go to item ' + (i + 1));
+        b.addEventListener('click', function () { scrollTo(i); });
+        dots.appendChild(b);
+      });
+    }
+
+    function current() {
+      var mid = track.scrollLeft + track.clientWidth / 2, best = 0, dist = Infinity;
+      items.forEach(function (el, i) {
+        var c = el.offsetLeft + el.offsetWidth / 2;
+        var d = Math.abs(c - mid);
+        if (d < dist) { dist = d; best = i; }
+      });
+      return best;
+    }
+    function scrollTo(i) {
+      var el = items[clamp(i, 0, items.length - 1)];
+      track.scrollTo({ left: el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2,
+                       behavior: reduced.matches ? 'auto' : 'smooth' });
+    }
+    function sync() {
+      var i = current();
+      if (dots) $$('button', dots).forEach(function (d, n) { d.setAttribute('aria-current', String(n === i)); });
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    }
+    var t = null;
+    track.addEventListener('scroll', function () {
+      clearTimeout(t); t = setTimeout(sync, 60);
+    }, { passive: true });
+    if (prev) prev.addEventListener('click', function () { scrollTo(current() - 1); });
+    if (next) next.addEventListener('click', function () { scrollTo(current() + 1); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollTo(current() + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollTo(current() - 1); }
+    });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+
+  /* ----------------------------------------------------------- driftwall --
+     Each column is duplicated once so the CSS loop can translate by exactly
+     -50% and seam invisibly. Only the pointer parallax runs in JS. */
+  $$('[data-wall]').forEach(function (wall) {
+    $$('.wall-col', wall).forEach(function (col, i) {
+      var originals = Array.prototype.slice.call(col.children);
+      originals.forEach(function (node) {
+        var copy = node.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        $$('button, a, input', copy).forEach(function (f) { f.tabIndex = -1; });
+        col.appendChild(copy);
+      });
+      /* Golden-ratio stagger: no two columns land in phase. */
+      col.style.setProperty('--dur', (46 + ((i * 0.6180339887) % 1) * 26).toFixed(1) + 's');
+      col.style.setProperty('--delay', (-(i * 3.7)).toFixed(1) + 's');
+    });
+
+    if (reduced.matches || !fine.matches) return;
+    var plane = $('.wall-plane', wall), queued = false, px = 0, py = 0;
+    if (!plane) return;
+    wall.addEventListener('pointermove', function (e) {
+      var r = wall.getBoundingClientRect();
+      px = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      py = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        wall.style.setProperty('--wx', px.toFixed(3));
+        wall.style.setProperty('--wy', py.toFixed(3));
+        queued = false;
+      });
+    });
+    wall.addEventListener('pointerleave', function () {
+      wall.style.setProperty('--wx', 0); wall.style.setProperty('--wy', 0);
+    });
+  });
+
+  /* --------------------------------------------------------- line sidebar --
+     Built from the page's own sections, so it can never drift out of sync
+     with the content. Scroll-spy drives the active state; pointer proximity
+     is the hover feel on top of it. */
+  (function () {
+    var bar = $('[data-linebar]');
+    if (!bar) return;
+    var secs = $$('main section[id][data-label]');
+    if (secs.length < 3) { bar.remove(); return; }
+
+    var ol = document.createElement('ol');
+    var lis = secs.map(function (s, i) {
+      var li = document.createElement('li');
+      li.innerHTML = '<a href="#' + s.id + '"><span class="tick"></span>'
+        + '<span class="num">' + String(i + 1).padStart(2, '0') + '</span>'
+        + '<span class="lbl">' + s.dataset.label + '</span></a>';
+      ol.appendChild(li);
+      return li;
+    });
+    bar.appendChild(ol);
+    bar.setAttribute('aria-label', 'Sections on this page');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = secs.indexOf(e.target);
+        lis.forEach(function (li, n) { li.setAttribute('aria-current', String(n === i)); });
+        /* The bar sits over alternating registers, so it has to follow. */
+        bar.classList.toggle('linebar--on-dark',
+          /band--dark|band--void|close|wall/.test(e.target.className));
+        bar.style.color = /band--paper|hero--light/.test(e.target.className)
+          ? 'var(--on-paper)' : 'var(--on-ink)';
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    secs.forEach(function (s) { io.observe(s); });
+
+    if (reduced.matches || !fine.matches) return;
+    var raf = null;
+    document.addEventListener('pointermove', function (e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var r = bar.getBoundingClientRect();
+        /* Only react while the pointer is anywhere near the left edge. */
+        if (e.clientX > r.right + 220) {
+          lis.forEach(function (li) { li.style.setProperty('--effect', 0); });
+          return;
+        }
+        lis.forEach(function (li) {
+          var b = li.getBoundingClientRect();
+          var d = Math.abs(e.clientY - (b.top + b.height / 2));
+          var p = clamp(1 - d / 110, 0, 1);
+          li.style.setProperty('--effect', (p * p * (3 - 2 * p)).toFixed(3));
+        });
+      });
+    }, { passive: true });
+  })();
+
   /* ----------------------------------------------------- page transitions --
      Chrome and Safari handle this natively via @view-transition. This is the
      fallback for engines that do not: a short fade instead of a hard cut. */

@@ -38,6 +38,11 @@ PAGE_META = {
 # aria-disabled with a "soon" marker rather than as broken links.
 BUILT = set(PAGE_META)
 
+NAV_BLURB = {
+    "product": "Everything Halo does, and the one thing it is for.",
+    "company": "Why this exists, and how to reach us.",
+}
+
 NAV = [
     ("Product", "product", 3, [
         ("Overview", [
@@ -78,8 +83,91 @@ FOOT = [
     ("Legal",    [("privacy","Privacy"), ("terms","Terms"), ("cookies","Cookies")]),
 ]
 
-RING = ('<svg viewBox="0 0 100 100" aria-hidden="true">'
+RING = ('<svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true">'
         '<circle class="ring" cx="50" cy="50" r="33.5"/></svg>')
+
+# One gradient definition per document, referenced by every brand mark.
+BRAND_DEFS = (
+    '<svg width="0" height="0" aria-hidden="true" focusable="false" '
+    'style="position:absolute">'
+    '<defs><linearGradient id="brandGrad" x1="12%" y1="4%" x2="88%" y2="96%">'
+    '<stop offset="0%" stop-color="#AFC6E9"/>'
+    '<stop offset="38%" stop-color="#C6BEE4"/>'
+    '<stop offset="72%" stop-color="#EBC9A8"/>'
+    '<stop offset="100%" stop-color="#F2D9A6"/>'
+    '</linearGradient></defs></svg>')
+
+
+# --------------------------------------------------------------- cards ----
+# {{card finish|moment|Title|Body|From|Date|Label}}   Label is optional.
+SEAL_TEXT = {
+    "appreciation": "THANK YOU \u00b7 WELL DONE \u00b7 ",
+    "birthday":     "CELEBRATE \u00b7 ME \u00b7 YOU \u00b7 ",
+    "milestone":    "GREAT WORK \u00b7 KEEP IT UP \u00b7 ",
+    "welcome":      "WELCOME \u00b7 GLAD YOU ARE HERE \u00b7 ",
+}
+MARKS = {
+    "appreciation": '<path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/>',
+    "milestone":    '<path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/>',
+    "welcome":      '<path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/>',
+    "birthday":     ('<path d="M12 2c.9.9 1.4 1.7 1.4 2.4A1.4 1.4 0 0112 5.8a1.4 1.4 0 01-1.4-1.4'
+                     'c0-.7.5-1.5 1.4-2.4zM7 7h10v3H7zm-3 4h16v3.2c-1.4 0-1.4 1.2-2.7 1.2s-1.3-1.2-2.6-1.2'
+                     '-1.3 1.2-2.7 1.2-1.3-1.2-2.6-1.2S8 15.4 6.7 15.4 5.4 14.2 4 14.2zm0 5.4'
+                     'c1.4 0 1.4 1.2 2.7 1.2s1.3-1.2 2.6-1.2 1.3 1.2 2.7 1.2 1.3-1.2 2.6-1.2 1.4 1.2 2.7 1.2'
+                     'V22H4z"/>'),
+}
+SEAL_ICON = {
+    "birthday": '<path d="M0-7c.8.8 1.2 1.5 1.2 2.1A1.2 1.2 0 010-3.7 1.2 1.2 0 01-1.2-5c0-.6.4-1.3 1.2-2.1zM-4-2h8v2.6h-8zm-2.4 3.6h12.8v2.7c-1.1 0-1.1 1-2.1 1S3.2 4.3 2.2 4.3s-1 1-2.2 1-1-1-2.1-1-1 1-2.1 1-1-1-2.2-1z"/>',
+}
+_seal_n = [0]
+
+
+def seal(moment):
+    _seal_n[0] += 1
+    sid = "seal%d" % _seal_n[0]
+    text = SEAL_TEXT.get(moment, SEAL_TEXT["appreciation"])
+    icon = SEAL_ICON.get(moment,
+        '<path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/>')
+    return (
+      '<span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100">'
+      '<defs><path id="%s" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>'
+      '<text><textPath href="#%s" startOffset="0">%s%s</textPath></text>'
+      '<circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/>'
+      '<g transform="translate(50,50)" fill="currentColor">%s</g>'
+      '</svg></span>' % (sid, sid, text, text, icon))
+
+
+def card(m):
+    parts = [p.strip() for p in m.group(1).split("|")]
+    while len(parts) < 7:
+        parts.append("")
+    finish, moment, title, body, who, date, label = parts[:7]
+    initials = "".join(w[0] for w in who.split()[:2]).upper() or "H"
+    kicker = {"appreciation": "Appreciation", "birthday": "Happy birthday",
+              "milestone": "Great work", "welcome": "Welcome"}.get(moment, moment.title())
+    html = (
+      '<article class="hcard hcard--%s hcard--moment">'
+      '<div class="hcard-top">'
+        '<span class="hcard-brand">%s Halo</span>'
+        '<svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">%s</svg>'
+      '</div>'
+      '<p class="hcard-kicker">%s</p>'
+      '<h3 class="hcard-title">%s</h3>'
+      '<hr class="hcard-rule">'
+      '<p class="hcard-body">%s</p>'
+      '<div class="hcard-foot">'
+        '<span class="hcard-from"><span class="avatar">%s</span>'
+        '<span><b>%s</b><span>%s</span></span></span>%s'
+      '</div></article>'
+      % (finish, RING.replace(' class="brand-grad"', ''),
+         MARKS.get(moment, MARKS["appreciation"]),
+         kicker, title, body, initials, who, date, seal(moment)))
+    if label:
+        n, name = (label.split(".", 1) + [""])[:2] if "." in label else ("", label)
+        html = ('<figure style="margin:0">%s<figcaption class="hcard-label">'
+                '<i>%s</i>%s</figcaption></figure>'
+                % (html, n.strip(), name.strip()))
+    return html
 
 
 def link(slug, label, extra=""):
@@ -90,28 +178,31 @@ def link(slug, label, extra=""):
 
 
 def nav_html(active):
-    out = ['<header class="nav" id="nav"><div class="wrap nav-in">',
+    out = ['<header class="nav nav--light" id="nav"><div class="wrap nav-in">',
            '<a class="brand" href="index.html" aria-label="Halo, home">%s Halo</a>' % RING,
            '<ul class="nav-links">']
     for label, key, cols, groups in NAV:
+        blurb = NAV_BLURB.get(key, "")
         out.append('<li><button class="nav-item" type="button" data-mega aria-expanded="false"'
                    '%s>%s<svg class="caret" viewBox="0 0 10 10" aria-hidden="true">'
                    '<path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4"'
                    ' stroke-linecap="round"/></svg></button>'
                    % (' aria-current="page"' if key == active else '', label))
-        out.append('<div class="mega" style="--cols:%d">' % cols)
+        out.append('<div class="mega mega--cards" style="--cols:%d">' % cols)
         for heading, items in groups:
             out.append('<div><h4>%s</h4>' % heading)
             for slug, name, desc in items:
                 body = '<b>%s</b><span>%s</span>' % (name, desc)
                 out.append(link(slug, body))
             out.append('</div>')
+        out.append('<div class="mega-foot"><span>%s</span>'
+                   '<a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>' % blurb)
         out.append('</div></li>')
     out.append('<li><a class="nav-item" href="pricing.html"%s>Pricing</a></li>'
                % (' aria-current="page"' if active == 'pricing' else ''))
     out.append('</ul>')
     out.append('<div class="nav-act"><a class="login" href="#">Log in</a>'
-               '<a class="btn" href="pricing.html">Get Halo free</a>'
+               '<a class="btn btn--spec" href="pricing.html">Get Halo free</a>'
                '<button class="nav-toggle" id="navToggle" aria-expanded="false" '
                'aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>')
     out.append('</div></header>')
@@ -160,7 +251,7 @@ CLOSE = """
     <h2 class="display d1" data-rise>{headline}</h2>
     <p class="lede" data-rise>{sub}</p>
     <div class="close-cta" data-rise>
-      <a class="btn btn--lit" href="pricing.html" data-magnet>Get Halo free</a>
+      <a class="btn btn--lit btn--spec" href="pricing.html">Get Halo free</a>
       <a class="btn btn--ghost" href="cards.html">See a card <span class="arw">&rarr;</span></a>
     </div>
     <small data-rise>No credit card required</small>
@@ -196,6 +287,8 @@ SHELL = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/halo.css">
+<link rel="stylesheet" href="assets/cards.css">
+<link rel="stylesheet" href="assets/rb.css">
 <link rel="stylesheet" href="assets/pages.css">
 <script>document.documentElement.className='js';</script>
 </head>
@@ -212,8 +305,11 @@ SHELL = """<!DOCTYPE html>
   </div>
 </div>
 
+{brand_defs}
 <div class="fade-top" aria-hidden="true"></div>
 {nav}
+
+<nav class="linebar" data-linebar></nav>
 
 <main id="main">
 {content}
@@ -254,8 +350,10 @@ def build():
         if slug == "index":
             full_title = "Halo · " + title
 
+        raw = re.sub(r"\{\{card (.+?)\}\}", card, raw, flags=re.S)
+
         html = SHELL.format(
-            title=full_title, desc=desc, site=SITE,
+            title=full_title, desc=desc, site=SITE, brand_defs=BRAND_DEFS,
             slug="" if slug == "index" else slug + ".html",
             nav=nav_html(section), foot=foot_html(),
             content=raw.strip(), close=close,

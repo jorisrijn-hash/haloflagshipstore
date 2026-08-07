@@ -1,9 +1,17 @@
 <!--close: Pick one and write something. | Every plan includes the standard set. Free for the first ten people. -->
 
-<section class="hero hero--page grain">
-  <div class="stage" aria-hidden="true" style="--lx:50%;--ly:50%;--rsize:min(52vh,44vw);--lint:.55">
-    <div class="stage-bloom"></div>
-    <div class="stage-scrim stage-scrim--mid"></div>
+<section class="hero hero--page hero--light">
+  <div class="light-stage" aria-hidden="true" style="--lx:50%;--ly:50%;--rsize:min(52vh,44vw);--unused:.55">
+    <div class="light-bloom"></div>
+    <div class="light-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
+        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
+      </svg>
+    </div>
+    <div class="light-floor"></div>
+    <div class="light-scrim"></div>
   </div>
   <div class="wrap" style="position:relative;z-index:2">
     <div class="sec-head sec-head--mid" style="margin-bottom:2rem">
@@ -24,8 +32,31 @@
   </div>
 </section>
 
+<!-- ========================================================= THE WALL ==== -->
+<section class="wall band--void" id="wall" data-label="Every design" data-wall aria-label="Every card design">
+  <div class="wall-plane" aria-hidden="true">
+    <div class="wall-col">{{card minimal|appreciation|Great work, Alex.|You handled a complex project with so much clarity and calm.|Jamie Wilson|3 Aug}}{{card bold|birthday|Cheers to you today!|Hope your day is as great as you are.|Marketing team|2 Aug}}{{card minimal|welcome|Welcome, Priya.|Signed by everyone in Engineering before your first login.|People team|4 Mar}}</div>
+    <div class="wall-col">{{card bold|milestone|Outstanding impact.|Your ideas turned into real outcomes.|Drew Kramer|2 Aug}}{{card confetti|birthday|Happy Birthday!|Another year of being awesome.|People team|1 Aug}}{{card texture|milestone|Two years.|The codebase is calmer than we found it, and so is the team.|Morgan Reyes|3 Mar}}</div>
+    <div class="wall-col">{{card texture|appreciation|Attention to detail.|An incredible eye for the little things.|Sarah Johnson|1 Aug}}{{card balloon|birthday|It's your day!|Relax, enjoy and celebrate.|Your team|31 Jul}}{{card gradient|welcome|Glad you are here.|Ask anyone anything. That is genuinely how this works.|Dev Kaur|12 Jan}}</div>
+    <div class="wall-col">{{card gradient|appreciation|Thank you for helping us grow.|Your support makes every project smoother.|Alex Morgan|31 Jul}}{{card minimal|birthday|Happy Birthday, Jamie!|Wishing you a day filled with joy.|People team|3 Aug}}{{card bold|appreciation|You made it easy.|Sent by someone in another department you have never met.|Rae Nolan|14 Nov}}</div>
+    <div class="wall-col">{{card confetti|birthday|Happy Birthday!|Another year of being awesome.|People team|1 Aug}}{{card minimal|appreciation|Great work, Alex.|You handled a complex project with so much clarity and calm.|Jamie Wilson|3 Aug}}{{card texture|appreciation|Attention to detail.|An incredible eye for the little things.|Sarah Johnson|1 Aug}}</div>
+    <div class="wall-col">{{card texture|milestone|Two years.|The codebase is calmer than we found it, and so is the team.|Morgan Reyes|3 Mar}}{{card gradient|appreciation|Thank you for helping us grow.|Your support makes every project smoother.|Alex Morgan|31 Jul}}{{card balloon|birthday|It's your day!|Relax, enjoy and celebrate.|Your team|31 Jul}}</div>
+  </div>
+  <div class="wall-veil" aria-hidden="true"></div>
+  <div class="wall-copy">
+    <div class="wrap wrap--narrow" style="display:grid;gap:1.5rem;justify-items:center">
+      <h2 class="display d2" data-rise>Every design,<br>for every <em>moment</em>.</h2>
+      <p class="lede" data-rise style="text-align:center;--rise-delay:80ms">
+        Appreciation, birthdays, anniversaries, promotions, welcomes and farewells.
+        Hover to hold the wall still.
+      </p>
+      <a class="btn btn--lit btn--spec" href="#library" data-rise>Browse the library</a>
+    </div>
+  </div>
+</section>
+
 <!-- ========================================================= STOREFRONT === -->
-<section class="band band--paper" id="library">
+<section class="band band--paper" id="library" data-label="Library">
   <div class="wrap">
     <div class="sec-head" style="margin-bottom:2rem">
       <h2 class="display d3" data-rise>The standard library</h2>
@@ -97,7 +128,7 @@
 </section>
 
 <!-- ======================================================== COLLECTIONS === -->
-<section class="band band--dark grain" id="collections">
+<section class="band band--dark grain" id="collections" data-label="Collections">
   <div class="stage" aria-hidden="true" style="--lx:26%;--ly:36%;--rsize:min(38vh,30vw);--lint:.6">
     <div class="stage-bloom"></div>
     <div class="stage-scrim stage-scrim--mid"></div>

@@ -1,0 +1,243 @@
+/* ===========================================================================
+   HALO · components adapted from React Bits
+   Ideas taken, implementations written from scratch in CSS + vanilla JS so the
+   site keeps zero runtime dependencies. Notes on each adaptation in README.md.
+   =========================================================================== */
+
+/* ------------------------------------------------- 1 · SPECULAR BUTTON ----
+   React Bits renders this with an OGL shader. Here it is two layers: a
+   pointer-tracked specular pool, and a rim highlight that brightens on the
+   edge nearest the cursor. Same read, no WebGL, no dependency. */
+.btn--spec{
+  --sx:50%; --sy:50%;
+  overflow:hidden;
+  box-shadow:0 1px 2px color-mix(in oklab, var(--void) 22%, transparent),
+             0 10px 26px -12px color-mix(in oklab, var(--void) 45%, transparent);
+}
+.btn--spec::before{
+  content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit;
+  background:radial-gradient(7rem 7rem at var(--sx) var(--sy),
+    color-mix(in oklab, white 55%, transparent), transparent 68%);
+  opacity:0; transition:opacity 320ms var(--ease);
+}
+.btn--spec::after{
+  content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit;
+  padding:1px; pointer-events:none;
+  background:radial-gradient(9rem 9rem at var(--sx) var(--sy),
+    color-mix(in oklab, white 92%, transparent), transparent 62%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  opacity:.35; transition:opacity 320ms var(--ease);
+}
+.btn--spec:hover::before{ opacity:.34; }
+.btn--spec:hover::after{ opacity:.9; }
+/* On the light CTA the specular has to darken, not lighten, to stay visible. */
+.btn--spec.btn--lit::before{
+  background:radial-gradient(7rem 7rem at var(--sx) var(--sy),
+    color-mix(in oklab, white 80%, transparent), transparent 66%);
+}
+.btn--spec.btn--ghost::after{ opacity:.18; }
+.btn--spec.btn--ghost:hover::after{ opacity:.55; }
+
+/* ------------------------------------------------------- 2 · CARD NAV ----
+   React Bits collapses the nav into a pill that expands into link cards.
+   Adapted: the mega panel's columns become cards with their own surface and
+   hover lift, which also fixes a real problem — the v2 mega menu was three
+   undifferentiated lists of links. */
+.mega--cards{ padding:.75rem; gap:.75rem; }
+.mega--cards > div{
+  background:color-mix(in oklab, var(--on-ink) 4%, transparent);
+  border:1px solid color-mix(in oklab, var(--on-ink) 7%, transparent);
+  border-radius:12px; padding:.875rem .75rem .5rem;
+  transition:background var(--d-base) var(--ease), border-color var(--d-base) var(--ease);
+}
+.mega--cards > div:hover{
+  background:color-mix(in oklab, var(--on-ink) 7%, transparent);
+  border-color:color-mix(in oklab, var(--glow) 22%, transparent);
+}
+.mega--cards h4{ padding-inline:.625rem; }
+.mega--cards a{ align-items:start; }
+.mega-foot{
+  grid-column:1 / -1; display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; padding:.75rem .875rem .25rem; font-size:.8125rem; color:var(--on-ink-dim);
+}
+.mega-foot .btn{ padding:.5rem 1rem; font-size:.8125rem; }
+
+/* Light nav, because every hero is now light --------------------------- */
+.nav--light{ color:var(--on-paper); }
+.nav--light .nav-item{ color:var(--on-paper-mut); }
+.nav--light .nav-item:hover,
+.nav--light .nav-item[aria-expanded="true"],
+.nav--light .nav-item[aria-current="page"]{
+  color:var(--on-paper); background:color-mix(in oklab, var(--on-paper) 6%, transparent);
+}
+.nav--light .login{ color:var(--on-paper-mut); }
+.nav--light .login:hover{ color:var(--on-paper); }
+.nav--light .btn{ --btn-bg:var(--on-paper); --btn-fg:var(--paper-raised); }
+.nav--light.stuck,
+.nav--light.menu-open{
+  background:color-mix(in oklab, #F7F6F4 76%, transparent);
+  border-bottom-color:color-mix(in oklab, var(--on-paper) 9%, transparent);
+}
+.nav--light .mega{
+  background:color-mix(in oklab, #FCFBFA 97%, transparent);
+  border-color:var(--paper-line); color:var(--on-paper);
+  box-shadow:0 30px 70px -34px rgba(40,36,48,.34);
+}
+.nav--light .mega h4,.nav--light .mega span,.nav--light .mega-foot{ color:var(--on-paper-mut); }
+.nav--light .mega--cards > div{
+  background:color-mix(in oklab, var(--on-paper) 3.5%, transparent);
+  border-color:color-mix(in oklab, var(--on-paper) 8%, transparent);
+}
+.nav--light .mega--cards > div:hover{ background:color-mix(in oklab, var(--on-paper) 6%, transparent); }
+.nav--light .mega a:hover{ background:color-mix(in oklab, var(--on-paper) 6%, transparent); }
+.nav--light .sheet{ background:#F7F6F4; color:var(--on-paper); }
+.nav--light .sheet a{ border-bottom-color:var(--paper-line); }
+.nav--light .sheet h4{ color:var(--on-paper-mut); }
+/* The logo mark gets the iridescent treatment from the reference. */
+.brand-grad{ display:block; }
+.brand-grad .ring{ stroke:url(#brandGrad); }
+
+/* -------------------------------------------------------- 3 · CAROUSEL ---
+   Scroll-snap track with real overflow, so it works with a trackpad, a
+   touch swipe, the arrow keys and the buttons. No transform maths, which
+   means no drift between the visual position and the scroll position. */
+.carousel{ position:relative; }
+.carousel-track{
+  display:flex; gap:1.25rem; overflow-x:auto; scroll-snap-type:x mandatory;
+  scroll-behavior:smooth; padding-block:.5rem 1.5rem;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.carousel-track::-webkit-scrollbar{ display:none; }
+.carousel-track > *{ flex:0 0 auto; scroll-snap-align:center; width:min(17rem, 68vw); }
+.carousel-track > *:first-child{ margin-left:max(0px, calc(50% - min(8.5rem, 34vw))); }
+.carousel-track > *:last-child{ margin-right:max(0px, calc(50% - min(8.5rem, 34vw))); }
+.carousel--start .carousel-track > *:first-child,
+.carousel--start .carousel-track > *:last-child{ margin-inline:0; }
+
+.carousel-bar{ display:flex; align-items:center; gap:1rem; justify-content:center; }
+.carousel-nav{
+  width:2.5rem; height:2.5rem; flex:none; border-radius:999px; cursor:pointer;
+  display:grid; place-items:center;
+  border:1px solid color-mix(in oklab, currentColor 20%, transparent);
+  background:transparent; color:inherit;
+  transition:border-color var(--d-base) var(--ease), background var(--d-base) var(--ease), opacity var(--d-base) var(--ease);
+}
+.carousel-nav:hover{ border-color:color-mix(in oklab, currentColor 45%, transparent); }
+.carousel-nav[disabled]{ opacity:.3; cursor:default; }
+.carousel-nav svg{ width:15px; height:15px; }
+.carousel-dots{ display:flex; gap:.4375rem; }
+.carousel-dots button{
+  width:6px; height:6px; padding:0; border:0; border-radius:999px; cursor:pointer;
+  background:color-mix(in oklab, currentColor 25%, transparent);
+  transition:background var(--d-base) var(--ease), width var(--d-base) var(--ease);
+}
+.carousel-dots button[aria-current="true"]{ background:var(--glow-deep); width:18px; }
+.band--dark .carousel-dots button[aria-current="true"],
+.band--void .carousel-dots button[aria-current="true"]{ background:var(--glow); }
+
+/* ------------------------------------------------------ 4 · DRIFT WALL ---
+   Columns of cards on a tilted plane, each drifting at its own speed, with
+   pointer parallax and an edge fade. React Bits animates this with rAF; here
+   the drift is a CSS animation per column and only the parallax touches JS,
+   which keeps it off the main thread. */
+.wall{
+  position:relative; overflow:hidden;
+  height:clamp(30rem, 78vh, 46rem);
+  perspective:1400px; perspective-origin:50% 45%;
+  --wx:0; --wy:0;
+}
+.wall-plane{
+  position:absolute; inset:-14% -6%;
+  display:flex; justify-content:center; gap:clamp(.75rem, 1.4vw, 1.25rem);
+  /* flex-start, not the default stretch: a stretched column would take the
+     plane's height, and the -50% loop translate has to be a share of the
+     column's own content height or the seam shows. */
+  align-items:flex-start;
+  transform:
+    translate3d(calc(var(--wx) * -22px), calc(var(--wy) * -16px), 0)
+    rotateX(13deg) rotateY(-15deg) rotateZ(2deg) scale(1.06);
+  transform-style:preserve-3d;
+  transition:transform 1200ms var(--ease-soft);
+  will-change:transform;
+}
+.wall-col{
+  flex:0 0 auto; width:clamp(8rem, 13vw, 11.5rem);
+  display:flex; flex-direction:column; gap:clamp(.75rem, 1.4vw, 1.25rem);
+  animation:drift-up var(--dur, 56s) linear infinite;
+  animation-delay:var(--delay, 0s);
+}
+.wall-col:nth-child(even){ animation-name:drift-down; }
+.wall-col > *{ flex:none; }
+@keyframes drift-up  { to{ transform:translate3d(0, -50%, 0); } }
+@keyframes drift-down{ from{ transform:translate3d(0, -50%, 0); } to{ transform:none; } }
+.wall:hover .wall-col{ animation-play-state:paused; }
+
+/* Depth and legibility: the wall is a backdrop, so it must never compete
+   with the copy sitting on top of it. */
+.wall-veil{
+  position:absolute; inset:0; pointer-events:none; z-index:2;
+  background:
+    radial-gradient(72% 62% at 50% 48%, transparent 6%, color-mix(in oklab, var(--void) 62%, transparent) 62%, var(--void) 96%),
+    linear-gradient(to bottom, var(--void) 0%, transparent 22%, transparent 76%, var(--void) 100%);
+}
+.wall-copy{
+  position:absolute; inset:0; z-index:3; display:grid; place-items:center;
+  text-align:center; padding-inline:var(--gut); pointer-events:none;
+}
+.wall-copy > *{ pointer-events:auto; }
+.wall .hcard{ box-shadow:0 18px 40px -22px rgba(0,0,0,.75); }
+
+@media (max-width:64rem){
+  .wall{ height:34rem; }
+  .wall-plane{ transform:translate3d(0,0,0) rotateX(9deg) rotateY(-9deg) scale(1.1); }
+}
+
+/* ----------------------------------------------------- 5 · LINE SIDEBAR --
+   A tick-marked index of the page's sections. React Bits shifts items by
+   pointer proximity; kept, but the primary job here is scroll-spy, so the
+   active section is driven by an IntersectionObserver and proximity is only
+   the hover feel on top of it. */
+.linebar{
+  position:fixed; left:clamp(1rem, 2.4vw, 2.25rem); top:50%; translate:0 -50%;
+  z-index:var(--z-sticky); display:none;
+}
+@media (min-width:86rem){ .linebar{ display:block; } }
+.linebar ol{ display:grid; gap:.625rem; }
+.linebar li{
+  --effect:0;
+  display:flex; align-items:center; gap:.625rem;
+  translate:calc(var(--effect) * 7px) 0;
+  transition:translate 260ms var(--ease-soft);
+}
+.linebar a{
+  display:flex; align-items:center; gap:.625rem;
+  font-size:.75rem; letter-spacing:.02em;
+  color:color-mix(in oklab, currentColor calc(34% + var(--effect) * 30%), transparent);
+  transition:color 260ms var(--ease-soft);
+}
+.linebar .tick{
+  display:block; width:calc(0.875rem + var(--effect) * 0.5rem); height:1px; flex:none;
+  background:currentColor; opacity:calc(.4 + var(--effect) * .4);
+  transition:width 260ms var(--ease-soft), opacity 260ms var(--ease-soft), background 260ms var(--ease-soft);
+}
+.linebar .num{ font-variant-numeric:tabular-nums; opacity:.5; font-size:.6875rem; }
+.linebar .lbl{
+  max-width:0; overflow:hidden; white-space:nowrap;
+  opacity:0; transition:max-width 420ms var(--ease), opacity 300ms var(--ease);
+}
+.linebar:hover .lbl,
+.linebar:focus-within .lbl,
+.linebar li[aria-current="true"] .lbl{ max-width:12rem; opacity:1; }
+.linebar li[aria-current="true"] a{ color:currentColor; }
+.linebar li[aria-current="true"] .tick{ width:1.75rem; background:var(--glow-deep); opacity:1; }
+.linebar--on-dark li[aria-current="true"] .tick{ background:var(--glow); }
+
+@media (prefers-reduced-motion: reduce){
+  .wall-col{ animation:none; }
+  .wall-plane{ transform:rotateX(9deg) rotateY(-9deg) scale(1.06); transition:none; }
+  .carousel-track{ scroll-behavior:auto; }
+  .linebar li{ translate:none; }
+}

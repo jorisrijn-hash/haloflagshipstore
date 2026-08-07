@@ -26,6 +26,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/halo.css">
+<link rel="stylesheet" href="assets/cards.css">
+<link rel="stylesheet" href="assets/rb.css">
 <link rel="stylesheet" href="assets/pages.css">
 <script>document.documentElement.className='js';</script>
 </head>
@@ -42,12 +44,13 @@
   </div>
 </div>
 
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><linearGradient id="brandGrad" x1="12%" y1="4%" x2="88%" y2="96%"><stop offset="0%" stop-color="#AFC6E9"/><stop offset="38%" stop-color="#C6BEE4"/><stop offset="72%" stop-color="#EBC9A8"/><stop offset="100%" stop-color="#F2D9A6"/></linearGradient></defs></svg>
 <div class="fade-top" aria-hidden="true"></div>
-<header class="nav" id="nav"><div class="wrap nav-in">
-<a class="brand" href="index.html" aria-label="Halo, home"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a>
+<header class="nav nav--light" id="nav"><div class="wrap nav-in">
+<a class="brand" href="index.html" aria-label="Halo, home"><svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a>
 <ul class="nav-links">
 <li><button class="nav-item" type="button" data-mega aria-expanded="false">Product<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
-<div class="mega" style="--cols:3">
+<div class="mega mega--cards" style="--cols:3">
 <div><h4>Overview</h4>
 <a href="product.html"><b>Product overview</b><span>Everything Halo does, in order</span></a>
 <a href="cards.html"><b>Appreciation cards</b><span>The object at the centre</span></a>
@@ -63,9 +66,10 @@
 <a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android, web</span></a>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Resources</b><span>Guides, docs, changelog</span></a>
 </div>
+<div class="mega-foot"><span>Everything Halo does, and the one thing it is for.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
 <li><button class="nav-item" type="button" data-mega aria-expanded="false">Company<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
-<div class="mega" style="--cols:2">
+<div class="mega mega--cards" style="--cols:2">
 <div><h4>Halo</h4>
 <a href="#" aria-disabled="true" tabindex="-1"><b>About</b><span>Why we built this</span></a>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Customers</b><span>Stories and case studies</span></a>
@@ -74,10 +78,11 @@
 <a href="#" aria-disabled="true" tabindex="-1"><b>Contact</b><span>Sales, support, general</span></a>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Help centre</b><span>Answers and guides</span></a>
 </div>
+<div class="mega-foot"><span>Why this exists, and how to reach us.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
 <li><a class="nav-item" href="pricing.html" aria-current="page">Pricing</a></li>
 </ul>
-<div class="nav-act"><a class="login" href="#">Log in</a><a class="btn" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
+<div class="nav-act"><a class="login" href="#">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
 </div></header>
 <div class="sheet" id="sheet">
 <h4>Product</h4>
@@ -97,11 +102,21 @@
 <h4>Plans</h4><a href="pricing.html">Pricing</a>
 <a class="btn btn--lit" href="pricing.html">Get Halo free</a></div>
 
+<nav class="linebar" data-linebar></nav>
+
 <main id="main">
-<section class="hero hero--page grain" style="padding-bottom:clamp(3rem,7vh,4.5rem)">
-  <div class="stage" aria-hidden="true" style="--lx:50%;--ly:26%;--rsize:min(40vh,32vw);--lint:.55">
-    <div class="stage-bloom"></div>
-    <div class="stage-scrim stage-scrim--mid"></div>
+<section class="hero hero--page hero--light" style="padding-bottom:clamp(3rem,7vh,4.5rem)">
+  <div class="light-stage" aria-hidden="true" style="--lx:50%;--ly:26%;--rsize:min(40vh,32vw);--unused:.55">
+    <div class="light-bloom"></div>
+    <div class="light-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
+        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
+      </svg>
+    </div>
+    <div class="light-floor"></div>
+    <div class="light-scrim"></div>
   </div>
   <div class="wrap" style="position:relative;z-index:2">
     <div class="sec-head sec-head--mid">
@@ -143,7 +158,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Workspace branding</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Premium templates</li>
         </ul>
-        <a class="btn btn--onlight" href="#" data-magnet>Start free trial</a>
+        <a class="btn btn--onlight btn--spec" href="#">Start free trial</a>
       </article>
 
       <article class="tier panel spot" data-rise style="--rise-delay:140ms">
@@ -177,7 +192,7 @@
 </section>
 
 <!-- ========================================================= COMPARISON === -->
-<section class="band band--paper band--tight" id="compare" style="padding-top:0">
+<section class="band band--paper band--tight" id="compare" data-label="Compare" style="padding-top:0">
   <div class="wrap">
     <div class="cmp-scroll" data-rise>
       <table class="cmp">
@@ -212,7 +227,7 @@
 </section>
 
 <!-- ============================================================ ADD-ONS === -->
-<section class="band band--dark grain" id="addons">
+<section class="band band--dark grain" id="addons" data-label="Add-ons">
   <div class="stage" aria-hidden="true" style="--lx:78%;--ly:40%;--rsize:min(36vh,28vw);--lint:.6">
     <div class="stage-bloom"></div>
     <div class="stage-scrim stage-scrim--mid"></div>
@@ -251,7 +266,7 @@
 </section>
 
 <!-- ================================================================ FAQ === -->
-<section class="band band--paper" id="faq">
+<section class="band band--paper" id="faq" data-label="Questions">
   <div class="wrap">
     <div class="sec-head"><h2 class="display d2" data-rise>Questions</h2></div>
     <div class="faq" data-rise>
@@ -278,7 +293,7 @@
     <h2 class="display d1" data-rise>Start with ten people.</h2>
     <p class="lede" data-rise>No card details, no trial clock, no seat commitment.</p>
     <div class="close-cta" data-rise>
-      <a class="btn btn--lit" href="#" data-magnet>Get Halo free</a>
+      <a class="btn btn--lit btn--spec" href="#">Get Halo free</a>
       <a class="btn btn--ghost" href="cards.html">See a card <span class="arw">&rarr;</span></a>
     </div>
     <small data-rise>Free forever under ten people</small>
@@ -288,7 +303,7 @@
 </main>
 
 <footer class="foot"><div class="wrap"><div class="foot-grid">
-<div class="foot-brand"><a class="brand" href="index.html" aria-label="Halo, home"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a><p>The employee appreciation platform.</p></div>
+<div class="foot-brand"><a class="brand" href="index.html" aria-label="Halo, home"><svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a><p>The employee appreciation platform.</p></div>
 <div><h4>Product</h4><ul>
 <li><a href="product.html">Overview</a></li>
 <li><a href="cards.html">Appreciation cards</a></li>

@@ -1,9 +1,17 @@
 <!--close: Read it before you sign anything. | We would rather you ask the hard questions now. -->
 
-<section class="hero hero--page grain">
-  <div class="stage" aria-hidden="true" style="--lx:50%;--ly:34%;--rsize:min(36vh,28vw);--lint:.5">
-    <div class="stage-bloom"></div>
-    <div class="stage-scrim stage-scrim--mid"></div>
+<section class="hero hero--page hero--light">
+  <div class="light-stage" aria-hidden="true" style="--lx:50%;--ly:34%;--rsize:min(36vh,28vw);--unused:.5">
+    <div class="light-bloom"></div>
+    <div class="light-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
+        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
+      </svg>
+    </div>
+    <div class="light-floor"></div>
+    <div class="light-scrim"></div>
   </div>
   <div class="wrap hero-copy" style="position:relative;z-index:2">
     <p class="eyebrow" data-rise>Security</p>
@@ -15,7 +23,7 @@
   </div>
 </section>
 
-<section class="band band--paper" id="model">
+<section class="band band--paper" id="model" data-label="Who sees what">
   <div class="wrap">
     <div class="sec-head">
       <h2 class="display d2" data-rise>Who can see what</h2>
@@ -42,7 +50,7 @@
   </div>
 </section>
 
-<section class="band band--dark grain" id="controls">
+<section class="band band--dark grain" id="controls" data-label="Controls">
   <div class="stage" aria-hidden="true" style="--lx:80%;--ly:44%;--rsize:min(34vh,26vw);--lint:.55">
     <div class="stage-bloom"></div>
     <div class="stage-scrim stage-scrim--mid"></div>

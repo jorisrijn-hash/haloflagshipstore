@@ -1,16 +1,17 @@
 <!--close: Say it in your own words. | Halo just makes sure you find them. Free for the first ten people. -->
 
-<section class="hero hero--page grain">
-  <div class="stage" aria-hidden="true" style="--lx:80%;--ly:44%;--rsize:min(40vh,30vw);--lint:.9">
-    <div class="stage-bloom"></div>
-    <div class="stage-ring">
+<section class="hero hero--page hero--light">
+  <div class="light-stage" aria-hidden="true" style="--lx:80%;--ly:44%;--rsize:min(40vh,30vw);--unused:.9">
+    <div class="light-bloom"></div>
+    <div class="light-ring">
       <svg viewBox="0 0 100 100">
-        <circle class="ring-path ring-halo" cx="50" cy="50" r="33.5"/>
-        <circle class="ring-path ring-mid"  cx="50" cy="50" r="33.5"/>
-        <circle class="ring-path ring-core" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
+        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
       </svg>
     </div>
-    <div class="stage-scrim"></div>
+    <div class="light-floor"></div>
+    <div class="light-scrim"></div>
   </div>
   <div class="wrap hero-copy">
     <p class="eyebrow" data-rise>Halo AI</p>
@@ -22,7 +23,7 @@
   </div>
 </section>
 
-<section class="band band--dark grain" id="tone">
+<section class="band band--dark grain" id="tone" data-label="Tone">
   <div class="wrap split">
     <div>
       <h2 class="display d2" data-rise>Your meaning.<br>Four <em>registers</em>.</h2>
@@ -55,7 +56,7 @@
   </div>
 </section>
 
-<section class="band band--paper" id="limits">
+<section class="band band--paper" id="limits" data-label="Limits">
   <div class="wrap">
     <div class="sec-head">
       <h2 class="display d2" data-rise>What it will <em>not</em> do.</h2>
@@ -74,7 +75,7 @@
   </div>
 </section>
 
-<section class="band band--dark grain" id="roadmap">
+<section class="band band--dark grain" id="roadmap" data-label="Roadmap">
   <div class="stage" aria-hidden="true" style="--lx:50%;--ly:24%;--rsize:min(34vh,26vw);--lint:.5">
     <div class="stage-bloom"></div>
     <div class="stage-scrim stage-scrim--mid"></div>
