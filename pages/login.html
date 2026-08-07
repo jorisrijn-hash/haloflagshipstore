@@ -1,0 +1,122 @@
+<!--noclose-->
+<div class="auth">
+  <!-- ------------------------------------------------------------ sign in -->
+  <div class="auth-l">
+    <a class="brand" href="index.html" aria-label="Halo, home">
+      <svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg>
+      Halo
+    </a>
+
+    <form class="auth-form" id="signin" onsubmit="return false">
+      <header>
+        <h1>Welcome back</h1>
+        <p>Sign in to your workspace to continue spreading recognition.</p>
+      </header>
+
+      <div class="sso" role="group" aria-label="Sign in with a provider">
+        <button type="button" aria-label="Continue with Google">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 01-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0012 22z"/><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 000 9.2z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 003.1 7.4L6.4 10c.8-2.3 3-4.1 5.6-4.1z"/></svg>
+        </button>
+        <button type="button" aria-label="Continue with Microsoft">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#F25022" d="M3 3h8.5v8.5H3z"/><path fill="#7FBA00" d="M12.5 3H21v8.5h-8.5z"/><path fill="#00A4EF" d="M3 12.5h8.5V21H3z"/><path fill="#FFB900" d="M12.5 12.5H21V21h-8.5z"/></svg>
+        </button>
+        <button type="button" aria-label="Continue with Apple">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.4-.9-2.4-3.7zM14.2 5.4c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+        </button>
+        <button type="button">SSO</button>
+      </div>
+
+      <p class="orrule"><span>or</span></p>
+
+      <div class="fld">
+        <label for="wemail">Work email</label>
+        <div class="fld-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 8l9 5 9-5"/></svg>
+          <input id="wemail" type="email" name="email" autocomplete="username" placeholder="name@yourworkspace.com">
+        </div>
+      </div>
+
+      <div class="fld">
+        <label for="wpass">Password</label>
+        <div class="fld-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4.5" y="10" width="15" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          <input id="wpass" type="password" name="password" autocomplete="current-password" placeholder="Enter your password">
+          <button class="peek" type="button" data-peek="wpass" aria-label="Show password" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="rowbits">
+        <label><input type="checkbox" checked> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button class="authbtn" type="submit">Sign in <span class="arw">&rarr;</span></button>
+
+      <p class="legal">By signing in, you agree to our <a href="#">Terms of Service</a><br>and <a href="#">Privacy Policy</a>.</p>
+    </form>
+  </div>
+
+  <!-- ----------------------------------------------------------- register -->
+  <div class="auth-r">
+    <div class="auth-art" aria-hidden="true">
+      <div class="ring">
+        <svg viewBox="0 0 100 100">
+          <circle class="pr-wide" cx="50" cy="50" r="37"/>
+          <circle class="pr-mid"  cx="50" cy="50" r="37"/>
+          <circle class="pr-core" cx="50" cy="50" r="37"/>
+        </svg>
+      </div>
+      <div class="auth-stack">
+        <div class="a1"><article class="mcard" style="background:linear-gradient(160deg,#FDF3E2,#F3E0C2)">
+          <p class="mcard-kick">Thank you</p>
+          <p class="mcard-msg">A small thing that saved my week.</p>
+          <div class="mcard-foot"><span class="av">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div>
+        </article></div>
+        <div class="a2"><article class="mcard" style="background:linear-gradient(160deg,#EAF0FB,#D6E2F5)">
+          <p class="mcard-kick">Welcome</p>
+          <p class="mcard-msg">Glad you are here.</p>
+          <div class="mcard-foot"><span class="av">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div>
+        </article></div>
+        <div class="a0"><article class="mcard">
+          <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
+          <p class="mcard-msg">You made a complex project feel easy. Thank you!</p>
+          <div class="mcard-foot"><span class="av">JW</span><span><b>Jamie Wilson</b><span>2 Aug 2024</span></span></div>
+        </article></div>
+      </div>
+    </div>
+
+    <header>
+      <h2>Create your account</h2>
+      <p>Join Halo and help build a culture of appreciation in your workplace.</p>
+    </header>
+
+    <form onsubmit="return false">
+      <div class="fld">
+        <label class="vh" for="remail">Work email</label>
+        <div class="fld-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 8l9 5 9-5"/></svg>
+          <input id="remail" type="email" name="email" autocomplete="email" placeholder="Work email">
+        </div>
+      </div>
+      <button class="authbtn authbtn--dark" type="submit">Create account <span class="arw">&rarr;</span></button>
+      <p class="swap">Already have an account? <a href="#signin">Sign in</a></p>
+    </form>
+
+    <div class="auth-tri">
+      <div>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 4.4-3.4 8.3-8 9-4.6-.7-8-4.6-8-9V7z"/></svg></span>
+        <b>Secure &amp; private</b><p>Enterprise-grade security for your data.</p>
+      </div>
+      <div>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M2.5 19a6.5 6.5 0 0113 0"/><circle cx="17" cy="9" r="2.2"/><path d="M15 19a5 5 0 016.5-4.3"/></svg></span>
+        <b>Workspace only</b><p>Accounts are part of your company workspace.</p>
+      </div>
+      <div>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4.5" y="10" width="15" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span>
+        <b>Managed access</b><p>Access is managed by your organization.</p>
+      </div>
+    </div>
+  </div>
+</div>

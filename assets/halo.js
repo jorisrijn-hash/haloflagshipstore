@@ -552,11 +552,14 @@
         if (!e.isIntersecting) return;
         var i = secs.indexOf(e.target);
         lis.forEach(function (li, n) { li.setAttribute('aria-current', String(n === i)); });
-        /* The bar sits over alternating registers, so it has to follow. */
-        bar.classList.toggle('linebar--on-dark',
-          /band--dark|band--void|close|wall/.test(e.target.className));
-        bar.style.color = /band--paper|hero--light/.test(e.target.className)
-          ? 'var(--on-paper)' : 'var(--on-ink)';
+        /* The rail sits over alternating registers, so it has to follow.
+           A section can declare its own tone; otherwise it is read off the
+           class list, which covers both the old and the PDF naming. */
+        var cls = e.target.className || '';
+        var dark = e.target.dataset.tone
+          ? e.target.dataset.tone === 'dark'
+          : /darkrun|pdrk|pfoot|band--dark|band--void|close|wall/.test(cls);
+        bar.classList.toggle('linebar--on-dark', dark);
       });
     }, { rootMargin: '-45% 0px -45% 0px' });
     secs.forEach(function (s) { io.observe(s); });
@@ -692,6 +695,20 @@
     if (prev) prev.addEventListener('click', function () { step(-1); });
     if (next) next.addEventListener('click', function () { step(1); });
     render();
+  });
+
+  /* ------------------------------------------------------- password peek --
+     Static design page: nothing is submitted anywhere. The toggle exists so
+     the control behaves the way people expect it to. */
+  $$('[data-peek]').forEach(function (btn) {
+    var input = document.getElementById(btn.dataset.peek);
+    if (!input) return;
+    btn.addEventListener('click', function () {
+      var shown = input.type === 'text';
+      input.type = shown ? 'password' : 'text';
+      btn.setAttribute('aria-pressed', String(!shown));
+      btn.setAttribute('aria-label', shown ? 'Show password' : 'Hide password');
+    });
   });
 
   /* ----------------------------------------------------- page transitions --

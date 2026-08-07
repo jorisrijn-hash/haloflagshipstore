@@ -30,6 +30,10 @@ PAGE_META = {
                   "AI helps you say it. It never says it for you. Wording, tone and translation inside the composer.", "product"),
     "pricing":   ("Pricing",
                   "Free under ten people. Per-user pricing after that, with a full feature comparison and no seat commitment.", "pricing"),
+    "download":  ("Download",
+                  "Get Halo Desktop for macOS and Windows. Sign in with your workspace address and start the first card.", "resources"),
+    "login":     ("Sign in",
+                  "Sign in to your Halo workspace, or create an account.", ""),
     "security":  ("Security",
                   "How Halo stores recognition, who can see it, and what happens to a card when someone leaves.", "company"),
 }
@@ -40,6 +44,9 @@ BUILT = set(PAGE_META)
 
 # Artboards with a dark field behind the navigation.
 DARK_PAGES = {"pricing"}
+
+# Pages that ship without navigation, footer or the section rail.
+BARE_PAGES = {"login"}
 
 NAV_BLURB = {
     "product":   "Everything Halo does, and the one thing it is for.",
@@ -62,7 +69,7 @@ NAV = [
         ]),
         ("Trust", [
             ("security",  "Security", "Privacy, permissions, compliance"),
-            ("downloads", "Downloads", "iOS, Android, web"),
+            ("download", "Downloads", "iOS, Android, web"),
             ("product",   "Integrations", "Slack, Teams, Google, Outlook"),
         ]),
     ]),
@@ -85,7 +92,7 @@ NAV = [
             ("resources", "Changelog", "Everything we have shipped"),
         ]),
         ("Get it", [
-            ("downloads", "Downloads", "iOS, Android and the web app"),
+            ("download", "Downloads", "iOS, Android and the web app"),
             ("security",  "Security", "How your data is handled"),
             ("contact",   "Contact support", "Talk to a person"),
         ]),
@@ -242,7 +249,7 @@ def nav_html(active, dark=False):
             out.append('<li><a class="nav-item" href="pricing.html"%s>Pricing</a></li>'
                        % (' aria-current="page"' if active == 'pricing' else ''))
     out.append('</ul>')
-    out.append('<div class="nav-act"><a class="btn btn--paper login" href="#">Log in</a>'
+    out.append('<div class="nav-act"><a class="btn btn--paper login" href="login.html">Log in</a>'
                '<a class="btn btn--spec" href="pricing.html">Get Halo free</a>'
                '<button class="nav-toggle" id="navToggle" aria-expanded="false" '
                'aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>')
@@ -356,6 +363,7 @@ SHELL = """<!DOCTYPE html>
 <link rel="stylesheet" href="assets/rb.css">
 <link rel="stylesheet" href="assets/pdf.css">
 <link rel="stylesheet" href="assets/pdf2.css">
+<link rel="stylesheet" href="assets/pdf3.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>
@@ -372,11 +380,10 @@ SHELL = """<!DOCTYPE html>
 </div>
 
 {brand_defs}
-<div class="fade-top" aria-hidden="true"></div>
+{fadetop}
 {nav}
 
-<nav class="linebar" data-linebar></nav>
-
+{rail}
 <main id="main">
 {content}
 </main>
@@ -416,10 +423,15 @@ def build():
 
         raw = re.sub(r"\{\{card (.+?)\}\}", card, raw, flags=re.S)
 
+        bare = slug in BARE_PAGES
+
         html = SHELL.format(
             title=full_title, desc=desc, site=SITE, brand_defs=BRAND_DEFS,
             slug="" if slug == "index" else slug + ".html",
-            nav=nav_html(section, slug in DARK_PAGES), foot=foot_html(headline, sub),
+            nav="" if bare else nav_html(section, slug in DARK_PAGES),
+            foot="" if bare else foot_html(headline, sub),
+            rail="" if bare else '<nav class="linebar" data-linebar></nav>',
+            fadetop="" if bare else '<div class="fade-top" aria-hidden="true"></div>',
             content=raw.strip(),
         )
         out = os.path.join(ROOT, slug + ".html")

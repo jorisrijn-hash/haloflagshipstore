@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="assets/rb.css">
 <link rel="stylesheet" href="assets/pdf.css">
 <link rel="stylesheet" href="assets/pdf2.css">
+<link rel="stylesheet" href="assets/pdf3.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>
@@ -65,7 +66,7 @@
 </div>
 <div><h4>Trust</h4>
 <a href="security.html"><b>Security</b><span>Privacy, permissions, compliance</span></a>
-<a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android, web</span></a>
+<a href="download.html"><b>Downloads</b><span>iOS, Android, web</span></a>
 <a href="product.html"><b>Integrations</b><span>Slack, Teams, Google, Outlook</span></a>
 </div>
 <div class="mega-foot"><span>Everything Halo does, and the one thing it is for.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
@@ -92,7 +93,7 @@
 <a href="#" aria-disabled="true" tabindex="-1"><b>Changelog</b><span>Everything we have shipped</span></a>
 </div>
 <div><h4>Get it</h4>
-<a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android and the web app</span></a>
+<a href="download.html"><b>Downloads</b><span>iOS, Android and the web app</span></a>
 <a href="security.html"><b>Security</b><span>How your data is handled</span></a>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Contact support</b><span>Talk to a person</span></a>
 </div>
@@ -112,7 +113,7 @@
 <div class="mega-foot"><span>Why this exists, and how to reach us.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
 </ul>
-<div class="nav-act"><a class="btn btn--paper login" href="#">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
+<div class="nav-act"><a class="btn btn--paper login" href="login.html">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
 </div></header>
 <div class="sheet" id="sheet">
 <h4>Product</h4>
@@ -123,7 +124,7 @@
 <a href="#" aria-disabled="true" tabindex="-1">All features</a>
 <a href="#" aria-disabled="true" tabindex="-1">Add-ons</a>
 <a href="security.html">Security</a>
-<a href="#" aria-disabled="true" tabindex="-1">Downloads</a>
+<a href="download.html">Downloads</a>
 <h4>Solutions</h4>
 <h4>Resources</h4>
 <a href="#" aria-disabled="true" tabindex="-1">Guides</a>
@@ -136,7 +137,6 @@
 <a class="btn btn--lit" href="pricing.html">Get Halo free</a></div>
 
 <nav class="linebar" data-linebar></nav>
-
 <main id="main">
 <section class="hero hero--page hero--light">
   <div class="light-stage" aria-hidden="true" style="--lx:80%;--ly:44%;--rsize:min(40vh,30vw);--unused:.9">
@@ -161,7 +161,7 @@
   </div>
 </section>
 
-<section class="band band--dark grain" id="tone" data-label="Tone">
+<section class="band band--dark grain" id="tone" data-tone="dark" data-label="Tone">
   <div class="wrap split">
     <div>
       <h2 class="display d2" data-rise>Your meaning.<br>Four <em>registers</em>.</h2>
@@ -213,7 +213,7 @@
   </div>
 </section>
 
-<section class="band band--dark grain" id="roadmap" data-label="Roadmap">
+<section class="band band--dark grain" id="roadmap" data-tone="dark" data-label="Roadmap">
   <div class="stage" aria-hidden="true" style="--lx:50%;--ly:24%;--rsize:min(34vh,26vw);--lint:.5">
     <div class="stage-bloom"></div>
     <div class="stage-scrim stage-scrim--mid"></div>
