@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/halo.css">
+<link rel="stylesheet" href="assets/pages.css">
 <link rel="stylesheet" href="assets/cards.css">
 <link rel="stylesheet" href="assets/rb.css">
-<link rel="stylesheet" href="assets/pages.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>
@@ -51,7 +51,7 @@
 <ul class="nav-links">
 <li><button class="nav-item" type="button" data-mega aria-expanded="false">Product<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
 <div class="mega mega--cards" style="--cols:3">
-<div><h4>Overview</h4>
+<div><h4>Core</h4>
 <a href="product.html"><b>Product overview</b><span>Everything Halo does, in order</span></a>
 <a href="cards.html"><b>Appreciation cards</b><span>The object at the centre</span></a>
 <a href="templates.html"><b>Templates</b><span>Designs for every moment</span></a>
@@ -64,10 +64,39 @@
 <div><h4>Trust</h4>
 <a href="security.html"><b>Security</b><span>Privacy, permissions, compliance</span></a>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android, web</span></a>
-<a href="#" aria-disabled="true" tabindex="-1"><b>Resources</b><span>Guides, docs, changelog</span></a>
+<a href="product.html"><b>Integrations</b><span>Slack, Teams, Google, Outlook</span></a>
 </div>
 <div class="mega-foot"><span>Everything Halo does, and the one thing it is for.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
+<li><button class="nav-item" type="button" data-mega aria-expanded="false">Solutions<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+<div class="mega mega--cards" style="--cols:2">
+<div><h4>By size</h4>
+<a href="product.html"><b>Startups</b><span>Build strong cultures early</span></a>
+<a href="product.html"><b>Growing teams</b><span>Scale recognition as you grow</span></a>
+<a href="security.html"><b>Enterprises</b><span>Advanced controls and security</span></a>
+</div>
+<div><h4>By team</h4>
+<a href="product.html"><b>People and HR</b><span>Run recognition without running it</span></a>
+<a href="product.html"><b>Managers</b><span>Recognise without spending points</span></a>
+<a href="cards.html"><b>Everyone else</b><span>Say the thing in ninety seconds</span></a>
+</div>
+<div class="mega-foot"><span>Halo adapts to your organisation, whatever its size.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
+</div></li>
+<li><button class="nav-item" type="button" data-mega aria-expanded="false">Resources<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+<div class="mega mega--cards" style="--cols:2">
+<div><h4>Learn</h4>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Guides</b><span>How good recognition actually works</span></a>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Help centre</b><span>Answers and walkthroughs</span></a>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Changelog</b><span>Everything we have shipped</span></a>
+</div>
+<div><h4>Get it</h4>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android and the web app</span></a>
+<a href="security.html"><b>Security</b><span>How your data is handled</span></a>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Contact support</b><span>Talk to a person</span></a>
+</div>
+<div class="mega-foot"><span>Guides, answers and everything we have shipped.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
+</div></li>
+<li><a class="nav-item" href="pricing.html">Pricing</a></li>
 <li><button class="nav-item" type="button" data-mega aria-expanded="false" aria-current="page">Company<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
 <div class="mega mega--cards" style="--cols:2">
 <div><h4>Halo</h4>
@@ -76,13 +105,12 @@
 </div>
 <div><h4>Talk to us</h4>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Contact</b><span>Sales, support, general</span></a>
-<a href="#" aria-disabled="true" tabindex="-1"><b>Help centre</b><span>Answers and guides</span></a>
+<a href="pricing.html"><b>Pricing</b><span>Plans and what is in them</span></a>
 </div>
 <div class="mega-foot"><span>Why this exists, and how to reach us.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
-<li><a class="nav-item" href="pricing.html">Pricing</a></li>
 </ul>
-<div class="nav-act"><a class="login" href="#">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
+<div class="nav-act"><a class="btn btn--paper login" href="#">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
 </div></header>
 <div class="sheet" id="sheet">
 <h4>Product</h4>
@@ -94,11 +122,14 @@
 <a href="#" aria-disabled="true" tabindex="-1">Add-ons</a>
 <a href="security.html">Security</a>
 <a href="#" aria-disabled="true" tabindex="-1">Downloads</a>
-<a href="#" aria-disabled="true" tabindex="-1">Resources</a>
+<h4>Solutions</h4>
+<h4>Resources</h4>
+<a href="#" aria-disabled="true" tabindex="-1">Guides</a>
+<a href="#" aria-disabled="true" tabindex="-1">Contact support</a>
 <h4>Company</h4>
 <a href="#" aria-disabled="true" tabindex="-1">About</a>
 <a href="#" aria-disabled="true" tabindex="-1">Customers</a>
-<a href="#" aria-disabled="true" tabindex="-1">Contact</a>
+<a href="pricing.html">Pricing</a>
 <h4>Plans</h4><a href="pricing.html">Pricing</a>
 <a class="btn btn--lit" href="pricing.html">Get Halo free</a></div>
 

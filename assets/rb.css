@@ -41,6 +41,21 @@
 .btn--spec.btn--ghost::after{ opacity:.18; }
 .btn--spec.btn--ghost:hover::after{ opacity:.55; }
 
+/* White pill, the reference's secondary action and the Log in control. */
+.btn--paper{
+  --btn-bg:#FFFFFF; --btn-fg:#141618;
+  --btn-line:rgba(20,22,24,.10);
+  box-shadow:0 1px 2px rgba(60,54,46,.06), 0 6px 16px -10px rgba(60,54,46,.28);
+}
+.btn--paper:hover{
+  --btn-line:rgba(20,22,24,.20);
+  box-shadow:0 1px 2px rgba(60,54,46,.08), 0 10px 22px -10px rgba(60,54,46,.34);
+}
+.nav--light .btn--paper{ --btn-bg:#FFFFFF; --btn-fg:#141618; }
+.nav--light .btn--paper.login{ padding:.5625rem 1.125rem; font-weight:500; }
+.nav-act .btn{ padding:.5625rem 1.125rem; font-size:.9375rem; }
+@media (max-width:64rem){ .nav-act .login{ display:none; } }
+
 /* ------------------------------------------------------- 2 · CARD NAV ----
    React Bits collapses the nav into a pill that expands into link cards.
    Adapted: the mega panel's columns become cards with their own surface and
@@ -201,9 +216,12 @@
    active section is driven by an IntersectionObserver and proximity is only
    the hover feel on top of it. */
 .linebar{
+  opacity:0; visibility:hidden;
+  transition:opacity 420ms var(--ease), visibility 420ms;
   position:fixed; left:clamp(1rem, 2.4vw, 2.25rem); top:50%; translate:0 -50%;
   z-index:var(--z-sticky); display:none;
 }
+.linebar.show{ opacity:1; visibility:visible; }
 @media (min-width:86rem){ .linebar{ display:block; } }
 .linebar ol{ display:grid; gap:.625rem; }
 .linebar li{

@@ -39,13 +39,15 @@ PAGE_META = {
 BUILT = set(PAGE_META)
 
 NAV_BLURB = {
-    "product": "Everything Halo does, and the one thing it is for.",
-    "company": "Why this exists, and how to reach us.",
+    "product":   "Everything Halo does, and the one thing it is for.",
+    "solutions": "Halo adapts to your organisation, whatever its size.",
+    "resources": "Guides, answers and everything we have shipped.",
+    "company":   "Why this exists, and how to reach us.",
 }
 
 NAV = [
     ("Product", "product", 3, [
-        ("Overview", [
+        ("Core", [
             ("product",   "Product overview", "Everything Halo does, in order"),
             ("cards",     "Appreciation cards", "The object at the centre"),
             ("templates", "Templates", "Designs for every moment"),
@@ -58,7 +60,31 @@ NAV = [
         ("Trust", [
             ("security",  "Security", "Privacy, permissions, compliance"),
             ("downloads", "Downloads", "iOS, Android, web"),
-            ("resources", "Resources", "Guides, docs, changelog"),
+            ("product",   "Integrations", "Slack, Teams, Google, Outlook"),
+        ]),
+    ]),
+    ("Solutions", "solutions", 2, [
+        ("By size", [
+            ("product",   "Startups", "Build strong cultures early"),
+            ("product",   "Growing teams", "Scale recognition as you grow"),
+            ("security",  "Enterprises", "Advanced controls and security"),
+        ]),
+        ("By team", [
+            ("product",   "People and HR", "Run recognition without running it"),
+            ("product",   "Managers", "Recognise without spending points"),
+            ("cards",     "Everyone else", "Say the thing in ninety seconds"),
+        ]),
+    ]),
+    ("Resources", "resources", 2, [
+        ("Learn", [
+            ("resources", "Guides", "How good recognition actually works"),
+            ("resources", "Help centre", "Answers and walkthroughs"),
+            ("resources", "Changelog", "Everything we have shipped"),
+        ]),
+        ("Get it", [
+            ("downloads", "Downloads", "iOS, Android and the web app"),
+            ("security",  "Security", "How your data is handled"),
+            ("contact",   "Contact support", "Talk to a person"),
         ]),
     ]),
     ("Company", "company", 2, [
@@ -68,7 +94,7 @@ NAV = [
         ]),
         ("Talk to us", [
             ("contact",   "Contact", "Sales, support, general"),
-            ("resources", "Help centre", "Answers and guides"),
+            ("pricing",   "Pricing", "Plans and what is in them"),
         ]),
     ]),
 ]
@@ -198,10 +224,11 @@ def nav_html(active):
         out.append('<div class="mega-foot"><span>%s</span>'
                    '<a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>' % blurb)
         out.append('</div></li>')
-    out.append('<li><a class="nav-item" href="pricing.html"%s>Pricing</a></li>'
-               % (' aria-current="page"' if active == 'pricing' else ''))
+        if key == "resources":
+            out.append('<li><a class="nav-item" href="pricing.html"%s>Pricing</a></li>'
+                       % (' aria-current="page"' if active == 'pricing' else ''))
     out.append('</ul>')
-    out.append('<div class="nav-act"><a class="login" href="#">Log in</a>'
+    out.append('<div class="nav-act"><a class="btn btn--paper login" href="#">Log in</a>'
                '<a class="btn btn--spec" href="pricing.html">Get Halo free</a>'
                '<button class="nav-toggle" id="navToggle" aria-expanded="false" '
                'aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>')
@@ -287,9 +314,9 @@ SHELL = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/halo.css">
+<link rel="stylesheet" href="assets/pages.css">
 <link rel="stylesheet" href="assets/cards.css">
 <link rel="stylesheet" href="assets/rb.css">
-<link rel="stylesheet" href="assets/pages.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>

@@ -537,6 +537,16 @@
     bar.appendChild(ol);
     bar.setAttribute('aria-label', 'Sections on this page');
 
+    /* Hidden while the hero owns the screen; the reference frame has no rail. */
+    var hero = $('.hero');
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        bar.classList.toggle('show', !es[0].isIntersecting);
+      }, { rootMargin: '-30% 0px 0px 0px' }).observe(hero);
+    } else {
+      bar.classList.add('show');
+    }
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;

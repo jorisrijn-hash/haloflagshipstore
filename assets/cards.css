@@ -150,98 +150,145 @@
 @media (prefers-reduced-motion: reduce){ .hcard-seal svg{ animation:none; } }
 
 /* ===========================================================================
-   LIGHT HERO
-   The reference inverts v1: the room is bright, and the halo is the warm
-   light source inside it rather than the only light in the dark.
+   LIGHT HERO — matched to the reference frame
+   Every rule here is scoped under .hero--light and loaded after pages.css,
+   so it wins over the dark .hero defaults without !important.
    =========================================================================== */
 .hero--light{
   background:
-    radial-gradient(120% 90% at 76% 40%, #FAF8F5 0%, #F2F2F3 46%, #E9EAEC 100%);
-  color:var(--on-paper);
+    radial-gradient(58% 52% at 72% 40%, rgba(255,244,226,.55) 0%, transparent 62%),
+    linear-gradient(152deg, #FCFCFC 0%, #F6F6F7 38%, #EFEFF1 72%, #E9E9EC 100%);
+  color:#141618;
+  min-height:auto;
+  padding-block:calc(var(--nav-h) + clamp(3rem, 9vh, 7rem)) clamp(3rem, 7vh, 5rem);
 }
-.hero--light .lede{ color:var(--on-paper-mut); }
+.hero--light .lede{ color:#5A5F66; }
 .hero--light .eyebrow{ color:var(--glow-ink); }
-.hero--light .scroll-cue{ color:var(--on-paper-mut); }
-.hero--light .scroll-cue i{ background:linear-gradient(var(--on-paper-mut), transparent); }
-.hero--light .scroll-cue i::after{ background:var(--glow-deep); }
 
-/* The ring is unbroken here. The gap belongs to the logo mark, not to the
-   light itself, and on a bright ground a broken ring reads as an error. */
+.hero--light .hero-grid{
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+  gap:clamp(2rem, 5vw, 4rem);
+  align-items:center;
+  min-height:clamp(30rem, 66vh, 42rem);
+}
+@media (max-width:64rem){ .hero--light .hero-grid{ grid-template-columns:1fr; } }
+
+.hero--light h1{
+  font-size:clamp(2.6rem, 4.7vw, 4.75rem);
+  line-height:1.02; letter-spacing:-0.028em; font-weight:400;
+  margin-bottom:1.75rem;
+}
+.hero--light h1 em{ font-weight:380; }
+.hero--light .lede{
+  font-size:1.0625rem; line-height:1.62; max-width:26rem; margin-bottom:2.25rem;
+}
+.hero--light .hero-cta{ gap:.625rem; }
+
+/* --- the light ---------------------------------------------------------- */
 .light-stage{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
 .light-ring{
-  position:absolute; left:var(--lx, 71%); top:var(--ly, 44%); translate:-50% -50%;
-  width:var(--rsize, min(62vh, 44vw)); aspect-ratio:1; min-width:19rem;
-  transform:translate3d(calc(var(--mx, 0) * 9px), calc(var(--my, 0) * 7px), 0);
+  position:absolute; left:var(--lx, 71.5%); top:var(--ly, 41%); translate:-50% -50%;
+  width:var(--rsize, min(34vw, 40rem)); aspect-ratio:1; min-width:20rem;
+  transform:translate3d(calc(var(--mx, 0) * 8px), calc(var(--my, 0) * 6px), 0);
   transition:transform 900ms var(--ease-soft);
 }
 .light-ring svg{ width:100%; height:100%; overflow:visible; }
 .light-ring circle{ fill:none; }
-.lr-wide{ stroke:#F2C98E; stroke-width:6;   filter:blur(17px); opacity:.9; }
-.lr-mid { stroke:#F8DCAE; stroke-width:2.6; filter:blur(5px); }
-.lr-core{ stroke:#FFF6E4; stroke-width:1.05; filter:blur(.4px); }
+.lr-wide{ stroke:#F0C489; stroke-width:5.4; filter:blur(15px); opacity:.85; }
+.lr-mid { stroke:#F9DFB4; stroke-width:2.2; filter:blur(4px); }
+.lr-core{ stroke:#FFF9EE; stroke-width:.85; }
 
 .light-bloom{
   position:absolute;
-  left:calc(var(--lx, 71%) + var(--mx, 0) * 12px);
-  top:calc(var(--ly, 44%) + var(--my, 0) * 9px);
-  width:min(128vh, 108vw); aspect-ratio:1; translate:-50% -50%;
+  left:calc(var(--lx, 71.5%) + var(--mx, 0) * 10px);
+  top:calc(var(--ly, 41%) + var(--my, 0) * 8px);
+  width:min(96vh, 82vw); aspect-ratio:1; translate:-50% -50%;
   background:radial-gradient(circle at 50% 50%,
-    rgba(255,232,190,.62) 0%, rgba(250,214,160,.30) 24%,
-    rgba(240,198,150,.11) 44%, transparent 68%);
-  filter:blur(16px);
+    rgba(255,235,198,.50) 0%, rgba(250,218,170,.24) 26%,
+    rgba(242,206,160,.09) 46%, transparent 68%);
+  filter:blur(14px);
   transition:left 900ms var(--ease-soft), top 900ms var(--ease-soft);
 }
-/* Soft floor shadow so the stack has something to sit on. */
 .light-floor{
-  position:absolute; left:var(--lx, 71%); bottom:6%; translate:-50% 0;
-  width:min(80vh, 62vw); height:22vh;
-  background:radial-gradient(ellipse 50% 50% at 50% 100%, rgba(90,80,70,.13), transparent 70%);
-  filter:blur(20px);
+  position:absolute; left:var(--lx, 71.5%); bottom:4%; translate:-50% 0;
+  width:min(52vw, 46rem); height:16vh;
+  background:radial-gradient(ellipse 50% 50% at 50% 100%, rgba(96,86,74,.11), transparent 72%);
+  filter:blur(22px);
 }
-/* Keeps the headline side clean where the bloom would otherwise wash it out. */
+/* Keeps the headline column clean where the bloom would wash it out. */
 .light-scrim{
   position:absolute; inset:0;
-  background:linear-gradient(96deg,
-    color-mix(in oklab, #F7F6F4 92%, transparent) 4%,
-    color-mix(in oklab, #F7F6F4 55%, transparent) 30%, transparent 56%);
+  background:linear-gradient(94deg,
+    rgba(252,252,252,.94) 2%, rgba(250,250,251,.55) 28%, transparent 52%);
 }
 
-/* Frosted stack in front of the ring, exactly as in the reference. */
-.hero-stack{ position:relative; display:grid; place-items:center; min-height:clamp(22rem, 52vh, 32rem); }
+/* --- the card stack ----------------------------------------------------- */
+.hero-stack{
+  position:relative; z-index:2;
+  display:grid; place-items:center;
+  min-height:clamp(24rem, 56vh, 34rem);
+}
 .hero-stack .hs{
-  position:absolute; width:min(19.5rem, 74vw);
-  transform:translate3d(calc(var(--mx, 0) * var(--depth, 1) * 16px), calc(var(--my, 0) * var(--depth, 1) * 12px), 0) rotate(var(--tilt, 0deg));
+  position:absolute; width:min(19.5rem, 76vw);
+  transform:translate3d(calc(var(--mx, 0) * var(--depth, 1) * 14px), calc(var(--my, 0) * var(--depth, 1) * 10px), 0);
   transition:transform 1100ms var(--ease-soft);
 }
-.hero-stack .hs-1{ --depth:1;   --tilt:0deg;    z-index:3; }
-.hero-stack .hs-2{ --depth:.62; --tilt:4.5deg;  z-index:2; translate:1.75rem -1rem; opacity:.9; }
-.hero-stack .hs-3{ --depth:.34; --tilt:8.5deg;  z-index:1; translate:3.25rem -2rem; opacity:.62; }
+.hero-stack .hs-1{ --depth:1;   z-index:3; }
+.hero-stack .hs-2{ --depth:.6;  z-index:2; translate:3.25rem -2.25rem; }
+.hero-stack .hs-3{ --depth:.34; z-index:1; translate:5.75rem -4rem; }
 
-/* Glass finish, only here: the cards are lit from behind by the ring. */
-.hcard--glass{
-  --hc-line: rgba(40,40,50,.12);
-  --hc-surface:
-    linear-gradient(168deg, rgba(255,255,255,.86) 0%, rgba(248,247,246,.72) 100%);
-  backdrop-filter:blur(14px) saturate(1.2);
-  -webkit-backdrop-filter:blur(14px) saturate(1.2);
-  border:1px solid rgba(255,255,255,.6);
+/* The hero card is its own thing: the reference shows a short quote card,
+   not the six-field portrait card used everywhere else on the site. */
+.qcard{
+  position:relative; display:flex; flex-direction:column;
+  aspect-ratio:31/43; padding:1.375rem 1.5rem 1.25rem;
+  border-radius:18px; color:#141618;
+  background:linear-gradient(160deg, rgba(255,255,255,.93) 0%, rgba(250,250,251,.80) 100%);
+  backdrop-filter:blur(16px) saturate(1.15);
+  -webkit-backdrop-filter:blur(16px) saturate(1.15);
+  border:1px solid rgba(255,255,255,.72);
   box-shadow:
-    0 1px 1px rgba(60,50,40,.06),
-    0 20px 44px -22px rgba(60,50,40,.32),
-    0 60px 110px -60px rgba(60,50,40,.42);
+    0 1px 1px rgba(60,54,46,.05),
+    0 22px 46px -24px rgba(62,55,46,.30),
+    0 66px 120px -66px rgba(62,55,46,.40);
 }
+.qcard-top{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.qcard-kicker{
+  display:flex; align-items:center; gap:.5rem;
+  font-size:.6875rem; font-weight:600; letter-spacing:.115em; text-transform:uppercase;
+}
+.qcard-kicker svg{ width:15px; height:15px; color:#E9A63C; }
+.qcard-dots{ display:flex; gap:3px; opacity:.35; }
+.qcard-dots i{ width:3px; height:3px; border-radius:999px; background:currentColor; }
+.qcard-msg{
+  margin-top:auto; padding-block:1.5rem;
+  font-size:1.0625rem; line-height:1.6; letter-spacing:-0.006em;
+}
+.qcard-foot{ display:flex; align-items:center; gap:.75rem; margin-top:auto; }
+.qcard-foot .avatar{
+  width:38px; height:38px; flex:none; border-radius:999px; display:grid; place-items:center;
+  background:#16181B; color:#fff; font-size:.75rem; font-weight:600;
+}
+.qcard-foot b{ display:block; font-size:.8125rem; font-weight:600; }
+.qcard-foot span{ display:block; font-size:.8125rem; color:#7B8087; }
+/* The cards behind are only surfaces catching the ring light. */
+.qcard--ghost{ background:linear-gradient(160deg, rgba(255,255,255,.55), rgba(250,250,251,.32)); }
+.qcard--ghost > *{ opacity:.28; }
 
-.hero--light .trustline > p{ color:var(--on-paper-mut); }
-.hero--light .marquee li{ color:var(--on-paper-mut); }
-.hero--light .marquee{
-  -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+/* --- trusted by --------------------------------------------------------- */
+.hero--light .trustline{ position:relative; z-index:2; margin-top:clamp(2.5rem, 6vh, 4.5rem); display:grid; gap:1.5rem; }
+.hero--light .trustline > p{
+  font-size:.75rem; letter-spacing:.13em; text-transform:uppercase; color:#8A8F96; font-weight:500;
 }
+.logorow{ display:flex; flex-wrap:wrap; align-items:center; gap:1.25rem clamp(1.75rem, 4vw, 3.25rem); }
+.logorow li{ display:flex; align-items:center; gap:.625rem; font-size:1.0625rem; font-weight:500; color:#2A2E33; letter-spacing:-0.012em; }
+.logorow svg{ width:21px; height:21px; flex:none; }
 
 @media (max-width:64rem){
-  .hero--light .light-ring{ --lx:74%; --ly:30%; --rsize:min(44vh, 84vw); }
-  .hero--light .light-bloom{ --lx:74%; --ly:30%; }
-  .light-scrim{ background:linear-gradient(to top, #F5F4F2 14%, color-mix(in oklab, #F5F4F2 50%, transparent) 52%, transparent 84%); }
-  .hero-stack{ min-height:24rem; margin-top:1rem; }
+  .hero--light{ --lx:76%; --ly:32%; }
+  .hero--light .light-ring{ --rsize:min(78vw, 30rem); }
+  .light-scrim{ background:linear-gradient(to top, #F7F7F8 12%, rgba(247,247,248,.5) 48%, transparent 80%); }
+  .hero-stack{ min-height:26rem; margin-top:1.5rem; }
   .hero-stack .hs-3{ display:none; }
+  .logorow li{ font-size:.9375rem; }
 }

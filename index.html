@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/halo.css">
+<link rel="stylesheet" href="assets/pages.css">
 <link rel="stylesheet" href="assets/cards.css">
 <link rel="stylesheet" href="assets/rb.css">
-<link rel="stylesheet" href="assets/pages.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>
@@ -51,7 +51,7 @@
 <ul class="nav-links">
 <li><button class="nav-item" type="button" data-mega aria-expanded="false">Product<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
 <div class="mega mega--cards" style="--cols:3">
-<div><h4>Overview</h4>
+<div><h4>Core</h4>
 <a href="product.html"><b>Product overview</b><span>Everything Halo does, in order</span></a>
 <a href="cards.html"><b>Appreciation cards</b><span>The object at the centre</span></a>
 <a href="templates.html"><b>Templates</b><span>Designs for every moment</span></a>
@@ -64,10 +64,39 @@
 <div><h4>Trust</h4>
 <a href="security.html"><b>Security</b><span>Privacy, permissions, compliance</span></a>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android, web</span></a>
-<a href="#" aria-disabled="true" tabindex="-1"><b>Resources</b><span>Guides, docs, changelog</span></a>
+<a href="product.html"><b>Integrations</b><span>Slack, Teams, Google, Outlook</span></a>
 </div>
 <div class="mega-foot"><span>Everything Halo does, and the one thing it is for.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
+<li><button class="nav-item" type="button" data-mega aria-expanded="false">Solutions<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+<div class="mega mega--cards" style="--cols:2">
+<div><h4>By size</h4>
+<a href="product.html"><b>Startups</b><span>Build strong cultures early</span></a>
+<a href="product.html"><b>Growing teams</b><span>Scale recognition as you grow</span></a>
+<a href="security.html"><b>Enterprises</b><span>Advanced controls and security</span></a>
+</div>
+<div><h4>By team</h4>
+<a href="product.html"><b>People and HR</b><span>Run recognition without running it</span></a>
+<a href="product.html"><b>Managers</b><span>Recognise without spending points</span></a>
+<a href="cards.html"><b>Everyone else</b><span>Say the thing in ninety seconds</span></a>
+</div>
+<div class="mega-foot"><span>Halo adapts to your organisation, whatever its size.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
+</div></li>
+<li><button class="nav-item" type="button" data-mega aria-expanded="false">Resources<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+<div class="mega mega--cards" style="--cols:2">
+<div><h4>Learn</h4>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Guides</b><span>How good recognition actually works</span></a>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Help centre</b><span>Answers and walkthroughs</span></a>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Changelog</b><span>Everything we have shipped</span></a>
+</div>
+<div><h4>Get it</h4>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Downloads</b><span>iOS, Android and the web app</span></a>
+<a href="security.html"><b>Security</b><span>How your data is handled</span></a>
+<a href="#" aria-disabled="true" tabindex="-1"><b>Contact support</b><span>Talk to a person</span></a>
+</div>
+<div class="mega-foot"><span>Guides, answers and everything we have shipped.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
+</div></li>
+<li><a class="nav-item" href="pricing.html">Pricing</a></li>
 <li><button class="nav-item" type="button" data-mega aria-expanded="false">Company<svg class="caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7l4-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
 <div class="mega mega--cards" style="--cols:2">
 <div><h4>Halo</h4>
@@ -76,13 +105,12 @@
 </div>
 <div><h4>Talk to us</h4>
 <a href="#" aria-disabled="true" tabindex="-1"><b>Contact</b><span>Sales, support, general</span></a>
-<a href="#" aria-disabled="true" tabindex="-1"><b>Help centre</b><span>Answers and guides</span></a>
+<a href="pricing.html"><b>Pricing</b><span>Plans and what is in them</span></a>
 </div>
 <div class="mega-foot"><span>Why this exists, and how to reach us.</span><a class="btn btn--spec" href="pricing.html">Get Halo free</a></div>
 </div></li>
-<li><a class="nav-item" href="pricing.html">Pricing</a></li>
 </ul>
-<div class="nav-act"><a class="login" href="#">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
+<div class="nav-act"><a class="btn btn--paper login" href="#">Log in</a><a class="btn btn--spec" href="pricing.html">Get Halo free</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><span></span><span></span></button></div>
 </div></header>
 <div class="sheet" id="sheet">
 <h4>Product</h4>
@@ -94,11 +122,14 @@
 <a href="#" aria-disabled="true" tabindex="-1">Add-ons</a>
 <a href="security.html">Security</a>
 <a href="#" aria-disabled="true" tabindex="-1">Downloads</a>
-<a href="#" aria-disabled="true" tabindex="-1">Resources</a>
+<h4>Solutions</h4>
+<h4>Resources</h4>
+<a href="#" aria-disabled="true" tabindex="-1">Guides</a>
+<a href="#" aria-disabled="true" tabindex="-1">Contact support</a>
 <h4>Company</h4>
 <a href="#" aria-disabled="true" tabindex="-1">About</a>
 <a href="#" aria-disabled="true" tabindex="-1">Customers</a>
-<a href="#" aria-disabled="true" tabindex="-1">Contact</a>
+<a href="pricing.html">Pricing</a>
 <h4>Plans</h4><a href="pricing.html">Pricing</a>
 <a class="btn btn--lit" href="pricing.html">Get Halo free</a></div>
 
@@ -110,9 +141,9 @@
     <div class="light-bloom"></div>
     <div class="light-ring">
       <svg viewBox="0 0 100 100">
-        <circle class="lr-wide" cx="50" cy="50" r="33.5"/>
-        <circle class="lr-mid"  cx="50" cy="50" r="33.5"/>
-        <circle class="lr-core" cx="50" cy="50" r="33.5"/>
+        <circle class="lr-wide" cx="50" cy="50" r="36"/>
+        <circle class="lr-mid"  cx="50" cy="50" r="36"/>
+        <circle class="lr-core" cx="50" cy="50" r="36"/>
       </svg>
     </div>
     <div class="light-floor"></div>
@@ -122,46 +153,77 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <h1 class="display d1" data-rise>Appreciation,<br><em>beautifully</em> delivered.</h1>
+        <h1 class="display" data-rise>Appreciation,<br><em>beautifully</em><br>delivered.</h1>
         <p class="lede" data-rise style="--rise-delay:110ms">
-          Halo gives your team one place to say the thing that usually goes unsaid.
-          Cards that people keep. Recognition that outlives the moment.
+          Halo helps teams recognize each other with meaningful cards, celebrations,
+          and a culture that grows stronger every day.
         </p>
         <div class="hero-cta" data-rise style="--rise-delay:200ms">
-          <a class="btn btn--lit btn--spec" href="pricing.html">Get Halo free</a>
-          <a class="btn btn--ghost" href="cards.html">See a card <span class="arw">&rarr;</span></a>
+          <a class="btn btn--onlight btn--spec" href="pricing.html">Get Halo free</a>
+          <a class="btn btn--paper" href="cards.html">Book a demo</a>
         </div>
       </div>
 
       <div class="hero-stack" data-rise style="--rise-delay:300ms">
-        <div class="hs hs-3"><article class="hcard hcard--glass hcard--moment"><div class="hcard-top"><span class="hcard-brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</span><svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><p class="hcard-kicker">Appreciation</p><h3 class="hcard-title">Attention to detail.</h3><hr class="hcard-rule"><p class="hcard-body">You have an incredible eye for the little things that make a big difference.</p><div class="hcard-foot"><span class="hcard-from"><span class="avatar">SJ</span><span><b>Sarah Johnson</b><span>1 Aug 2024</span></span></span><span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="seal1" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#seal1" startOffset="0">THANK YOU · WELL DONE · THANK YOU · WELL DONE · </textPath></text><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/><g transform="translate(50,50)" fill="currentColor"><path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/></g></svg></span></div></article></div>
-        <div class="hs hs-2"><article class="hcard hcard--glass hcard--moment"><div class="hcard-top"><span class="hcard-brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</span><svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><p class="hcard-kicker">Appreciation</p><h3 class="hcard-title">Outstanding impact.</h3><hr class="hcard-rule"><p class="hcard-body">Your ideas turned into real outcomes. Thank you for going above and beyond.</p><div class="hcard-foot"><span class="hcard-from"><span class="avatar">DK</span><span><b>Drew Kramer</b><span>2 Aug 2024</span></span></span><span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="seal2" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#seal2" startOffset="0">THANK YOU · WELL DONE · THANK YOU · WELL DONE · </textPath></text><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/><g transform="translate(50,50)" fill="currentColor"><path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/></g></svg></span></div></article></div>
-        <div class="hs hs-1"><article class="hcard hcard--glass hcard--moment"><div class="hcard-top"><span class="hcard-brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</span><svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><p class="hcard-kicker">Appreciation</p><h3 class="hcard-title">Great work, Alex.</h3><hr class="hcard-rule"><p class="hcard-body">You stayed late to walk me through the migration script. Couldn't have done it without you.</p><div class="hcard-foot"><span class="hcard-from"><span class="avatar">DF</span><span><b>Derek Foster</b><span>2 Aug 2024</span></span></span><span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="seal3" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#seal3" startOffset="0">THANK YOU · WELL DONE · THANK YOU · WELL DONE · </textPath></text><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/><g transform="translate(50,50)" fill="currentColor"><path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/></g></svg></span></div></article></div>
+        <div class="hs hs-3"><article class="qcard qcard--ghost">
+            <div class="qcard-top">
+              <p class="qcard-kicker">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg>
+                Great work
+              </p>
+              <span class="qcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <p class="qcard-msg">A note that stays on their profile.</p>
+            <div class="qcard-foot">
+              <span class="avatar" aria-hidden="true">AJ</span>
+              <span><b>Alex Johnson</b><span>1 Aug 2024</span></span>
+            </div>
+          </article></div>
+        <div class="hs hs-2"><article class="qcard qcard--ghost">
+            <div class="qcard-top">
+              <p class="qcard-kicker">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg>
+                Thank you
+              </p>
+              <span class="qcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <p class="qcard-msg">You made a complex project feel easy.</p>
+            <div class="qcard-foot">
+              <span class="avatar" aria-hidden="true">JW</span>
+              <span><b>Jamie Wilson</b><span>2 Aug 2024</span></span>
+            </div>
+          </article></div>
+        <div class="hs hs-1"><article class="qcard">
+            <div class="qcard-top">
+              <p class="qcard-kicker">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg>
+                Great work
+              </p>
+              <span class="qcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <p class="qcard-msg">You stayed late to walk me through the migration script. Couldn&rsquo;t have done it without you.</p>
+            <div class="qcard-foot">
+              <span class="avatar" aria-hidden="true">DF</span>
+              <span><b>Derek Foster</b><span>2 Aug 2024</span></span>
+            </div>
+          </article></div>
       </div>
     </div>
 
     <div class="trustline" data-rise style="--rise-delay:400ms">
-      <p>Works where your team already works</p>
-      <div class="marquee" style="--speed:38s">
-        <ul aria-label="Integrations">
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 15a2 2 0 11-2-2h2zm1 0a2 2 0 114 0v5a2 2 0 11-4 0zM9 5a2 2 0 112 2H9zm0 1a2 2 0 110 4H4a2 2 0 110-4zm10 3a2 2 0 112 2h-2zm-1 0a2 2 0 11-4 0V4a2 2 0 114 0zm-3 10a2 2 0 11-2-2h2zm0-1a2 2 0 110-4h5a2 2 0 110 4z"/></svg>Slack</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 6.5A3.25 3.25 0 1117.25 10 3.25 3.25 0 0114 6.5zM3 6h8v12H3zm2.6 3.3h1.6V14h1.2V9.3H10V8.1H5.6zM13 11h8v4.5a3.5 3.5 0 01-7 0z"/></svg>Microsoft Teams</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 11v2.8h4a4 4 0 11-1.2-3.1l2.1-2.1A7 7 0 1019 12v-1z"/></svg>Google Workspace</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6l9 5.5L21 6v12H3zm0-2h18l-9 5.5z"/></svg>Outlook</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z"/></svg>SCIM directory sync</li>
-          <li aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 15a2 2 0 11-2-2h2zm1 0a2 2 0 114 0v5a2 2 0 11-4 0zM9 5a2 2 0 112 2H9zm0 1a2 2 0 110 4H4a2 2 0 110-4zm10 3a2 2 0 112 2h-2zm-1 0a2 2 0 11-4 0V4a2 2 0 114 0zm-3 10a2 2 0 11-2-2h2zm0-1a2 2 0 110-4h5a2 2 0 110 4z"/></svg>Slack</li>
-          <li aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 6.5A3.25 3.25 0 1117.25 10 3.25 3.25 0 0114 6.5zM3 6h8v12H3zm2.6 3.3h1.6V14h1.2V9.3H10V8.1H5.6zM13 11h8v4.5a3.5 3.5 0 01-7 0z"/></svg>Microsoft Teams</li>
-          <li aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11v2.8h4a4 4 0 11-1.2-3.1l2.1-2.1A7 7 0 1019 12v-1z"/></svg>Google Workspace</li>
-          <li aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6l9 5.5L21 6v12H3zm0-2h18l-9 5.5z"/></svg>Outlook</li>
-          <li aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z"/></svg>SCIM directory sync</li>
-        </ul>
-      </div>
+      <!-- PLACEHOLDER: these are not customers. Replace with real logos and
+           written permission before this goes anywhere public. -->
+      <p>Trusted by modern teams</p>
+      <ul class="logorow">
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM4.1 13.2l6.7 6.7a8 8 0 01-6.7-6.7zm.2-2.6a8 8 0 019.1-9.1zm.9 3.4a8 8 0 01-.6-2.1L13.1 21a8 8 0 01-2.1-.6zM6.6 5.2a8 8 0 0111.6 11.6z"/></svg>Linear</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="3"/><path d="M8 16.5v-9l8 9v-9" stroke-linecap="round" stroke-linejoin="round"/></svg>Notion</li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.5L22 20.5H2z"/></svg>Vercel</li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.1 2h1.8v6.2l4.4-4.4 1.3 1.3-4.4 4.4H20v1.8h-6.2l4.4 4.4-1.3 1.3-4.4-4.4V22h-1.8v-6.2l-4.4 4.4-1.3-1.3 4.4-4.4H3v-1.8h6.2L4.8 8.3l1.3-1.3 4.4 4.4z"/><circle cx="12" cy="12" r="2.6"/></svg>loom</li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.5 19.5L11 6.2l3.6 5.6-2.2 3.4-1.4-2.2-4.2 6.5zm10.7 0l3.1-4.8 3.2 4.8z"/></svg>Ramp</li>
+      </ul>
     </div>
   </div>
-
-  <p class="scroll-cue" aria-hidden="true"><i></i> Scroll</p>
 </section>
-
 <!-- ============================================================ PROBLEM === -->
 <section class="band band--paper" id="problem" data-label="The problem">
   <div class="wrap">
@@ -216,7 +278,7 @@
     </div>
 
     <div style="display:grid;place-items:center;padding:2rem 0;--rise-delay:120ms;max-width:22rem;justify-self:center;width:100%" data-rise>
-      <article class="hcard hcard--minimal hcard--moment"><div class="hcard-top"><span class="hcard-brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</span><svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><p class="hcard-kicker">Appreciation</p><h3 class="hcard-title">Great work, Alex.</h3><hr class="hcard-rule"><p class="hcard-body">Nobody asked you to rewrite the onboarding flow. You saw it was bad, you fixed it, and three hundred people have had a better first day because of it.</p><div class="hcard-foot"><span class="hcard-from"><span class="avatar">MR</span><span><b>Morgan Reyes</b><span>2 Aug 2024</span></span></span><span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="seal4" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#seal4" startOffset="0">THANK YOU · WELL DONE · THANK YOU · WELL DONE · </textPath></text><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/><g transform="translate(50,50)" fill="currentColor"><path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/></g></svg></span></div></article>
+      <article class="hcard hcard--minimal hcard--moment"><div class="hcard-top"><span class="hcard-brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</span><svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><p class="hcard-kicker">Appreciation</p><h3 class="hcard-title">Great work, Alex.</h3><hr class="hcard-rule"><p class="hcard-body">Nobody asked you to rewrite the onboarding flow. You saw it was bad, you fixed it, and three hundred people have had a better first day because of it.</p><div class="hcard-foot"><span class="hcard-from"><span class="avatar">MR</span><span><b>Morgan Reyes</b><span>2 Aug 2024</span></span></span><span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="seal1" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#seal1" startOffset="0">THANK YOU · WELL DONE · THANK YOU · WELL DONE · </textPath></text><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/><g transform="translate(50,50)" fill="currentColor"><path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/></g></svg></span></div></article>
     </div>
   </div>
 </section>
