@@ -628,30 +628,34 @@
     });
   })();
 
-  /* -------------------------------------------------------- feature tabs -- */
+  /* -------------------------------------------------------- feature tabs --
+     Each tab owns a panel containing its own four cards and its own card
+     cluster, so switching changes the content instead of filtering one list. */
   (function () {
-    var bar = $('#ftabs'), list = $('#flist');
-    if (!bar || !list) return;
+    var bar = $('#ftabs');
+    if (!bar) return;
     var tabs = $$('.ftab', bar);
-    var items = $$('.fitem', list);
+    var panels = $$('[data-tabpanel]');
+    if (!panels.length) return;
 
     function show(key) {
-      var n = 0;
-      items.forEach(function (el) {
-        var ok = el.dataset.tab.split(' ').indexOf(key) > -1;
-        el.hidden = !ok;
-        if (ok) {
-          el.style.setProperty('--rise-delay', (n * 70) + 'ms');
-          /* re-run the reveal so a switched tab animates in rather than snapping */
-          if (!reduced.matches) {
+      panels.forEach(function (p) {
+        var on = p.dataset.tabpanel === key;
+        p.hidden = !on;
+        if (!on) return;
+        /* replay the stagger so a switched panel enters rather than snaps in */
+        if (!reduced.matches) {
+          $$('[data-rise]', p).forEach(function (el) {
             el.classList.remove('in');
             void el.offsetWidth;
             el.classList.add('in');
-          }
-          n++;
+          });
+        } else {
+          $$('[data-rise]', p).forEach(function (el) { el.classList.add('in'); });
         }
       });
     }
+
     tabs.forEach(function (t, i) {
       t.addEventListener('click', function () {
         tabs.forEach(function (o) { o.setAttribute('aria-selected', String(o === t)); });
@@ -661,21 +665,21 @@
         var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
         if (!d) return;
         e.preventDefault();
-        tabs[(i + d + tabs.length) % tabs.length].focus();
+        var n = tabs[(i + d + tabs.length) % tabs.length];
+        n.focus(); n.click();
       });
     });
-    show('all');
   })();
 
-  /* --------------------------------------------------- feature card deck -- */
-  (function () {
-    var stage = $('.fstage');
-    if (!stage) return;
+  /* --------------------------------------------------- feature card decks --
+     One instance per panel; the arrows cycle which card sits on top. */
+  $$('.fstage').forEach(function (stage) {
     var wrap = $('.fstage-cards', stage);
+    if (!wrap) return;
     var cards = $$(':scope > div', wrap);
     if (cards.length < 2) return;
     var order = ['c0', 'c1', 'c2', 'c3', 'c4'].slice(0, cards.length);
-    var top = 0;
+    var top = cards.length - 1;   // the .c0 card ships last in the markup
 
     function render() {
       cards.forEach(function (el, i) {
@@ -687,7 +691,8 @@
     var prev = $('.fstage-arrow.l', stage), next = $('.fstage-arrow.r', stage);
     if (prev) prev.addEventListener('click', function () { step(-1); });
     if (next) next.addEventListener('click', function () { step(1); });
-  })();
+    render();
+  });
 
   /* ----------------------------------------------------- page transitions --
      Chrome and Safari handle this natively via @view-transition. This is the

@@ -234,38 +234,30 @@
     </div>
 
     <div class="ftabs" role="tablist" aria-label="Feature categories" id="ftabs">
-      <button class="ftab" type="button" role="tab" aria-selected="true"  data-tab="all">All features</button>
-      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="recognition">Recognition</button>
-      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="celebrations">Celebrations</button>
-      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="automation">Automation</button>
-      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="analytics">Analytics</button>
+      <button class="ftab" type="button" role="tab" aria-selected="true" aria-controls="fp-all" data-tab="all">All features</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" aria-controls="fp-recognition" data-tab="recognition">Recognition</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" aria-controls="fp-celebrations" data-tab="celebrations">Celebrations</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" aria-controls="fp-automation" data-tab="automation">Automation</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" aria-controls="fp-analytics" data-tab="analytics">Analytics</button>
     </div>
 
-    <div class="fgrid">
-      <div class="flist" id="flist">
-        <article class="fitem" data-tab="all recognition" data-rise>
+    <div class="fgrid" id="fp-all" role="tabpanel" data-tabpanel="all">
+      <div class="flist">
+        <article class="fitem" data-rise style="--rise-delay:0ms">
           <span class="fitem-n" aria-hidden="true">1.</span>
-          <div><b>Beautiful cards</b><p>Create or choose from stunning designs</p><p class="detail">Every template is a finished piece of design, so a two-line message still arrives looking like someone made an effort.</p><ul class="fitem-meta"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg>Templates</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13h-7v-6h-4v6z"/></svg>Company branding</li></ul></div>
+          <div><b>Beautiful cards</b><p>Create or choose from stunning designs</p></div>
         </article>
-        <article class="fitem" data-tab="all celebrations automation" data-rise style="--rise-delay:80ms">
+        <article class="fitem" data-rise style="--rise-delay:80ms">
           <span class="fitem-n" aria-hidden="true">2.</span>
-          <div><b>Automated celebrations</b><p>Never miss a birthday, work celebration or promotion.</p><p class="detail">Halo watches the calendar and surfaces the moment a day early, with a draft ready. Nothing is ever sent on your behalf.</p><ul class="fitem-meta"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9.9 1.4 1.7 1.4 2.4A1.4 1.4 0 0112 5.8a1.4 1.4 0 01-1.4-1.4c0-.7.5-1.5 1.4-2.4zM7 7h10v3H7zm-3 4h16v9H4z"/></svg>Birthdays</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5.6l4 2.4-.8 1.3L11 13V7z"/></svg>Anniversaries</li></ul></div>
+          <div><b>Automated celebrations</b><p>Never miss a birthday, work celebration or promotion.</p></div>
         </article>
-        <article class="fitem" data-tab="all recognition" data-rise style="--rise-delay:160ms">
+        <article class="fitem" data-rise style="--rise-delay:160ms">
           <span class="fitem-n" aria-hidden="true">3.</span>
-          <div><b>Points &amp; rewards</b><p>Reward employees with fun and meaningful rewards</p><p class="detail">Receiving a card earns points. Points buy premium cards and templates, so the reward for being valued is the ability to value someone else.</p><ul class="fitem-meta"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5.6l4 2.4-.8 1.3L11 13V7z"/></svg>Carry over monthly</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5c0-3-4-5.5-9-5.5z"/></svg>Managers never spend</li></ul></div>
+          <div><b>Points &amp; rewards</b><p>Reward employees with fun and meaningful rewards</p></div>
         </article>
-        <article class="fitem" data-tab="all analytics" data-rise style="--rise-delay:240ms">
+        <article class="fitem" data-rise style="--rise-delay:240ms">
           <span class="fitem-n" aria-hidden="true">4.</span>
-          <div><b>Real-time analytics</b><p>Track information and engagement</p><p class="detail">Participation by department, recognition coverage, and the people who have received nothing this quarter. Coverage matters more than volume.</p><ul class="fitem-meta"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 19V11M10 19V5M16 19v-6M22 19H2"/></svg>Coverage</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.6l3.3-3.3 1.4 1.4L12 16.4l-4.7-4.7 1.4-1.4L12 13.6zM4 18h16v3H4z"/></svg>Export CSV and JSON</li></ul></div>
-        </article>
-        <article class="fitem" data-tab="automation" data-rise>
-          <span class="fitem-n" aria-hidden="true">5.</span>
-          <div><b>Directory sync</b><p>People, departments and managers arrive automatically</p><p class="detail">People, departments and managers arrive from Google Workspace, Microsoft 365 or SCIM, and stay in step when someone moves team.</p><ul class="fitem-meta"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z"/></svg>SCIM</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 11v2.8h4a4 4 0 11-1.2-3.1l2.1-2.1A7 7 0 1019 12v-1z"/></svg>Google and Microsoft</li></ul></div>
-        </article>
-        <article class="fitem" data-tab="celebrations" data-rise>
-          <span class="fitem-n" aria-hidden="true">6.</span>
-          <div><b>Anniversary reminders</b><p>Surfaced a day early, with a draft, never auto-sent</p><p class="detail">A quiet nudge to the people in a position to notice, with the milestone and the draft attached. You still write it and you still press send.</p><ul class="fitem-meta"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2v3M17 2v3M3 9h18M4 5h16v16H4z"/></svg>One day ahead</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l8 4v5c0 4.4-3.4 8.3-8 9-4.6-.7-8-4.6-8-9V7z"/></svg>Never auto-sent</li></ul></div>
+          <div><b>Real-time analytics</b><p>Track information and engagement</p></div>
         </article>
       </div>
 
@@ -274,31 +266,155 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
         </button>
         <div class="fstage-cards">
-          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#FDF3E2,#F3E0C2)">
-            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
-            <p class="mcard-msg">A small thing that saved my week.</p>
-            <div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div>
-          </article></div>
-          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#EAF0FB,#D6E2F5)">
-            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Welcome</p>
-            <p class="mcard-msg">Glad you are here.</p>
-            <div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div>
-          </article></div>
-          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#FBF6EC,#EFE6D6)">
-            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Two years</p>
-            <p class="mcard-msg">The codebase is calmer than we found it.</p>
-            <div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>3 Mar</span></span></div>
-          </article></div>
-          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#F6EEF6,#E7DAEA)">
-            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Great work</p>
-            <p class="mcard-msg">You spotted what everyone walked past.</p>
-            <div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div>
-          </article></div>
-          <div class="c0"><article class="mcard">
-            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
-            <p class="mcard-msg">You made a complex project feel easy. Thank you!</p>
-            <div class="mcard-foot"><span class="av" aria-hidden="true">JW</span><span><b>Jamie Wilson</b><span>2 Aug 2024</span></span></div>
-          </article></div>
+          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#FDF3E2,#F3E0C2)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">A small thing that saved my week.</p><div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div></article></div>
+          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#EAF0FB,#D6E2F5)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Glad you are here.</p><div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div></article></div>
+          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#FBF6EC,#EFE6D6)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Quietly, and without being asked.</p><div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div></article></div>
+          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#F6EEF6,#E7DAEA)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Overdue, and earned.</p><div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>9 Jun</span></span></div></article></div>
+          <div class="c0"><article class="mcard"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">You made a complex project feel easy. Thank you!</p><div class="mcard-foot"><span class="av" aria-hidden="true">JW</span><span><b>Jamie Wilson</b><span>2 Aug 2024</span></span></div></article></div>
+        </div>
+        <button class="fstage-arrow r" type="button" aria-label="Next card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="fgrid" id="fp-recognition" role="tabpanel" data-tabpanel="recognition" hidden>
+      <div class="flist">
+        <article class="fitem" data-rise style="--rise-delay:0ms">
+          <span class="fitem-n" aria-hidden="true">1.</span>
+          <div><b>Appreciation cards</b><p>Send one in ninety seconds, from anyone to anyone</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:80ms">
+          <span class="fitem-n" aria-hidden="true">2.</span>
+          <div><b>Group signatures</b><p>Colleagues add their name before the card is sent</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:160ms">
+          <span class="fitem-n" aria-hidden="true">3.</span>
+          <div><b>Private by default</b><p>The sender decides who else gets to see it</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:240ms">
+          <span class="fitem-n" aria-hidden="true">4.</span>
+          <div><b>Recognition history</b><p>Cards stay on a profile for the whole career</p></div>
+        </article>
+      </div>
+
+      <div class="fstage" data-rise style="--rise-delay:120ms">
+        <button class="fstage-arrow l" type="button" aria-label="Previous card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="fstage-cards">
+          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#FDF1DE,#F2DCBA)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">A small thing that saved my week.</p><div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div></article></div>
+          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#FBF4E8,#EFE2CB)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Glad you are here.</p><div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div></article></div>
+          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#F8EFE0,#EADCC4)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Quietly, and without being asked.</p><div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div></article></div>
+          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#FCF6EA,#F1E7D3)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Overdue, and earned.</p><div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>9 Jun</span></span></div></article></div>
+          <div class="c0"><article class="mcard"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Great work</p><p class="mcard-msg">You spotted the thing everyone else walked past, and fixed it.</p><div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>2 Aug 2024</span></span></div></article></div>
+        </div>
+        <button class="fstage-arrow r" type="button" aria-label="Next card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="fgrid" id="fp-celebrations" role="tabpanel" data-tabpanel="celebrations" hidden>
+      <div class="flist">
+        <article class="fitem" data-rise style="--rise-delay:0ms">
+          <span class="fitem-n" aria-hidden="true">1.</span>
+          <div><b>Birthdays</b><p>Surfaced a day early, with a draft already written</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:80ms">
+          <span class="fitem-n" aria-hidden="true">2.</span>
+          <div><b>Work anniversaries</b><p>Every milestone prepared, none of them missed</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:160ms">
+          <span class="fitem-n" aria-hidden="true">3.</span>
+          <div><b>Promotions and welcomes</b><p>Mark the moments that change a career</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:240ms">
+          <span class="fitem-n" aria-hidden="true">4.</span>
+          <div><b>Seasonal collections</b><p>Four releases a year, retired designs stay valid</p></div>
+        </article>
+      </div>
+
+      <div class="fstage" data-rise style="--rise-delay:120ms">
+        <button class="fstage-arrow l" type="button" aria-label="Previous card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="fstage-cards">
+          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#FBEAF0,#F0CFDE)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">A small thing that saved my week.</p><div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div></article></div>
+          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#F5EDF8,#E4D6EE)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Glad you are here.</p><div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div></article></div>
+          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#FDF0E8,#F4DBC9)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Quietly, and without being asked.</p><div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div></article></div>
+          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#F9EDF3,#EED8E4)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Overdue, and earned.</p><div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>9 Jun</span></span></div></article></div>
+          <div class="c0"><article class="mcard"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Happy birthday</p><p class="mcard-msg">Another year of being brilliant. Take the afternoon.</p><div class="mcard-foot"><span class="av" aria-hidden="true">HR</span><span><b>People team</b><span>3 Aug 2024</span></span></div></article></div>
+        </div>
+        <button class="fstage-arrow r" type="button" aria-label="Next card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="fgrid" id="fp-automation" role="tabpanel" data-tabpanel="automation" hidden>
+      <div class="flist">
+        <article class="fitem" data-rise style="--rise-delay:0ms">
+          <span class="fitem-n" aria-hidden="true">1.</span>
+          <div><b>Directory sync</b><p>People, departments and managers arrive automatically</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:80ms">
+          <span class="fitem-n" aria-hidden="true">2.</span>
+          <div><b>Milestone triggers</b><p>Halo watches the calendar, you still press send</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:160ms">
+          <span class="fitem-n" aria-hidden="true">3.</span>
+          <div><b>Digest emails</b><p>One weekly summary instead of constant pings</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:240ms">
+          <span class="fitem-n" aria-hidden="true">4.</span>
+          <div><b>Workspace policies</b><p>Set the default card visibility once, for everyone</p></div>
+        </article>
+      </div>
+
+      <div class="fstage" data-rise style="--rise-delay:120ms">
+        <button class="fstage-arrow l" type="button" aria-label="Previous card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="fstage-cards">
+          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#E9EFFA,#D2DFF2)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">A small thing that saved my week.</p><div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div></article></div>
+          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#EDF2FA,#D8E4F3)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Glad you are here.</p><div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div></article></div>
+          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#E6EDF7,#CEDBEE)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Quietly, and without being asked.</p><div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div></article></div>
+          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#F0F4FB,#DCE6F4)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Overdue, and earned.</p><div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>9 Jun</span></span></div></article></div>
+          <div class="c0"><article class="mcard"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Welcome</p><p class="mcard-msg">Your first card was ready before you logged in.</p><div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan 2025</span></span></div></article></div>
+        </div>
+        <button class="fstage-arrow r" type="button" aria-label="Next card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="fgrid" id="fp-analytics" role="tabpanel" data-tabpanel="analytics" hidden>
+      <div class="flist">
+        <article class="fitem" data-rise style="--rise-delay:0ms">
+          <span class="fitem-n" aria-hidden="true">1.</span>
+          <div><b>Recognition coverage</b><p>Who has received nothing at all this quarter</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:80ms">
+          <span class="fitem-n" aria-hidden="true">2.</span>
+          <div><b>Department breakdown</b><p>Where appreciation flows, and where it does not</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:160ms">
+          <span class="fitem-n" aria-hidden="true">3.</span>
+          <div><b>Participation over time</b><p>The trend that actually predicts retention</p></div>
+        </article>
+        <article class="fitem" data-rise style="--rise-delay:240ms">
+          <span class="fitem-n" aria-hidden="true">4.</span>
+          <div><b>Export</b><p>Everything is yours, in CSV and JSON, on demand</p></div>
+        </article>
+      </div>
+
+      <div class="fstage" data-rise style="--rise-delay:120ms">
+        <button class="fstage-arrow l" type="button" aria-label="Previous card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="fstage-cards">
+          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#E8F2EE,#CFE3DB)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">A small thing that saved my week.</p><div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div></article></div>
+          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#EDF3F0,#D8E7E0)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Glad you are here.</p><div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div></article></div>
+          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#E6F0F4,#CCE0E9)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Quietly, and without being asked.</p><div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div></article></div>
+          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#EFF4F2,#DAE8E2)"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p><p class="mcard-msg">Overdue, and earned.</p><div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>9 Jun</span></span></div></article></div>
+          <div class="c0"><article class="mcard"><p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Two years</p><p class="mcard-msg">The codebase is calmer than we found it, and so is the team.</p><div class="mcard-foot"><span class="av" aria-hidden="true">PR</span><span><b>Priya Raman</b><span>3 Mar 2025</span></span></div></article></div>
         </div>
         <button class="fstage-arrow r" type="button" aria-label="Next card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>

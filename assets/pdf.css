@@ -71,9 +71,9 @@
   --mx:0; --my:0;
 }
 .phero::after{
-  content:""; position:absolute; left:0; right:0; bottom:0; height:12rem; z-index:2;
+  content:""; position:absolute; left:0; right:0; bottom:0; height:7rem; z-index:2;
   pointer-events:none;
-  background:linear-gradient(to bottom, rgba(251,251,252,0) 0%, rgba(251,251,252,.72) 58%, #FBFBFC 100%);
+  background:linear-gradient(to bottom, rgba(251,251,252,0) 0%, #FBFBFC 100%);
 }
 .phero-grid{
   position:relative; z-index:3;
@@ -228,14 +228,10 @@
   position:relative; overflow:hidden;
   background:linear-gradient(180deg,#161B23 0%, #101620 42%, #0B0F15 100%);
   color:#F5F6F8;
+  border-radius:var(--r-band);
   padding-block:clamp(4.5rem,10vh,7rem);
   display:grid; gap:clamp(3.5rem,8vh,6rem);
 }
-.darkrun::before,.darkrun::after{
-  content:""; position:absolute; left:0; right:0; height:9rem; z-index:1; pointer-events:none;
-}
-.darkrun::before{ top:0;    background:linear-gradient(to bottom, #FBFBFC 0%, rgba(251,251,252,.62) 34%, transparent 100%); }
-.darkrun::after { bottom:0; background:linear-gradient(to top,    #F4F4F6 0%, rgba(244,244,246,.62) 34%, transparent 100%); }
 .darkrun > *{ position:relative; z-index:2; }
 
 .pdark{
@@ -362,15 +358,12 @@
 }
 .fitem b{ display:block; font-size:.9375rem; font-weight:700; letter-spacing:-0.008em; }
 .fitem p{ font-size:.9375rem; line-height:1.62; color:var(--pdf-mut); margin-top:.3rem; }
-.fitem .detail{ font-size:.8125rem; line-height:1.6; color:#7A8089; margin-top:.5rem; }
-.fitem-meta{ display:flex; flex-wrap:wrap; gap:.375rem; margin-top:.75rem; }
-.fitem-meta li{
-  display:inline-flex; align-items:center; gap:.3rem;
-  padding:.22rem .5rem; border-radius:6px;
-  background:#F4F5F7; border:1px solid #E7E8EC;
-  font-size:.6875rem; font-weight:500; color:#5B6069; letter-spacing:-0.002em;
-}
-.fitem-meta svg{ width:10px; height:10px; color:#8E939B; }
+.fgrid[hidden]{ display:none; }
+/* Each tab owns its own list and its own card cluster, so switching tab
+   changes what is on screen rather than filtering one shared list. */
+.fgrid{ animation:panel-in 520ms var(--ease) both; }
+@keyframes panel-in{ from{ opacity:0; translate:0 10px; } }
+@media (prefers-reduced-motion: reduce){ .fgrid{ animation:none; } }
 
 .fstage{
   position:relative; border:1px solid var(--pdf-line); border-radius:var(--r-card);
