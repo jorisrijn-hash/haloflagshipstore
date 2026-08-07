@@ -29,6 +29,8 @@
 <link rel="stylesheet" href="assets/pages.css">
 <link rel="stylesheet" href="assets/cards.css">
 <link rel="stylesheet" href="assets/rb.css">
+<link rel="stylesheet" href="assets/pdf.css">
+<link rel="stylesheet" href="assets/pdf2.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>
@@ -136,85 +138,78 @@
 <nav class="linebar" data-linebar></nav>
 
 <main id="main">
-<section class="hero hero--light" id="top">
-  <div class="light-stage" aria-hidden="true">
-    <div class="light-bloom"></div>
-    <div class="light-ring">
+<!-- ================================================================ HERO === -->
+<section class="phero" id="top">
+  <div class="pstage" aria-hidden="true">
+    <div class="pbloom"></div>
+    <div class="pring">
       <svg viewBox="0 0 100 100">
-        <circle class="lr-wide" cx="50" cy="50" r="36"/>
-        <circle class="lr-mid"  cx="50" cy="50" r="36"/>
-        <circle class="lr-core" cx="50" cy="50" r="36"/>
+        <circle class="pr-wide" cx="50" cy="50" r="37"/>
+        <circle class="pr-mid"  cx="50" cy="50" r="37"/>
+        <circle class="pr-core" cx="50" cy="50" r="37"/>
       </svg>
     </div>
-    <div class="light-floor"></div>
-    <div class="light-scrim"></div>
+    <div class="pfloor"></div>
+    <div class="pscrim"></div>
   </div>
 
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <h1 class="display" data-rise>Appreciation,<br><em>beautifully</em><br>delivered.</h1>
-        <p class="lede" data-rise style="--rise-delay:110ms">
-          Halo helps teams recognize each other with meaningful cards, celebrations,
-          and a culture that grows stronger every day.
+    <div class="phero-grid">
+      <div>
+        <h1 data-rise>
+          <span class="l1">Appreciation,</span>
+          <span class="l2">beautifully</span>
+          <span class="l3">delivered.</span>
+        </h1>
+        <p class="psub" data-rise style="--rise-delay:120ms">
+          Halo helps teams recognize each other with meaningful cards, celebrations.
+          It helps workspaces grow closer and closer.
         </p>
-        <div class="hero-cta" data-rise style="--rise-delay:200ms">
-          <a class="btn btn--onlight btn--spec" href="pricing.html">Get Halo free</a>
-          <a class="btn btn--paper" href="cards.html">Book a demo</a>
+        <div class="phero-cta" data-rise style="--rise-delay:200ms">
+          <a class="pbtn pbtn--dark" href="pricing.html">Get Halo free</a>
+          <a class="pbtn pbtn--paper" href="cards.html">Book a demo</a>
         </div>
       </div>
 
-      <div class="hero-stack" data-rise style="--rise-delay:300ms">
-        <div class="hs hs-3"><article class="qcard qcard--ghost">
-            <div class="qcard-top">
-              <p class="qcard-kicker">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg>
-                Great work
-              </p>
-              <span class="qcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div class="pstack" data-rise style="--rise-delay:300ms">
+        <div class="s3">
+          <article class="gcard gcard--ghost">
+            <div class="gcard-top">
+              <p class="gcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
+              <span class="gcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
-            <p class="qcard-msg">A note that stays on their profile.</p>
-            <div class="qcard-foot">
-              <span class="avatar" aria-hidden="true">AJ</span>
-              <span><b>Alex Johnson</b><span>1 Aug 2024</span></span>
+            <p class="gcard-msg">A note that stays on their profile.</p>
+            <div class="gcard-foot"><span class="av" aria-hidden="true">AJ</span><span><b>Alex Johnson</b><span>1 Aug 2024</span></span></div>
+          </article>
+        </div>
+        <div class="s2">
+          <article class="gcard gcard--ghost">
+            <div class="gcard-top">
+              <p class="gcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
+              <span class="gcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
-          </article></div>
-        <div class="hs hs-2"><article class="qcard qcard--ghost">
-            <div class="qcard-top">
-              <p class="qcard-kicker">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg>
-                Thank you
-              </p>
-              <span class="qcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p class="gcard-msg">You made a complex project feel easy.</p>
+            <div class="gcard-foot"><span class="av" aria-hidden="true">JW</span><span><b>Jamie Wilson</b><span>2 Aug 2024</span></span></div>
+          </article>
+        </div>
+        <div class="s1">
+          <article class="gcard">
+            <div class="gcard-top">
+              <p class="gcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Great work</p>
+              <span class="gcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
-            <p class="qcard-msg">You made a complex project feel easy.</p>
-            <div class="qcard-foot">
-              <span class="avatar" aria-hidden="true">JW</span>
-              <span><b>Jamie Wilson</b><span>2 Aug 2024</span></span>
-            </div>
-          </article></div>
-        <div class="hs hs-1"><article class="qcard">
-            <div class="qcard-top">
-              <p class="qcard-kicker">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg>
-                Great work
-              </p>
-              <span class="qcard-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            </div>
-            <p class="qcard-msg">You stayed late to walk me through the migration script. Couldn&rsquo;t have done it without you.</p>
-            <div class="qcard-foot">
-              <span class="avatar" aria-hidden="true">DF</span>
-              <span><b>Derek Foster</b><span>2 Aug 2024</span></span>
-            </div>
-          </article></div>
+            <p class="gcard-msg">You stayed late to walk me through the migration script. Couldn&rsquo;t have done it without you.</p>
+            <div class="gcard-foot"><span class="av" aria-hidden="true">DF</span><span><b>Derek Foster</b><span>2 Aug 2024</span></span></div>
+          </article>
+        </div>
       </div>
     </div>
 
-    <div class="trustline" data-rise style="--rise-delay:400ms">
+    <div class="ptrust" data-rise style="--rise-delay:400ms">
       <!-- PLACEHOLDER: these are not customers. Replace with real logos and
-           written permission before this goes anywhere public. -->
+           written permission before this is shown publicly. -->
       <p>Trusted by modern teams</p>
-      <ul class="logorow">
+      <ul>
         <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM4.1 13.2l6.7 6.7a8 8 0 01-6.7-6.7zm.2-2.6a8 8 0 019.1-9.1zm.9 3.4a8 8 0 01-.6-2.1L13.1 21a8 8 0 01-2.1-.6zM6.6 5.2a8 8 0 0111.6 11.6z"/></svg>Linear</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="3"/><path d="M8 16.5v-9l8 9v-9" stroke-linecap="round" stroke-linejoin="round"/></svg>Notion</li>
         <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.5L22 20.5H2z"/></svg>Vercel</li>
@@ -224,227 +219,299 @@
     </div>
   </div>
 </section>
-<!-- ============================================================ PROBLEM === -->
-<section class="band band--paper" id="problem" data-label="The problem">
+
+<!-- ========================================================= 2/4 · STEPS === -->
+<section class="pband" id="how" data-label="How it works">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="display d2" data-rise>Most recognition<br>does not survive the week.</h2>
-      <p class="lede copy" data-rise style="--rise-delay:100ms">
-        It is not that people do not care. It is that appreciation has nowhere to live.
-        A message scrolls away. A shout-out ends when the meeting does.
-      </p>
+    <div class="phead">
+      <p class="peyebrow" data-rise>How it works</p>
+      <h2 data-rise style="--rise-delay:70ms">Simple in concept.<br>Powerful in impact.</h2>
     </div>
 
-    <ul class="forget" id="forget">
-      <li><s>A message in the team channel</s><span class="forget-note">gone in 40 minutes</span></li>
-      <li><s>A line at the end of standup</s><span class="forget-note">heard by nine people</span></li>
-      <li><s>An email nobody replies to</s><span class="forget-note">archived unread</span></li>
-      <li><s>The annual review</s><span class="forget-note">eleven months late</span></li>
-      <li><s>A gift card with no note</s><span class="forget-note">spent, forgotten</span></li>
-      <li><em>Only from managers</em><span class="forget-note">the rest stays unsaid</span></li>
-    </ul>
-
-    <div style="margin-top:clamp(3.5rem,8vh,6rem);display:grid;gap:1.25rem;max-width:40rem" data-rise>
-      <hr class="rule">
-      <p style="font-size:clamp(1.125rem,1rem + 0.5vw,1.375rem);line-height:1.55;text-wrap:pretty">
-        Halo does one thing instead: it makes appreciation a small, beautiful object that stays.
-        On a profile. In a career. Long after the project ends.
-      </p>
-      <a class="link-quiet" href="cards.html">See what a card is <span class="arw">&rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================================== CARD === -->
-<section class="band band--dark grain" id="card" data-label="The card">
-  <div class="stage" aria-hidden="true" style="--lx:78%;--ly:52%;--rsize:min(40vh,32vw);--lint:.7">
-    <div class="stage-bloom"></div>
-    <div class="stage-scrim stage-scrim--mid"></div>
-  </div>
-  <div class="wrap split" style="position:relative;z-index:2">
-    <div>
-      <h2 class="display d2" data-rise>More than a message.<br>A <em>memory</em>.</h2>
-      <p class="lede" data-rise style="--rise-delay:80ms">
-        Every card is a designed object with a sender, a moment and a date.
-        It lands in someone's profile and it stays there for as long as they work with you.
-      </p>
-      <ul class="feat">
-        <li data-rise><span class="dot" aria-hidden="true"></span><div><b>The moment</b><p>Great work, thank you, a birthday, an anniversary, a promotion, a welcome, a farewell.</p></div></li>
-        <li data-rise style="--rise-delay:70ms"><span class="dot" aria-hidden="true"></span><div><b>The words</b><p>Written by a person. Optionally shaped by AI, never sent by it.</p></div></li>
-        <li data-rise style="--rise-delay:140ms"><span class="dot" aria-hidden="true"></span><div><b>The signatures</b><p>Colleagues can add their name to a card before it is sent.</p></div></li>
-        <li data-rise style="--rise-delay:210ms"><span class="dot" aria-hidden="true"></span><div><b>The record</b><p>Private by default. The sender decides who else sees it.</p></div></li>
-      </ul>
-      <p style="margin-top:2rem"><a class="link-quiet" href="cards.html">Everything about cards <span class="arw">&rarr;</span></a></p>
-    </div>
-
-    <div style="display:grid;place-items:center;padding:2rem 0;--rise-delay:120ms;max-width:22rem;justify-self:center;width:100%" data-rise>
-      <article class="hcard hcard--minimal hcard--moment"><div class="hcard-top"><span class="hcard-brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</span><svg class="hcard-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><p class="hcard-kicker">Appreciation</p><h3 class="hcard-title">Great work, Alex.</h3><hr class="hcard-rule"><p class="hcard-body">Nobody asked you to rewrite the onboarding flow. You saw it was bad, you fixed it, and three hundred people have had a better first day because of it.</p><div class="hcard-foot"><span class="hcard-from"><span class="avatar">MR</span><span><b>Morgan Reyes</b><span>2 Aug 2024</span></span></span><span class="hcard-seal" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="seal1" fill="none" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#seal1" startOffset="0">THANK YOU · WELL DONE · THANK YOU · WELL DONE · </textPath></text><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width=".8" opacity=".3"/><g transform="translate(50,50)" fill="currentColor"><path d="M0-8l1.7 5.6L7 0 1.7 2.4 0 8l-1.7-5.6L-7 0l5.3-2.4z"/></g></svg></span></div></article>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================================= WHAT'S IN === -->
-<section class="band band--paper" id="inside" data-label="What is inside">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 class="display d2" data-rise>Deliberately small.</h2>
-      <p class="lede copy" data-rise style="--rise-delay:80ms">
-        Halo is not an HR suite. There is no payroll, no performance review cycle, no survey tool.
-        Six things, each in service of one.
-      </p>
-    </div>
-
-    <div class="bento">
-      <a class="panel spot wide tall" href="cards.html" data-rise>
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h16v14H4zm2 3v2h6V8zm0 4v2h12v-2zm0 4v1.5h9V16z"/></svg></span>
-        <h3>Appreciation cards</h3>
-        <p>The object everything else exists to support. A moment, a message, a design, a date, and the names of everyone who signed it.</p>
-        <p class="small" style="color:var(--glow-ink);font-weight:500;margin-top:auto">Read more &rarr;</p>
-      </a>
-      <a class="panel spot narrow" href="product.html#workspaces" data-rise style="--rise-delay:60ms">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 21V8l9-5 9 5v13h-7v-6h-4v6z"/></svg></span>
-        <h3>Workspaces</h3>
-        <p>One private space per company, joinable only from a verified work address.</p>
-      </a>
-      <a class="panel spot narrow" href="product.html#departments" data-rise style="--rise-delay:120ms">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v5H4zm9 0h7v5h-7zM4 11h7v9H4zm9 0h7v9h-7z"/></svg></span>
-        <h3>Departments</h3>
-        <p>Recognition stays close to the people who understand what it took.</p>
-      </a>
-      <a class="panel spot narrow" href="ai.html" data-rise style="--rise-delay:180ms">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.9L18.5 8l-4.9 1.6L12 14.5 10.4 9.6 5.5 8l4.9-1.1zM18 14l.9 2.6L21.5 17l-2.6.9L18 20.5l-.9-2.6L14.5 17l2.6-.4z"/></svg></span>
-        <h3>Halo AI</h3>
-        <p>Helps you find the words. Never writes the card for you.</p>
-      </a>
-      <a class="panel spot narrow" href="templates.html" data-rise style="--rise-delay:240ms">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg></span>
-        <h3>Templates</h3>
-        <p>A considered design for each kind of moment, not a colour picker.</p>
-      </a>
-      <a class="panel spot wide" href="product.html#points" data-rise style="--rise-delay:300ms">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.6.8-4.9 4.5 1.3 6.4L12 16.8 6.1 20l1.3-6.4L2.5 9.1l6.6-.8z"/></svg></span>
-        <h3>Points</h3>
-        <p>Receiving appreciation earns points. Points buy premium cards and templates, so the reward for being valued is the ability to value someone else. Managers never need them.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ======================================================= DEPARTMENTS === -->
-<section class="band--void grain" id="departments" data-label="Departments">
-  <div class="rail-sticky" id="railSticky">
-    <div class="rail-pin">
-      <div class="wrap rail-head">
-        <h2 class="display d2" data-rise>Every team has its own <em>room</em>.</h2>
-        <p class="lede" data-rise style="--rise-delay:80ms">
-          Departments work like channels. Recognition stays close to the people who understand
-          what it took, and nothing gets lost in a company-wide feed.
-        </p>
+    <div class="steps">
+      <div class="step" data-rise>
+        <span class="step-n" aria-hidden="true">1.</span>
+        <b>Send a card</b>
+        <p>Choose a template and personalize a message.</p>
       </div>
-      <ul class="rail" id="rail">
-        <li class="dept panel spot">
-          <div class="dept-top"><span class="dept-name">Engineering</span><span class="dept-count">24 members</span></div>
-          <span class="dept-tag">18 cards this month</span>
-          <ul class="dept-feed">
-            <li><span class="avatar" aria-hidden="true">AJ</span><p><b>Alex Johnson</b> was thanked for unblocking the release at 11pm.</p></li>
-            <li><span class="avatar" aria-hidden="true">PR</span><p><b>Priya Raman</b> hit 2 years today.</p></li>
-          </ul>
-        </li>
-        <li class="dept panel spot">
-          <div class="dept-top"><span class="dept-name">Marketing</span><span class="dept-count">11 members</span></div>
-          <span class="dept-tag">9 cards this month</span>
-          <ul class="dept-feed">
-            <li><span class="avatar" aria-hidden="true">TS</span><p><b>Taylor Smith</b> was promoted to Brand Lead.</p></li>
-            <li><span class="avatar" aria-hidden="true">CB</span><p><b>Casey Brown</b> was thanked for the launch copy rewrite.</p></li>
-          </ul>
-        </li>
-        <li class="dept panel spot">
-          <div class="dept-top"><span class="dept-name">Customer Support</span><span class="dept-count">16 members</span></div>
-          <span class="dept-tag">31 cards this month</span>
-          <ul class="dept-feed">
-            <li><span class="avatar" aria-hidden="true">ML</span><p><b>Morgan Lee</b> cleared the weekend backlog alone.</p></li>
-            <li><span class="avatar" aria-hidden="true">DK</span><p><b>Dev Kaur</b> was welcomed to the team.</p></li>
-          </ul>
-        </li>
-        <li class="dept panel spot">
-          <div class="dept-top"><span class="dept-name">Finance</span><span class="dept-count">6 members</span></div>
-          <span class="dept-tag">4 cards this month</span>
-          <ul class="dept-feed">
-            <li><span class="avatar" aria-hidden="true">RN</span><p><b>Rae Nolan</b> closed the quarter two days early.</p></li>
-            <li><span class="avatar" aria-hidden="true">SB</span><p><b>Sam Bell</b> hit 5 years.</p></li>
-          </ul>
-        </li>
-        <li class="dept panel spot">
-          <div class="dept-top"><span class="dept-name">People</span><span class="dept-count">4 members</span></div>
-          <span class="dept-tag">12 cards this month</span>
-          <ul class="dept-feed">
-            <li><span class="avatar" aria-hidden="true">JW</span><p><b>Jamie Wilson</b> ran onboarding for eleven new joiners.</p></li>
-            <li><span class="avatar" aria-hidden="true">EO</span><p><b>Eli Okafor</b> was thanked for the benefits rewrite.</p></li>
-          </ul>
-        </li>
-        <li class="dept panel spot">
-          <div class="dept-top"><span class="dept-name">Sales</span><span class="dept-count">19 members</span></div>
-          <span class="dept-tag">22 cards this month</span>
-          <ul class="dept-feed">
-            <li><span class="avatar" aria-hidden="true">NV</span><p><b>Nora Vance</b> was thanked for coaching two new reps.</p></li>
-            <li><span class="avatar" aria-hidden="true">LT</span><p><b>Leo Tan</b> welcomed to the team.</p></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="rail-progress" aria-hidden="true"><i id="railBar"></i></div>
+      <div class="step" data-rise style="--rise-delay:90ms">
+        <span class="step-n" aria-hidden="true">2.</span>
+        <b>They feel seen</b>
+        <p>Your words are delivered instantly and mean something.</p>
+      </div>
+      <div class="step" data-rise style="--rise-delay:180ms">
+        <span class="step-n" aria-hidden="true">3.</span>
+        <b>Earn points</b>
+        <p>They spend points on rewards they love and want.</p>
+      </div>
+      <div class="step" data-rise style="--rise-delay:270ms">
+        <span class="step-n" aria-hidden="true">4.</span>
+        <b>Stronger culture</b>
+        <p>Recognition becomes a habit, not an afterthought.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="close grain">
-  <div class="close-glow" aria-hidden="true"></div>
-  <div class="close-light" aria-hidden="true">
-    <svg viewBox="0 0 100 100">
-      <circle class="ring-path ring-halo" cx="50" cy="50" r="33.5"/>
-      <circle class="ring-path ring-mid"  cx="50" cy="50" r="33.5"/>
-      <circle class="ring-path ring-core" cx="50" cy="50" r="33.5"/>
-    </svg>
-  </div>
-  <div class="wrap close-in">
-    <h2 class="display d1" data-rise>Say the thing.</h2>
-    <p class="lede" data-rise>Set up a workspace in a few minutes. The first ten people are free, permanently.</p>
-    <div class="close-cta" data-rise>
-      <a class="btn btn--lit btn--spec" href="pricing.html">Get Halo free</a>
-      <a class="btn btn--ghost" href="cards.html">See a card <span class="arw">&rarr;</span></a>
+<!-- ===================================================== 2/4 · TEMPLATES === -->
+<section class="pband" style="padding-top:0" id="templates-band" data-label="Templates">
+  <div class="wrap">
+    <div class="pdark" data-rise>
+      <div class="pdark-grid">
+        <div>
+          <h2>Cards that people<br>love to receive.</h2>
+          <p>Thoughtfully designed templates for every moment that matters.</p>
+          <a class="pbtn pbtn--paper pbtn--pill" href="templates.html">Explore templates</a>
+        </div>
+
+        <div class="fanwrap">
+          <div class="fa"><article class="mcard mcard--dim">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
+            <p class="mcard-msg">Thanks for jumping in on the release.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug 2024</span></span></div>
+          </article></div>
+          <div class="fb"><article class="mcard mcard--dim">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Welcome</p>
+            <p class="mcard-msg">Glad you are here. Ask anyone anything.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>1 Aug 2024</span></span></div>
+          </article></div>
+          <div class="fc"><article class="mcard">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Great work</p>
+            <p class="mcard-msg">You went above and beyond on this launch. The results show it.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">AJ</span><span><b>Alex Johnson</b><span>2 Aug 2024</span></span></div>
+          </article></div>
+          <div class="fd"><article class="mcard mcard--dim">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Two years</p>
+            <p class="mcard-msg">Two years of making this place better.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">HR</span><span><b>People team</b><span>3 Mar 2024</span></span></div>
+          </article></div>
+          <div class="fe"><article class="mcard mcard--dim">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Promotion</p>
+            <p class="mcard-msg">Senior Engineer. Overdue, and earned.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>9 Jun 2024</span></span></div>
+          </article></div>
+        </div>
+      </div>
     </div>
-    <small data-rise>No credit card required</small>
   </div>
 </section>
 
+<!-- ===================================================== 3/4 · ANALYTICS === -->
+<section class="pband" style="padding-top:0" id="analytics" data-label="Analytics">
+  <div class="wrap">
+    <div class="pdark pdark--wide" data-rise>
+      <div class="analytics">
+        <div class="dash">
+          <ul class="dash-side">
+            <li class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/></svg> Overview</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/></svg> Cards</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v4M5 21v-8h14v8z"/></svg> Celebrations</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3.5l2.6 5.6 5.9.8-4.3 4 1.1 5.8L12 17l-5.3 2.7 1.1-5.8-4.3-4 5.9-.8z"/></svg> Points &amp; rewards</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg> People</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/></svg> Departments</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19V11M10 19V5M16 19v-6M22 19H2"/></svg> Analytics</li>
+          </ul>
+
+          <div class="dash-main">
+            <div class="dash-tiles">
+              <div class="tile"><p>Cards sent</p><b>1,482</b><i>&uarr; 34%</i></div>
+              <div class="tile"><p>Recognition rate</p><b>87%</b><i>&uarr; 13%</i></div>
+              <div class="tile"><p>Active users</p><b>250K</b><i>&uarr; 31%</i></div>
+            </div>
+
+            <div class="dash-row">
+              <div class="panel-d">
+                <p>Recognition over time</p>
+                <svg class="spark" viewBox="0 0 220 96" role="img" aria-label="Recognition rising over six weeks">
+                  <g class="ax" aria-hidden="true">
+                    <text x="2" y="16">150</text><text x="2" y="40">100</text><text x="4" y="64">50</text><text x="8" y="82">0</text>
+                  </g>
+                  <path class="ln" style="--len:420" d="M26 66 L52 54 L78 58 L104 34 L130 46 L156 26 L182 40 L208 22"/>
+                  <g class="dt" aria-hidden="true">
+                    <circle cx="26" cy="66" r="2"/><circle cx="52" cy="54" r="2"/><circle cx="78" cy="58" r="2"/>
+                    <circle cx="104" cy="34" r="2.6"/><circle cx="130" cy="46" r="2"/><circle cx="156" cy="26" r="2"/>
+                    <circle cx="182" cy="40" r="2"/><circle cx="208" cy="22" r="2"/>
+                  </g>
+                  <g aria-hidden="true">
+                    <rect class="tipbox" x="82" y="10" width="45" height="18" rx="4"/>
+                    <text class="tiptxt" x="88" y="18">May 15</text>
+                    <text class="tiptxt" x="88" y="25">182 cards</text>
+                  </g>
+                  <g class="ax" aria-hidden="true">
+                    <text x="18" y="94">May 1</text><text x="70" y="94">May 15</text><text x="122" y="94">May 29</text><text x="176" y="94">Jun 15</text>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="panel-d">
+                <p>Top categories</p>
+                <svg class="donut" viewBox="0 0 100 100" role="img" aria-label="Great work 42 percent, teamwork 26 percent, helpful 18 percent, leadership 12 percent">
+                  <circle class="tr" cx="50" cy="50" r="36"/>
+                  <circle class="sg" cx="50" cy="50" r="36" stroke="#5B8DEF" style="--dash:95 226; --off:0"/>
+                  <circle class="sg" cx="50" cy="50" r="36" stroke="#6FA8E8" style="--dash:59 226; --off:-95"/>
+                  <circle class="sg" cx="50" cy="50" r="36" stroke="#8DBEEB" style="--dash:41 226; --off:-154"/>
+                  <circle class="sg" cx="50" cy="50" r="36" stroke="#B4D3F0" style="--dash:27 226; --off:-195"/>
+                </svg>
+                <ul class="legend">
+                  <li><i style="background:#5B8DEF"></i>Great work<b>42%</b></li>
+                  <li><i style="background:#6FA8E8"></i>Teamwork<b>26%</b></li>
+                  <li><i style="background:#8DBEEB"></i>Helpful<b>18%</b></li>
+                  <li><i style="background:#B4D3F0"></i>Leadership<b>12%</b></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-copy">
+          <h2>Analytics that drive culture forward</h2>
+          <p>Measure what matters and celebrate what counts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== 4/4 · FEATURES === -->
+<section class="pband pband--tint" id="features" data-label="Features">
+  <div class="wrap">
+    <div class="phead">
+      <p class="peyebrow" data-rise>Card features</p>
+      <h2 data-rise style="--rise-delay:70ms">Powerful features.<br>Designed to make<br>appreciation effortless.</h2>
+    </div>
+
+    <div class="ftabs" role="tablist" aria-label="Feature categories" id="ftabs">
+      <button class="ftab" type="button" role="tab" aria-selected="true"  data-tab="all">All features</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="recognition">Recognition</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="celebrations">Celebrations</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="automation">Automation</button>
+      <button class="ftab" type="button" role="tab" aria-selected="false" data-tab="analytics">Analytics</button>
+    </div>
+
+    <div class="fgrid">
+      <div class="flist" id="flist">
+        <article class="fitem" data-tab="all recognition" data-rise>
+          <span class="fitem-n" aria-hidden="true">1.</span>
+          <div><b>Beautiful cards</b><p>Create or choose from stunning designs</p></div>
+        </article>
+        <article class="fitem" data-tab="all celebrations automation" data-rise style="--rise-delay:80ms">
+          <span class="fitem-n" aria-hidden="true">2.</span>
+          <div><b>Automated celebrations</b><p>Never miss a birthday, work celebration or promotion.</p></div>
+        </article>
+        <article class="fitem" data-tab="all recognition" data-rise style="--rise-delay:160ms">
+          <span class="fitem-n" aria-hidden="true">3.</span>
+          <div><b>Points &amp; rewards</b><p>Reward employees with fun and meaningful rewards</p></div>
+        </article>
+        <article class="fitem" data-tab="all analytics" data-rise style="--rise-delay:240ms">
+          <span class="fitem-n" aria-hidden="true">4.</span>
+          <div><b>Real-time analytics</b><p>Track information and engagement</p></div>
+        </article>
+        <article class="fitem" data-tab="automation" data-rise>
+          <span class="fitem-n" aria-hidden="true">5.</span>
+          <div><b>Directory sync</b><p>People, departments and managers arrive automatically</p></div>
+        </article>
+        <article class="fitem" data-tab="celebrations" data-rise>
+          <span class="fitem-n" aria-hidden="true">6.</span>
+          <div><b>Anniversary reminders</b><p>Surfaced a day early, with a draft, never auto-sent</p></div>
+        </article>
+      </div>
+
+      <div class="fstage" data-rise style="--rise-delay:120ms">
+        <button class="fstage-arrow l" type="button" aria-label="Previous card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="fstage-cards">
+          <div class="c1"><article class="mcard" style="background:linear-gradient(160deg,#FDF3E2,#F3E0C2)">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
+            <p class="mcard-msg">A small thing that saved my week.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">RN</span><span><b>Rae Nolan</b><span>1 Aug</span></span></div>
+          </article></div>
+          <div class="c2"><article class="mcard" style="background:linear-gradient(160deg,#EAF0FB,#D6E2F5)">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Welcome</p>
+            <p class="mcard-msg">Glad you are here.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">DK</span><span><b>Dev Kaur</b><span>12 Jan</span></span></div>
+          </article></div>
+          <div class="c3"><article class="mcard" style="background:linear-gradient(160deg,#FBF6EC,#EFE6D6)">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Two years</p>
+            <p class="mcard-msg">The codebase is calmer than we found it.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">MR</span><span><b>Morgan Reyes</b><span>3 Mar</span></span></div>
+          </article></div>
+          <div class="c4"><article class="mcard" style="background:linear-gradient(160deg,#F6EEF6,#E7DAEA)">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Great work</p>
+            <p class="mcard-msg">You spotted what everyone walked past.</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">TS</span><span><b>Taylor Smith</b><span>8 Jul</span></span></div>
+          </article></div>
+          <div class="c0"><article class="mcard">
+            <p class="mcard-kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Thank you</p>
+            <p class="mcard-msg">You made a complex project feel easy. Thank you!</p>
+            <div class="mcard-foot"><span class="av" aria-hidden="true">JW</span><span><b>Jamie Wilson</b><span>2 Aug 2024</span></span></div>
+          </article></div>
+        </div>
+        <button class="fstage-arrow r" type="button" aria-label="Next card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer class="foot"><div class="wrap"><div class="foot-grid">
-<div class="foot-brand"><a class="brand" href="index.html" aria-label="Halo, home"><svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a><p>The employee appreciation platform.</p></div>
-<div><h4>Product</h4><ul>
+<footer class="pfoot">
+<div class="pfoot-glow" aria-hidden="true"></div>
+<div class="pfoot-halo" aria-hidden="true"><svg viewBox="0 0 470 200" preserveAspectRatio="none"><ellipse class="ph-wide" cx="235" cy="100" rx="222" ry="88"/><ellipse class="ph-mid"  cx="235" cy="100" rx="222" ry="88"/><ellipse class="ph-core" cx="235" cy="100" rx="222" ry="88"/></svg></div>
+<div class="wrap pfoot-cta">
+<h2 data-rise>Ready to build a culture of appreciation?</h2>
+<p data-rise style="--rise-delay:80ms">Join thousands of teams already using Halo to recognize what matters most.</p>
+<div class="row" data-rise style="--rise-delay:150ms"><a class="pbtn pbtn--paper pbtn--pill" href="pricing.html">Get Halo free</a><a class="pbtn pbtn--onDark pbtn--pill" href="cards.html">Book a demo</a></div>
+<small data-rise style="--rise-delay:210ms">No credit card required</small>
+</div>
+<div class="wrap"><div class="pfoot-main">
+<div class="pfoot-brand"><a class="brand" href="index.html" aria-label="Halo, home"><svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="33.5"/></svg> Halo</a><p class="tag">Appreciation,<br><em>beautifully</em> delivered.</p><p>Halo helps teams recognize each other with meaningful cards, celebrations, and a culture that grows stronger every day.</p><div class="socials">
+<a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 3.5a2 2 0 11-.001 4.001A2 2 0 014.5 3.5zM3 9h3v12H3zm6 0h2.9v1.6h.04c.4-.76 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V21h-3v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a>
+<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 5 5 .06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.15 3.3-1.7 4.8-5 5-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-5-5C2.04 15.6 2 15.2 2 12s0-3.6.07-4.9c.15-3.3 1.7-4.8 5-5C8.4 2.2 8.8 2.2 12 2.2zm0 3.8a6 6 0 100 12 6 6 0 000-12zm0 2a4 4 0 110 8 4 4 0 010-8zm6.2-3.5a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg></a>
+<a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.9H5.8z"/></svg></a>
+<a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 00-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 002.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 001.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 001.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15.1V8.9l5.2 3.1z"/></svg></a>
+</div></div>
+<div class="pfoot-col"><h4>Product</h4><ul>
 <li><a href="product.html">Overview</a></li>
-<li><a href="cards.html">Appreciation cards</a></li>
+<li><a href="cards.html">Appreciation Cards</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Features</a></li>
+<li><a href="ai.html">AI Assistant</a></li>
 <li><a href="templates.html">Templates</a></li>
-<li><a href="ai.html">Halo AI</a></li>
-<li><a href="#" aria-disabled="true" tabindex="-1">Add-ons</a></li>
-</ul></div>
-<div><h4>Company</h4><ul>
-<li><a href="#" aria-disabled="true" tabindex="-1">About</a></li>
-<li><a href="#" aria-disabled="true" tabindex="-1">Customers</a></li>
-<li><a href="#" aria-disabled="true" tabindex="-1">Contact</a></li>
+<li><a href="product.html">Integrations</a></li>
 <li><a href="pricing.html">Pricing</a></li>
 </ul></div>
-<div><h4>Resources</h4><ul>
-<li><a href="#" aria-disabled="true" tabindex="-1">Guides</a></li>
-<li><a href="#" aria-disabled="true" tabindex="-1">Changelog</a></li>
-<li><a href="#" aria-disabled="true" tabindex="-1">Downloads</a></li>
-<li><a href="security.html">Security</a></li>
+<div class="pfoot-col"><h4>Solutions</h4><ul>
+<li><a href="product.html">By Role</a></li>
+<li><a href="product.html">By Department</a></li>
+<li><a href="product.html">Startups</a></li>
+<li><a href="product.html">Small Business</a></li>
+<li><a href="security.html">Enterprise</a></li>
+<li><a href="product.html">Remote Teams</a></li>
 </ul></div>
-<div><h4>Legal</h4><ul>
+<div class="pfoot-col"><h4>Resources</h4><ul>
+<li><a href="#" aria-disabled="true" tabindex="-1">Blog</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Guides</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Help Center</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Case Studies</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Webinars</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Changelog</a></li>
+</ul></div>
+<div class="pfoot-col"><h4>Company</h4><ul>
+<li><a href="#" aria-disabled="true" tabindex="-1">About Us</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Careers</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Press Kit</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Partners</a></li>
+<li><a href="#" aria-disabled="true" tabindex="-1">Contact Us</a></li>
+</ul></div>
+<div class="newsletter"><h4><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/></svg> Stay in the loop</h4><p>Subscribe to get product updates, culture insights, and Halo news.</p><form onsubmit="return false"><label class="vh" for="nl">Email address</label><input id="nl" type="email" name="email" placeholder="Enter your email" autocomplete="email"><button class="pbtn pbtn--paper" type="submit">Subscribe <span class="arw">&rarr;</span></button></form><p class="privacy"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5a4.5 4.5 0 014.5 4.5v3H18a1.5 1.5 0 011.5 1.5v10A1.5 1.5 0 0118 22H6a1.5 1.5 0 01-1.5-1.5v-10A1.5 1.5 0 016 9h1.5V6A4.5 4.5 0 0112 1.5zm0 2A2.5 2.5 0 009.5 6v3h5V6A2.5 2.5 0 0012 3.5z"/></svg> We respect your privacy. Unsubscribe anytime.</p></div>
+</div></div>
+<div class="wrap pfoot-base"><span>&copy; 2026 Halo</span><ul>
 <li><a href="#" aria-disabled="true" tabindex="-1">Privacy</a></li>
 <li><a href="#" aria-disabled="true" tabindex="-1">Terms</a></li>
 <li><a href="#" aria-disabled="true" tabindex="-1">Cookies</a></li>
-</ul></div>
-</div><div class="foot-base"><span>&copy; 2026 Halo</span><span>Built for teams that care how things feel.</span></div></div></footer>
+<li><a href="security.html">Security</a></li>
+</ul></div></footer>
 <script src="assets/halo.js"></script>
 </body>
 </html>

@@ -162,65 +162,67 @@ nothing.
 
 ---
 
-# v3 — new card system and five more components
+# v4 — rebuilt to the PDF artboards
 
-## Card system
+The landing page and pricing page are now recreated from `HALO_LANDING_PAGE___pricing_page_.pdf`,
+artboard by artboard. Everything from v3 that the PDF replaced is gone.
 
-The card was rebuilt to the supplied design sheet. Portrait, `41/64`, with a
-fixed six-part structure — brand row, moment mark, kicker, serif title, rule,
-body, sender, seal — and six interchangeable finishes:
+## Stack note
 
-| Finish | Class | Notes |
-|---|---|---|
-| 01 Minimal elegant | `.hcard--minimal` | The default. Warm off-white. |
-| 02 Bold modern | `.hcard--bold` | Near-black, warm mark. |
-| 03 Refined texture | `.hcard--texture` | Embossed shape under a raking light, `soft-light` blend. |
-| 04 Gradient warm | `.hcard--gradient` | Lavender into peach. |
-| Confetti | `.hcard--confetti` | Birthday. Nine gradient chips, no images. |
-| Balloon | `.hcard--balloon` | Birthday. Pearlescent, CSS only. |
-| Glass | `.hcard--glass` | Hero only — the ring lights it from behind. |
+The brief asked to keep Next.js, React, Framer Motion and an installed React Bits
+package. None of those are in this project and never were: it is static HTML, two
+CSS layers plus three PDF layers, one script, a Python build step, zero runtime
+dependencies. The React Bits *ideas* were reimplemented in vanilla (see v3 above).
+Migration is a separate decision, not something to do silently.
 
-Cards are written as a build token rather than by hand, because there are 34 of
-them and hand-maintaining that markup would guarantee drift:
+## Files
 
-```
-{{card minimal|appreciation|Great work, Alex.|Body copy.|Jamie Wilson|3 Aug 2024|01. Minimal elegant}}
-     finish   moment        title             body       from          date       label (optional)
-```
+| File | Contains |
+|---|---|
+| `assets/pdf.css` | HERO, 2/4 steps, 2/4 dark templates band, 3/4 analytics, 4/4 feature tabs |
+| `assets/pdf2.css` | Dark pricing artboard, footer artboard, dark nav variant |
+| `pages/index.html` | Landing page — the four hero artboards in order |
+| `pages/pricing.html` | Pricing artboard |
 
-Moments are `appreciation`, `birthday`, `milestone`, `welcome`. The moment picks
-the corner mark and the circular seal text. Seals get unique gradient and path
-IDs automatically, so a page can carry as many as it likes.
+Load order is `halo → pages → cards → rb → pdf → pdf2`. The PDF layers are last
+so they win without `!important`. Getting this wrong is what made the v3 hero
+render dark.
 
-## Hero
+## Artboard mapping
 
-Inverted to the light register per the reference: a bright room with the halo as
-a warm source inside it, rather than the only light in the dark. The hero ring is
-unbroken — the gap belongs to the logo mark, and on a bright ground a broken ring
-reads as a rendering error. The nav follows into `.nav--light`, and the logo mark
-picks up the iridescent gradient from the reference.
+- **HERO** — full-screen, light. Oversized swash italic overlapping both roman
+  lines. Unbroken ring with a breathing glow, bloom, floor shadow and a scrim
+  that keeps the headline column readable. Three frosted cards, front one full,
+  two ghosted behind. Trust row with five wordmarks.
+- **2/4** — "Simple in concept. Powerful in impact." with four raised circular
+  numerals in Newsreader, then the dark rounded band with the five-card fan that
+  spreads on hover.
+- **3/4** — dark band holding a full dashboard mock: sidebar, three stat tiles,
+  a line chart that draws itself on entry with the May 15 tooltip, and a donut
+  with the four category legend. Copy right-aligned beside it.
+- **4/4** — five feature tabs with a sliding underline, four numbered cards, and
+  a card cluster with working arrows that cycle which card is on top.
+- **FOOTER** — the closing CTA and the footer are now one continuous dark field,
+  as in the artboard. The halo lies flat as a wide ellipse with the buttons
+  inside it. Five columns plus a newsletter block.
 
-Interior sections keep the dark register, so the light/dark rhythm survives.
+## Shared footer
 
-## The five requested components
+`foot_html()` now builds the whole thing. The `<!--close: Headline | Sub -->`
+directive at the top of a page body overrides the CTA text; every page gets the
+same footer.
 
-| Requested | Where it went | Adaptation |
-|---|---|---|
-| **Specular Button** | 33 primary CTAs, plus the card-nav footer | React Bits renders this with an OGL shader. Here it is two CSS layers: a pointer-tracked specular pool and a rim highlight that brightens on the edge nearest the cursor. Same read, no WebGL. It replaced `data-magnet` on those buttons — two physical affordances on one control reads as fidgety. |
-| **Card Nav** | Both mega menus, every page | Panel columns became cards with their own surface and hover lift, plus a footer row with a line of context and a CTA. This also fixed a real v2 problem: the mega menu was three undifferentiated lists of links. |
-| **Carousel** | `cards.html`, the finishes section | Real scroll-snap overflow rather than transform maths, so trackpad, touch, arrow keys and the buttons all work and the visual position can never drift from the scroll position. JS only mirrors state into the dots and disables the arrows at the ends. |
-| **Drift Wall** | `templates.html`, full-bleed under the hero | Six columns of cards on a tilted plane, each drifting at its own golden-ratio-staggered speed, with pointer parallax and a radial veil. The drift is a CSS animation per column so it stays off the main thread; only the parallax touches JS. Columns are duplicated once in JS so the `-50%` loop seams invisibly. Pauses on hover. |
-| **Line Sidebar** | Every page with three or more sections | Built at runtime from the page's own `section[id][data-label]`, so it can never drift out of sync with the content. Scroll-spy drives the active state; React Bits' pointer-proximity shift is kept as the hover feel on top of it, with the same smoothstep falloff. Removes itself below three sections and below 86rem. |
+## Placeholders that must be replaced
 
-Add a section to the sidebar by giving it an id and a label:
+Marked with HTML comments in the source:
 
-```html
-<section class="band band--paper" id="roles" data-label="Roles">
-```
+- The five trust logos on the landing page are not customers.
+- The pricing page's usage figures (1M+, 250K+, 98%, 170+) and the Sarah Johnson
+  testimonial come from the artboard, not from data.
 
-## Still open
+## Not verified
 
-The "trusted by modern teams" row in the reference names Linear, Notion, Vercel,
-Loom and Ramp. Those are not customers, so the slot ships with the integrations
-instead. Swap the list in `pages/index.html` once there are real logos and real
-permission.
+No browser runs in the build environment, so nothing here has been seen rendered.
+Structure, tag balance, duplicate attributes, dead links, dead anchors, JS syntax
+and accessible names are checked automatically and pass. Pixel comparison against
+the PDF still needs your eyes.

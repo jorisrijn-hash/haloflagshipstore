@@ -583,6 +583,112 @@
     }, { passive: true });
   })();
 
+  /* ------------------------------------------------------- pbtn specular --
+     Same delegated pointer tracking as .btn--spec, for the PDF button set. */
+  (function () {
+    if (reduced.matches || !fine.matches) return;
+    var q = [], queued = false;
+    document.addEventListener('pointermove', function (e) {
+      var el = e.target.closest('.pbtn');
+      if (!el) return;
+      q.push([el, e.clientX, e.clientY]);
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        q.forEach(function (p) {
+          var r = p[0].getBoundingClientRect();
+          p[0].style.setProperty('--sx', ((p[1] - r.left) / r.width * 100).toFixed(1) + '%');
+          p[0].style.setProperty('--sy', ((p[2] - r.top) / r.height * 100).toFixed(1) + '%');
+        });
+        q = []; queued = false;
+      });
+    }, { passive: true });
+  })();
+
+  /* ---------------------------------------------------------- hero halo ---
+     Mouse parallax on the hero light and the card stack. */
+  (function () {
+    var hero = $('.phero');
+    if (!hero || reduced.matches || !fine.matches) return;
+    var tx = 0, ty = 0, queued = false;
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        hero.style.setProperty('--mx', tx.toFixed(3));
+        hero.style.setProperty('--my', ty.toFixed(3));
+        queued = false;
+      });
+    });
+    hero.addEventListener('pointerleave', function () {
+      hero.style.setProperty('--mx', 0); hero.style.setProperty('--my', 0);
+    });
+  })();
+
+  /* -------------------------------------------------------- feature tabs -- */
+  (function () {
+    var bar = $('#ftabs'), list = $('#flist');
+    if (!bar || !list) return;
+    var tabs = $$('.ftab', bar);
+    var items = $$('.fitem', list);
+
+    function show(key) {
+      var n = 0;
+      items.forEach(function (el) {
+        var ok = el.dataset.tab.split(' ').indexOf(key) > -1;
+        el.hidden = !ok;
+        if (ok) {
+          el.style.setProperty('--rise-delay', (n * 70) + 'ms');
+          /* re-run the reveal so a switched tab animates in rather than snapping */
+          if (!reduced.matches) {
+            el.classList.remove('in');
+            void el.offsetWidth;
+            el.classList.add('in');
+          }
+          n++;
+        }
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () {
+        tabs.forEach(function (o) { o.setAttribute('aria-selected', String(o === t)); });
+        show(t.dataset.tab);
+      });
+      t.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        tabs[(i + d + tabs.length) % tabs.length].focus();
+      });
+    });
+    show('all');
+  })();
+
+  /* --------------------------------------------------- feature card deck -- */
+  (function () {
+    var stage = $('.fstage');
+    if (!stage) return;
+    var wrap = $('.fstage-cards', stage);
+    var cards = $$(':scope > div', wrap);
+    if (cards.length < 2) return;
+    var order = ['c0', 'c1', 'c2', 'c3', 'c4'].slice(0, cards.length);
+    var top = 0;
+
+    function render() {
+      cards.forEach(function (el, i) {
+        el.className = order[(i - top + order.length) % order.length];
+      });
+    }
+    function step(n) { top = (top + n + cards.length) % cards.length; render(); }
+
+    var prev = $('.fstage-arrow.l', stage), next = $('.fstage-arrow.r', stage);
+    if (prev) prev.addEventListener('click', function () { step(-1); });
+    if (next) next.addEventListener('click', function () { step(1); });
+  })();
+
   /* ----------------------------------------------------- page transitions --
      Chrome and Safari handle this natively via @view-transition. This is the
      fallback for engines that do not: a short fade instead of a hard cut. */

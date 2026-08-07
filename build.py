@@ -38,6 +38,9 @@ PAGE_META = {
 # aria-disabled with a "soon" marker rather than as broken links.
 BUILT = set(PAGE_META)
 
+# Artboards with a dark field behind the navigation.
+DARK_PAGES = {"pricing"}
+
 NAV_BLURB = {
     "product":   "Everything Halo does, and the one thing it is for.",
     "solutions": "Halo adapts to your organisation, whatever its size.",
@@ -100,14 +103,25 @@ NAV = [
 ]
 
 FOOT = [
-    ("Product",  [("product","Overview"), ("cards","Appreciation cards"),
-                  ("templates","Templates"), ("ai","Halo AI"), ("addons","Add-ons")]),
-    ("Company",  [("about","About"), ("customers","Customers"),
-                  ("contact","Contact"), ("pricing","Pricing")]),
-    ("Resources",[("resources","Guides"), ("resources","Changelog"),
-                  ("downloads","Downloads"), ("security","Security")]),
-    ("Legal",    [("privacy","Privacy"), ("terms","Terms"), ("cookies","Cookies")]),
+    ("Product", [("product","Overview"), ("cards","Appreciation Cards"), ("features","Features"),
+                 ("ai","AI Assistant"), ("templates","Templates"), ("product","Integrations"),
+                 ("pricing","Pricing")]),
+    ("Solutions", [("product","By Role"), ("product","By Department"), ("product","Startups"),
+                   ("product","Small Business"), ("security","Enterprise"), ("product","Remote Teams")]),
+    ("Resources", [("resources","Blog"), ("resources","Guides"), ("resources","Help Center"),
+                   ("customers","Case Studies"), ("resources","Webinars"), ("resources","Changelog")]),
+    ("Company", [("about","About Us"), ("about","Careers"), ("about","Press Kit"),
+                 ("customers","Partners"), ("contact","Contact Us")]),
 ]
+
+SOCIALS = [
+    ("LinkedIn", '<path d="M4.5 3.5a2 2 0 11-.001 4.001A2 2 0 014.5 3.5zM3 9h3v12H3zm6 0h2.9v1.6h.04c.4-.76 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V21h-3v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/>'),
+    ("Instagram", '<path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 5 5 .06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.15 3.3-1.7 4.8-5 5-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-5-5C2.04 15.6 2 15.2 2 12s0-3.6.07-4.9c.15-3.3 1.7-4.8 5-5C8.4 2.2 8.8 2.2 12 2.2zm0 3.8a6 6 0 100 12 6 6 0 000-12zm0 2a4 4 0 110 8 4 4 0 010-8zm6.2-3.5a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/>'),
+    ("X", '<path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.9H5.8z"/>'),
+    ("YouTube", '<path d="M21.6 7.2a2.5 2.5 0 00-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 002.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 001.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 001.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15.1V8.9l5.2 3.1z"/>'),
+]
+
+LEGAL = [("privacy","Privacy"), ("terms","Terms"), ("cookies","Cookies"), ("security","Security")]
 
 RING = ('<svg class="brand-grad" viewBox="0 0 100 100" aria-hidden="true">'
         '<circle class="ring" cx="50" cy="50" r="33.5"/></svg>')
@@ -203,8 +217,8 @@ def link(slug, label, extra=""):
     return '<a href="#" aria-disabled="true" tabindex="-1"%s>%s</a>' % (extra, label)
 
 
-def nav_html(active):
-    out = ['<header class="nav nav--light" id="nav"><div class="wrap nav-in">',
+def nav_html(active, dark=False):
+    out = ['<header class="nav %s" id="nav">' % ("nav--dark" if dark else "nav--light") + '<div class="wrap nav-in">',
            '<a class="brand" href="index.html" aria-label="Halo, home">%s Halo</a>' % RING,
            '<ul class="nav-links">']
     for label, key, cols, groups in NAV:
@@ -250,41 +264,64 @@ def nav_html(active):
     return "\n".join(out)
 
 
-def foot_html():
-    out = ['<footer class="foot"><div class="wrap"><div class="foot-grid">',
-           '<div class="foot-brand"><a class="brand" href="index.html" aria-label="Halo, home">'
-           '%s Halo</a><p>The employee appreciation platform.</p></div>' % RING]
+def foot_html(headline, sub):
+    out = ['<footer class="pfoot">',
+           '<div class="pfoot-glow" aria-hidden="true"></div>',
+           '<div class="pfoot-halo" aria-hidden="true">'
+           '<svg viewBox="0 0 470 200" preserveAspectRatio="none">'
+           '<ellipse class="ph-wide" cx="235" cy="100" rx="222" ry="88"/>'
+           '<ellipse class="ph-mid"  cx="235" cy="100" rx="222" ry="88"/>'
+           '<ellipse class="ph-core" cx="235" cy="100" rx="222" ry="88"/>'
+           '</svg></div>',
+           '<div class="wrap pfoot-cta">',
+           '<h2 data-rise>%s</h2>' % headline,
+           '<p data-rise style="--rise-delay:80ms">%s</p>' % sub,
+           '<div class="row" data-rise style="--rise-delay:150ms">'
+           '<a class="pbtn pbtn--paper pbtn--pill" href="pricing.html">Get Halo free</a>'
+           '<a class="pbtn pbtn--onDark pbtn--pill" href="cards.html">Book a demo</a></div>',
+           '<small data-rise style="--rise-delay:210ms">No credit card required</small>',
+           '</div>',
+           '<div class="wrap"><div class="pfoot-main">']
+
+    out.append('<div class="pfoot-brand">'
+               '<a class="brand" href="index.html" aria-label="Halo, home">%s Halo</a>'
+               '<p class="tag">Appreciation,<br><em>beautifully</em> delivered.</p>'
+               '<p>Halo helps teams recognize each other with meaningful cards, '
+               'celebrations, and a culture that grows stronger every day.</p>'
+               '<div class="socials">' % RING)
+    for name, path in SOCIALS:
+        out.append('<a href="#" aria-label="%s"><svg viewBox="0 0 24 24" fill="currentColor" '
+                   'aria-hidden="true">%s</svg></a>' % (name, path))
+    out.append('</div></div>')
+
     for heading, items in FOOT:
-        out.append('<div><h4>%s</h4><ul>' % heading)
+        out.append('<div class="pfoot-col"><h4>%s</h4><ul>' % heading)
         for slug, name in items:
             out.append('<li>%s</li>' % link(slug, name))
         out.append('</ul></div>')
-    out.append('</div><div class="foot-base"><span>&copy; 2026 Halo</span>'
-               '<span>Built for teams that care how things feel.</span></div></div></footer>')
+
+    out.append('<div class="newsletter">'
+               '<h4><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+               '<path d="M12 2.4l1.55 6.05L19.6 10l-6.05 1.55L12 17.6l-1.55-6.05L4.4 10l6.05-1.55z"/>'
+               '</svg> Stay in the loop</h4>'
+               '<p>Subscribe to get product updates, culture insights, and Halo news.</p>'
+               '<form onsubmit="return false">'
+               '<label class="vh" for="nl">Email address</label>'
+               '<input id="nl" type="email" name="email" placeholder="Enter your email" autocomplete="email">'
+               '<button class="pbtn pbtn--paper" type="submit">Subscribe <span class="arw">&rarr;</span></button>'
+               '</form>'
+               '<p class="privacy"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+               '<path d="M12 1.5a4.5 4.5 0 014.5 4.5v3H18a1.5 1.5 0 011.5 1.5v10A1.5 1.5 0 0118 22H6a1.5 1.5 0 01-1.5-1.5v-10A1.5 1.5 0 016 9h1.5V6A4.5 4.5 0 0112 1.5zm0 2A2.5 2.5 0 009.5 6v3h5V6A2.5 2.5 0 0012 3.5z"/>'
+               '</svg> We respect your privacy. Unsubscribe anytime.</p>'
+               '</div>')
+
+    out.append('</div></div>')
+    out.append('<div class="wrap pfoot-base"><span>&copy; 2026 Halo</span><ul>')
+    for slug, name in LEGAL:
+        out.append('<li>%s</li>' % link(slug, name))
+    out.append('</ul></div></footer>')
     return "\n".join(out)
 
-
-CLOSE = """
-<section class="close grain">
-  <div class="close-glow" aria-hidden="true"></div>
-  <div class="close-light" aria-hidden="true">
-    <svg viewBox="0 0 100 100">
-      <circle class="ring-path ring-halo" cx="50" cy="50" r="33.5"/>
-      <circle class="ring-path ring-mid"  cx="50" cy="50" r="33.5"/>
-      <circle class="ring-path ring-core" cx="50" cy="50" r="33.5"/>
-    </svg>
-  </div>
-  <div class="wrap close-in">
-    <h2 class="display d1" data-rise>{headline}</h2>
-    <p class="lede" data-rise>{sub}</p>
-    <div class="close-cta" data-rise>
-      <a class="btn btn--lit btn--spec" href="pricing.html">Get Halo free</a>
-      <a class="btn btn--ghost" href="cards.html">See a card <span class="arw">&rarr;</span></a>
-    </div>
-    <small data-rise>No credit card required</small>
-  </div>
-</section>
-"""
 
 SHELL = """<!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -317,6 +354,8 @@ SHELL = """<!DOCTYPE html>
 <link rel="stylesheet" href="assets/pages.css">
 <link rel="stylesheet" href="assets/cards.css">
 <link rel="stylesheet" href="assets/rb.css">
+<link rel="stylesheet" href="assets/pdf.css">
+<link rel="stylesheet" href="assets/pdf2.css">
 <script>document.documentElement.className='js';</script>
 </head>
 <body>
@@ -340,7 +379,6 @@ SHELL = """<!DOCTYPE html>
 
 <main id="main">
 {content}
-{close}
 </main>
 
 {foot}
@@ -363,15 +401,14 @@ def build():
 
         # A page may override the closing CTA with an HTML comment directive:
         #   <!--close: Headline text | Sub text -->
-        close = CLOSE.format(headline="Say the thing.",
-                             sub="Set up a workspace in a few minutes. The first ten people are free, permanently.")
+        headline = "Ready to build a culture of appreciation?"
+        sub = ("Join thousands of teams already using Halo "
+               "to recognize what matters most.")
         m = re.search(r"<!--close:(.+?)\|(.+?)-->", raw, re.S)
         if m:
-            close = CLOSE.format(headline=m.group(1).strip(), sub=m.group(2).strip())
+            headline, sub = m.group(1).strip(), m.group(2).strip()
             raw = raw.replace(m.group(0), "")
-        if "<!--noclose-->" in raw:
-            close = ""
-            raw = raw.replace("<!--noclose-->", "")
+        raw = raw.replace("<!--noclose-->", "")
 
         full_title = "Halo" if slug == "index" else "Halo · " + title
         if slug == "index":
@@ -382,8 +419,8 @@ def build():
         html = SHELL.format(
             title=full_title, desc=desc, site=SITE, brand_defs=BRAND_DEFS,
             slug="" if slug == "index" else slug + ".html",
-            nav=nav_html(section), foot=foot_html(),
-            content=raw.strip(), close=close,
+            nav=nav_html(section, slug in DARK_PAGES), foot=foot_html(headline, sub),
+            content=raw.strip(),
         )
         out = os.path.join(ROOT, slug + ".html")
         open(out, "w", encoding="utf-8").write(html)
